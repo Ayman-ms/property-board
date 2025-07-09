@@ -1,0 +1,51 @@
+src/
+│
+├── app/
+│   ├── core/                      # الأكواد الأساسية (services, guards, interceptors)
+│   │   ├── services/
+│   │   │   ├── auth.service.ts
+│   │   │   ├── property.service.ts
+│   │   │   ├── user.service.ts
+│   │   │   └── ...
+│   │   ├── guards/
+│   │   │   ├── auth.guard.ts
+│   │   │   ├── admin.guard.ts
+│   │   │   └── ...
+│   │   ├── models/                # جميع واجهات البيانات (Interfaces)
+│   │   │   ├── user.model.ts
+│   │   │   ├── property.model.ts
+│   │   │   └── ...
+│   │   └── utils/                 # أي أدوات مساعدة (Helpers)
+│
+│   ├── shared/                    # مكونات مشتركة (shared components, pipes, directives)
+│   │   ├── components/
+│   │   │   ├── navbar/
+│   │   │   ├── footer/
+│   │   │   └── ...
+│   │   ├── directives/
+│   │   ├── pipes/
+│   │   └── modules/              # Shared modules (مثلاً: MaterialModule)
+│
+│   ├── features/                  # كل ميزة (feature) بمجلد مستقل
+│   │   ├── auth/                 # ميزة تسجيل الدخول والتسجيل
+│   │   │   ├── login/
+│   │   │   ├── register/
+│   │   │   └── auth.routes.ts
+│   │   ├── properties/           # ميزة إدارة العقارات
+│   │   │   ├── list/
+│   │   │   ├── detail/
+│   │   │   ├── edit/
+│   │   │   └── property.routes.ts
+│   │   ├── dashboard/            # لوحة تحكم المدير
+│   │   │   ├── users/
+│   │   │   ├── approvals/
+│   │   │   └── dashboard.routes.ts
+│   │   └── messages/
+│
+│   ├── environments/             # بيئة التطوير والإنتاج
+│   ├── app.config.ts             # إعدادات التطبيق (Standalone)
+│   ├── app.routes.ts             # جميع الراوتات
+│   └── app.component.ts/html     # العنصر الرئيسي للتطبيق
+│
+├── assets/                       # صور، أيقونات، ملفات ثابتة
+└── styles.scss                   # أنماط CSS/SCSS العامة
