@@ -1,0 +1,52 @@
+nav.navbar {
+  background-color: #f8f9fa; // يمكنك تخصيص الخلفية هنا
+
+  .navbar-brand {
+    color: #46a080;
+    font-weight: bold;
+  }
+
+  .nav-link {
+    color: #333;
+    margin-right: 15px;
+    transition: color 0.3s;
+
+    &:hover {
+      color: #46a080;
+    }
+  }
+
+  .pi {
+    color: #46a080;
+    background-color: #e6f4ef;
+    padding: 10px;
+    margin-right: 10px;
+    border-radius: 10%;
+  }
+
+  form {
+    position: relative;
+
+    i {
+      position: absolute;
+      left: 10px;
+      top: 50%;
+      transform: translateY(-50%);
+      background: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    input[type="search"] {
+      padding-left: 50px;
+      background-color: #e6f4ef;
+      border: none;
+      border-radius: 5px;
+      color: #333;
+
+      &::placeholder {
+        color: #46a080;
+      }
+    }
+  }
+}
