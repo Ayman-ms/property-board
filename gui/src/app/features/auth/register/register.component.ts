@@ -2,7 +2,9 @@ import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { AuthService } from '../../../core/services/auth/auth.service';
-import { Router } from '@angular/router';
+import { Firestore, doc, setDoc, serverTimestamp } from '@angular/fire/firestore';
+import { Storage, ref, uploadBytes, getDownloadURL } from '@angular/fire/storage';
+import { Auth, createUserWithEmailAndPassword } from '@angular/fire/auth';;
 
 @Component({
   selector: 'app-register',
@@ -12,23 +14,68 @@ import { Router } from '@angular/router';
   styleUrl: './register.component.scss'
 })
 export class RegisterComponent {
-  firstName = '';
-  lastName = '';
-  email = '';
-  password = '';
+    selectedImage: File | null = null;
+
+    user = {
+    firstName: '',
+    lastName: '',
+    email: '',
+    password: ''
+  };
   error: string | null = null;
   
-  constructor(private authService: AuthService, private router: Router) {}
+  constructor(private authService: AuthService, private firestore: Firestore,
+    private storage: Storage, private auth: Auth
+) {}
 
-  onSubmit() {
-    this.authService.register(this.email, this.password)
-      .then((userCredential) => {
-        console.log('User registered:', userCredential.user);
-        this.router.navigate(['/']);
-      })
-      .catch((err) => {
-        this.error = err.message;
-      });
+onFileSelected(event: any) {
+    this.selectedImage = event.target.files[0];
   }
+
+
+async onSubmit(form: any) {
+    const { email, password, firstName, lastName } = form.value;
+
+    try {
+      const userCredential = await createUserWithEmailAndPassword(this.auth, email, password);
+      const uid = userCredential.user.uid;
+
+      let photoURL = 'https://firebasestorage.googleapis.com/v0/b/property-board.appspot.com/o/default-avatar.png?alt=media';
+
+      if (this.selectedImage) {
+        const filePath = `profileImages/${uid}`;
+        const storageRef = ref(this.storage, filePath);
+        await uploadBytes(storageRef, this.selectedImage);
+        photoURL = await getDownloadURL(storageRef);
+      }
+
+      await setDoc(doc(this.firestore, 'users', uid), {
+        uid,
+        email,
+        firstName,
+        lastName,
+        photoURL,
+        role: 'user',
+        createdAt: serverTimestamp()
+      });
+
+      console.log('User registered successfully');
+
+    } catch (error) {
+      console.error('Registration error:', error);
+    }
+  }
+
+signInWithGoogle() {
+  this.authService.signInWithGoogle().then(() => {
+    console.log('Signed in with Google');
+  }).catch(err => console.error(err));
+}
+
+signInWithFacebook() {
+  this.authService.signInWithFacebook().then(() => {
+    console.log('Signed in with Facebook');
+  }).catch(err => console.error(err));
+}
 
 }

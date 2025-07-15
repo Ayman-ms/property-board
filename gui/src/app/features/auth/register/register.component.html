@@ -1,28 +1,66 @@
-<form class="login-form" (ngSubmit)="onSubmit()" #registerForm="ngForm">
-  <div class="login-container">
-    <h1 class="title">Sing up</h1>
+<div class="login-container">
+  <h1 class="title">Sign up</h1>
 
-    <form class="login-form">
-      <div class="form-group">
-        <label for="firstName">First Name</label>
-        <input type="text" id="firstName" placeholder="First Name" class="form-input">
-      </div>
+  <form class="login-form" #registerForm="ngForm" (ngSubmit)="onSubmit(registerForm)">
+    <div class="form-group">
+      <label for="firstName">First Name</label>
+      <input
+        type="text"
+        id="firstName"
+        name="firstName"
+        [(ngModel)]="user.firstName"
+        required
+        placeholder="First Name"
+        class="form-input"
+      />
+    </div>
 
-      <div class="form-group">
-        <label for="lastName">Last Name</label>
-        <input type="text" id="lastName" placeholder="Last Name" class="form-input">
-      </div>
-      <div class="form-group">
-        <label for="email">Email</label>
-        <input type="email" id="email" placeholder="Email" class="form-input">
-      </div>
+    <div class="form-group">
+      <label for="lastName">Last Name</label>
+      <input
+        type="text"
+        id="lastName"
+        name="lastName"
+        [(ngModel)]="user.lastName"
+        required
+        placeholder="Last Name"
+        class="form-input"
+      />
+    </div>
 
-      <div class="form-group">
-        <label for="password">Password</label>
-        <input type="password" id="password" placeholder="Password" class="form-input">
-      </div>
+    <div class="form-group">
+      <label for="email">Email</label>
+      <input
+        type="email"
+        id="email"
+        name="email"
+        [(ngModel)]="user.email"
+        required
+        placeholder="Email"
+        class="form-input"
+      />
+    </div>
 
-      <button type="submit" class="login-button">Sign Up</button>
-    </form>
-  </div>
-</form>
+    <div class="form-group">
+      <label for="password">Password</label>
+      <input
+        type="password"
+        id="password"
+        name="password"
+        [(ngModel)]="user.password"
+        required
+        placeholder="Password"
+        class="form-input"
+      />
+    </div>
+
+    <button type="submit" class="login-button" [disabled]="registerForm.invalid">
+      Sign Up
+    </button>
+    <div class="social-buttons">
+  <button (click)="signInWithGoogle()" class="google-button">Sign up with Google</button>
+  <button (click)="signInWithFacebook()" class="facebook-button">Sign up with Facebook</button>
+</div>
+
+  </form>
+</div>

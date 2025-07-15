@@ -11,19 +11,36 @@ import { Router } from '@angular/router';
   styleUrl: './login.component.scss'
 })
 export class LoginComponent {
-  email: string = '';
-  password: string = '';
+  loginData = {
+    email: '',
+    password: ''
+  };
+
   error: string | null = null;
 
-  constructor(private authService: AuthService, private router: Router) { }
+  constructor(private authService: AuthService, private router: Router) {}
 
-  onSubmit() {
-    this.authService.login(this.email, this.password)
+  onLogin() {
+    this.authService.login(this.loginData.email, this.loginData.password)
       .then(() => {
-        this.router.navigate(['/']); // أو صفحة لوحة التحكم
+        console.log('Logged in successfully');
+        this.router.navigate(['/']); // وجه المستخدم للصفحة الرئيسية أو لوحة التحكم
       })
-      .catch((err) => {
-        this.error = err.message;
+      .catch((error) => {
+        console.error(error.message);
+        alert(error.message); // يمكن تحسينها لاحقًا باستخدام toast
       });
+  }
+
+  signInWithGoogle() {
+    this.authService.signInWithGoogle()
+      .then(() => this.router.navigate(['/']))
+      .catch((error) => alert(error.message));
+  }
+
+  signInWithFacebook() {
+    this.authService.signInWithFacebook()
+      .then(() => this.router.navigate(['/']))
+      .catch((error) => alert(error.message));
   }
 }

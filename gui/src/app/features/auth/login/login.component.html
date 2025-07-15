@@ -1,19 +1,42 @@
 <div class="login-container">
   <h1 class="title">Welcome back</h1>
 
-  <form class="login-form">
+  <form class="login-form" (ngSubmit)="onLogin()" #loginForm="ngForm">
     <div class="form-group">
       <label for="email">Email</label>
-      <input type="email" id="email" placeholder="Email" class="form-input">
+      <input
+        type="email"
+        id="email"
+        name="email"
+        required
+        [(ngModel)]="loginData.email"
+        placeholder="Email"
+        class="form-input"
+      />
     </div>
 
     <div class="form-group">
       <label for="password">Password</label>
-      <input type="password" id="password" placeholder="Password" class="form-input">
+      <input
+        type="password"
+        id="password"
+        name="password"
+        required
+        [(ngModel)]="loginData.password"
+        placeholder="Password"
+        class="form-input"
+      />
     </div>
 
-    <a href="#" class="forgot-password">Forgot password?</a>
+    <a routerLink="/forgot-password" class="forgot-password">Forgot password?</a>
 
-    <button type="submit" class="login-button">Log in</button>
+    <button type="submit" class="login-button" [disabled]="loginForm.invalid">
+      Log in
+    </button>
+
+    <div class="social-buttons">
+      <button type="button" (click)="signInWithGoogle()" class="google-button">Login with Google</button>
+      <button type="button" (click)="signInWithFacebook()" class="facebook-button">Login with Facebook</button>
+    </div>
   </form>
 </div>
