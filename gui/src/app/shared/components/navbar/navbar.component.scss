@@ -1,23 +1,23 @@
-nav.navbar {
-  background-color: #f8f9fa; // يمكنك تخصيص الخلفية هنا
+@import '../../../../styles.scss';
 
+nav.navbar {
   .navbar-brand {
-    color: #46a080;
+    color: $logo-color;
     font-weight: bold;
   }
 
   .nav-link {
-    color: #333;
+    color: $text-color;
     margin-right: 15px;
     transition: color 0.3s;
 
     &:hover {
-      color: #46a080;
+      color: $logo-color;
     }
   }
 
   .pi {
-    color: #46a080;
+    color: $logo-color;
     background-color: #e6f4ef;
     padding: 10px;
     margin-right: 10px;
@@ -33,20 +33,55 @@ nav.navbar {
       top: 50%;
       transform: translateY(-50%);
       background: none;
-      padding: 0;
-      margin: 0;
     }
 
     input[type="search"] {
       padding-left: 50px;
-      background-color: #e6f4ef;
+      background-color: red;
       border: none;
       border-radius: 5px;
       color: #333;
 
       &::placeholder {
-        color: #46a080;
+        color: $logo-bg-color;
       }
     }
+  }
+}
+
+body.dark-mode nav.navbar {
+  background-color: $input-bg-dark;
+}
+
+body.dark-mode nav.navbar a.nav-link {
+  color: $primary-color-dark !important;
+}
+
+body.dark-mode nav.navbar form input[type="search"] {
+  background-color: $input-bg-dark;
+  color: $primary-color-dark;
+
+  &::placeholder {
+    color: red;
+  }
+}
+
+.navbar {
+  background-color: $input-bg;
+
+  .nav-link {
+    color: #333;
+
+    &:hover {
+      color: $logo-color;
+    }
+  }
+}
+
+body.dark-mode .navbar {
+  background-color: $input-bg-dark;
+
+  .nav-link {
+    color: $primary-color-dark !important;
   }
 }

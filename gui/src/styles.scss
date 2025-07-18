@@ -1,4 +1,44 @@
-// styles.scss
 @import 'bootstrap/scss/bootstrap';
 
-// يمكنك إضافة تخصيصاتك الخاصة هنا فقط
+// Colors
+$logo-color: #46a080;
+$logo-bg-color: #e6f4ef;
+$primary-color: #121714;
+$secondary-color: #648273;
+$background-color: #f9fbfa;
+$input-bg: #ebefed;
+$text-color: #333;
+$border-radius: 1rem;
+
+// Dark colors
+$background-color-dark: #111b22;
+$input-bg-dark: #233948;
+$primary-color-dark: #ffffff;
+$secondary-color-dark: #92b3c9;
+$text-color-dark: #ffffff;
+body {
+  background-color: $background-color;
+  color: $primary-color;
+  font-family: "Work Sans", "Noto Sans", sans-serif;
+  margin: 0;
+}
+
+body.dark-mode {
+  background-color: $background-color-dark;
+  color: $primary-color-dark;
+}
+
+// Global navbar
+nav.navbar {
+  background-color: $input-bg;
+  color: $primary-color;
+}
+
+body.dark-mode nav.navbar {
+  background-color: $input-bg-dark; 
+  color: $primary-color-dark;
+}
+
+body.dark-mode .navbar .nav-link {
+  color: $primary-color-dark !important;
+}

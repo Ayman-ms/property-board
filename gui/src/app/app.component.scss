@@ -1,0 +1,12 @@
+@import '../styles.scss';
+.footer {
+  padding: 1rem;
+  text-align: center;
+  background: $background-color;
+  color: $primary-color;
+}
+
+body.dark-mode .footer {
+  background: $input-bg-dark;
+  color: $primary-color-dark;
+}

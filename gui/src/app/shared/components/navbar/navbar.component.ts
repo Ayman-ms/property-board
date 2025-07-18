@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-
+import { Component, Renderer2 } from '@angular/core';
+import { ThemeService } from '../../../core/services/theme/theme.service';
 @Component({
   selector: 'app-navbar',
   standalone: true,
@@ -8,6 +8,17 @@ import { Component } from '@angular/core';
   styleUrl: './navbar.component.scss'
 })
 export class NavbarComponent {
-[x: string]: any;
+isDarkMode = false;
+
+  constructor(private renderer: Renderer2) {}
+
+  toggleTheme() {
+    this.isDarkMode = !this.isDarkMode;
+    if (this.isDarkMode) {
+      this.renderer.addClass(document.body, 'dark-mode');
+    } else {
+      this.renderer.removeClass(document.body, 'dark-mode');
+    }
+  }
 
 }
