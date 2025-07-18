@@ -1,4 +1,5 @@
 @import 'bootstrap/scss/bootstrap';
+<<<<<<< HEAD
 
 // Colors
 $logo-color: #46a080;
@@ -42,3 +43,8 @@ body.dark-mode nav.navbar {
 body.dark-mode .navbar .nav-link {
   color: $primary-color-dark !important;
 }
+=======
+@import "primeicons/primeicons.css";
+/* Importing Bootstrap SCSS file. */
+@import 'bootstrap/scss/bootstrap';
+>>>>>>> 93f1035 (ended configration to conecte with firebase and member profile)

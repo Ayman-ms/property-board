@@ -40,7 +40,8 @@ async onSubmit(form: any) {
       const userCredential = await createUserWithEmailAndPassword(this.auth, email, password);
       const uid = userCredential.user.uid;
 
-      let photoURL = 'https://firebasestorage.googleapis.com/v0/b/property-board.appspot.com/o/default-avatar.png?alt=media';
+      let photoURL = `https://ui-avatars.com/api/?name=${firstName}+${lastName}&background=random`;
+
 
       if (this.selectedImage) {
         const filePath = `profileImages/${uid}`;

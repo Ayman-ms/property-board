@@ -2,7 +2,7 @@
   max-width: 400px;
   margin: 50px auto;
   padding: 20px;
-  
+
   .title {
     font-size: 32px;
     font-weight: bold;
@@ -13,13 +13,13 @@
 .login-form {
   .form-group {
     margin-bottom: 20px;
-    
+
     label {
       display: block;
       font-size: 16px;
       margin-bottom: 8px;
     }
-    
+
     .form-input {
       width: 100%;
       padding: 12px;
@@ -27,30 +27,19 @@
       border: none;
       background-color: #f1f3f5;
       font-size: 16px;
-      
+
       &::placeholder {
         color: #adb5bd;
       }
-      
+
       &:focus {
         outline: none;
         background-color: #e9ecef;
       }
     }
   }
-  
-  .forgot-password {
-    display: block;
-    color: #6c757d;
-    text-decoration: none;
-    margin: 15px 0;
-    font-size: 14px;
-    
-    &:hover {
-      text-decoration: underline;
-    }
-  }
-  
+
+
   .login-button {
     width: 100%;
     padding: 12px;
@@ -60,9 +49,30 @@
     font-size: 16px;
     font-weight: 500;
     cursor: pointer;
-    
+
     &:hover {
       background-color: #dee2e6;
+    }
+  }
+
+  .social-buttons {
+    display: flex;
+    flex-direction: column;
+
+    .google-button,
+    .facebook-button {
+      background-color: red;
+      color: white;
+      width: 50%;
+      border: none;
+      margin-top: 5px;
+      align-self: center;
+      padding: 10px;
+      border-radius: 10px;
+    }
+
+    .facebook-button {
+      background-color: blue;
     }
   }
 }
