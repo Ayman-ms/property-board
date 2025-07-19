@@ -32,12 +32,8 @@
               "src/manifest.webmanifest"
             ],
             "styles": [
-<<<<<<< HEAD
               "node_modules/bootstrap/dist/css/bootstrap.min.css",
               "node_modules/primeicons/primeicons.css",
-=======
-                "node_modules/primeicons/primeicons.css",
->>>>>>> 93f1035 (ended configration to conecte with firebase and member profile)
               "src/styles.scss"
             ],
             "scripts": [
