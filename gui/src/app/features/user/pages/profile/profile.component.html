@@ -1,17 +1,19 @@
 <div class="profile-container">
-  <h1>User Profile</h1>
 
   <div class="profile-card" *ngIf="user">
+    <h1>{{ 'PROFILE.Title' | translate }}</h1>
+
     <img [src]="user.photoURL || defaultAvatar" alt="Profile Picture" class="avatar" />
 
     <h2>{{ user.firstName }} {{ user.lastName }}</h2>
     <p><strong>Email:</strong> {{ user.email }}</p>
     <p><strong>Role:</strong> {{ user.role }}</p>
+    <i class="pi pi-pen-to-square" (click)="router.navigate(['/user/edit'])"></i>
+    <i class="pi pi-sign-out" (click)="logout()"></i>
 
-    <button (click)="logout()" class="logout-button">Logout</button>
   </div>
 
   <div *ngIf="!user">
-    <p>Loading profile...</p>
+    <p>{{ 'PROFILE.Loading' | translate }}</p>
   </div>
 </div>

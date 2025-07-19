@@ -10,13 +10,15 @@ $background-color: #f9fbfa;
 $input-bg: #ebefed;
 $text-color: #333;
 $border-radius: 1rem;
-
+$input-background-color: #f1f3f5;
 // Dark colors
 $background-color-dark: #111b22;
 $input-bg-dark: #233948;
 $primary-color-dark: #ffffff;
 $secondary-color-dark: #92b3c9;
 $text-color-dark: #ffffff;
+
+
 body {
   background-color: $background-color;
   color: $primary-color;

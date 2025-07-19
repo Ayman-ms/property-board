@@ -11,8 +11,16 @@
 }
 
 .login-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+
   .form-group {
-    margin-bottom: 20px;
+   margin-bottom: 20px;
+    align-items: center;
+    width: 100%;
 
     label {
       display: block;
@@ -40,7 +48,9 @@
   }
 
 
-  .login-button {
+  .login-button,
+  .google-button,
+  .facebook-button {
     width: 100%;
     padding: 12px;
     background-color: #e9ecef;
@@ -49,6 +59,7 @@
     font-size: 16px;
     font-weight: 500;
     cursor: pointer;
+    margin-bottom: 10px;
 
     &:hover {
       background-color: #dee2e6;
@@ -61,18 +72,53 @@
 
     .google-button,
     .facebook-button {
-      background-color: red;
-      color: white;
-      width: 50%;
-      border: none;
-      margin-top: 5px;
-      align-self: center;
-      padding: 10px;
-      border-radius: 10px;
+      
+      img {
+        height: 18px;
+        margin-right: 12px;
+      }
+
+      span {
+        display: inline-block;
+      }
+
+      &:hover {
+        box-shadow: 0 1px 2px rgba(60, 64, 67, 0.3),
+          0 1px 3px rgba(60, 64, 67, 0.15);
+      }
+
+      &:active {
+        box-shadow: none;
+      }
     }
 
-    .facebook-button {
-      background-color: blue;
-    }
+  }
+}
+
+.profile-placeholder {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  background-color: #f1f3f5;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  overflow: hidden;
+  transition: transform 0.2s ease-in-out;
+
+  i {
+    font-size: 48px;
+    color: #6c757d;
+  }
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  &:hover {
+    transform: scale(1.05);
   }
 }

@@ -26,7 +26,7 @@ async register(email: string, password: string, firstName: string, lastName: str
 }
 
 
-  signInWithGoogle() {
+  loginOrRegisterWithGoogle() {
     const provider = new GoogleAuthProvider();
     return signInWithPopup(this.auth, provider)
       .then(async (result) => {
@@ -48,7 +48,7 @@ async register(email: string, password: string, firstName: string, lastName: str
       });
   }
 
-  signInWithFacebook() {
+  loginOrRegisterWithFacebook() {
     const provider = new FacebookAuthProvider();
     return signInWithPopup(this.auth, provider)
       .then(async (result) => {

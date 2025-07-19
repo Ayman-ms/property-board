@@ -1,42 +1,57 @@
 <div class="login-container">
-  <h1 class="title">Sign up</h1>
+  <h1 class="title">{{ 'REGISTER.Title' | translate }}</h1>
 
   <form class="login-form" #registerForm="ngForm" (ngSubmit)="onSubmit(registerForm)">
-    <div class="form-group">
-      <label for="firstName">First Name</label>
-      <input type="text" id="firstName" name="firstName" [(ngModel)]="user.firstName" required placeholder="First Name"
-        class="form-input" />
+
+    <div class="form-group-img">
+    <div class="profile-placeholder" (click)="triggerFileInput()">
+      <ng-container *ngIf="previewImage; else defaultIcon">
+        <img [src]="previewImage" alt="Profile Picture" class="profile-img" />
+      </ng-container>
+      <ng-template #defaultIcon>
+        <i class="pi pi-user"></i>
+      </ng-template>
     </div>
-    
-    <div class="form-group">
-      <label for="profileImage">Profile Image</label>
-      <input type="file" id="profileImage" (change)="onFileSelected($event)" accept="image/*">
+    <input type="file" id="profileImage" #fileInput (change)="onFileSelected($event)" accept="image/*" hidden />
+
     </div>
 
     <div class="form-group">
-      <label for="lastName">Last Name</label>
-      <input type="text" id="lastName" name="lastName" [(ngModel)]="user.lastName" required placeholder="Last Name"
-        class="form-input" />
-    </div>
-
-    <div class="form-group">
-      <label for="email">Email</label>
-      <input type="email" id="email" name="email" [(ngModel)]="user.email" required placeholder="Email"
+      <label for="firstName">{{ 'REGISTER.FirstName' | translate }}</label>
+      <input type="text" id="firstName" name="firstName" [(ngModel)]="user.firstName" required placeholder="{{ 'REGISTER.FirstName' | translate }}"
         class="form-input" />
     </div>
 
     <div class="form-group">
-      <label for="password">Password</label>
-      <input type="password" id="password" name="password" [(ngModel)]="user.password" required placeholder="Password"
+      <label for="lastName">{{ 'REGISTER.LastName' | translate }}</label>
+      <input type="text" id="lastName" name="lastName" [(ngModel)]="user.lastName" required placeholder="{{ 'REGISTER.LastName' | translate }}"
+        class="form-input" />
+    </div>
+
+    <div class="form-group">
+      <label for="email">{{ 'REGISTER.Email' | translate }}</label>
+      <input type="email" id="email" name="email" [(ngModel)]="user.email" required placeholder="{{ 'REGISTER.Email' | translate }}"
+        class="form-input" />
+    </div>
+
+    <div class="form-group">
+      <label for="password">{{ 'REGISTER.Password' | translate }}</label>
+      <input type="password" id="password" name="password" [(ngModel)]="user.password" required placeholder="{{ 'REGISTER.Password' | translate }}"
         class="form-input" />
     </div>
 
     <button type="submit" class="login-button" [disabled]="registerForm.invalid">
-      Sign Up
+      {{ 'REGISTER.SignUp' | translate }}
     </button>
-    <div class="social-buttons">
-      <button (click)="signInWithGoogle()" class="google-button"><i class="pi pi-google"></i></button> 
-      <button (click)="signInWithFacebook()" class="facebook-button"><i class="pi pi-facebook"></i></button> 
+    <div class="form-group social-buttons">
+      <button type="button" class="google-button" (click)="registerWithGoogle()">
+        <img src="https://developers.google.com/identity/images/g-logo.png" alt="Google logo" />
+        <span>{{ 'REGISTER.GoogleSignUp' | translate }}</span>
+      </button>
+      <button type="button" class="facebook-button" (click)="registerWithFacebook()">
+        <img src="https://www.facebook.com/images/fb_icon_325x325.png" alt="Facebook logo" />
+        <span>{{ 'REGISTER.FacebookSignUp' | translate }}</span>
+      </button>
     </div>
   </form>
 </div>

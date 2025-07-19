@@ -37,13 +37,13 @@ nav.navbar {
 
     input[type="search"] {
       padding-left: 50px;
-      background-color: red;
+      background-color: $logo-bg-color;
       border: none;
       border-radius: 5px;
       color: #333;
 
       &::placeholder {
-        color: $logo-bg-color;
+        color: $logo-color;
       }
     }
   }
@@ -55,15 +55,6 @@ body.dark-mode nav.navbar {
 
 body.dark-mode nav.navbar a.nav-link {
   color: $primary-color-dark !important;
-}
-
-body.dark-mode nav.navbar form input[type="search"] {
-  background-color: $input-bg-dark;
-  color: $primary-color-dark;
-
-  &::placeholder {
-    color: red;
-  }
 }
 
 .navbar {

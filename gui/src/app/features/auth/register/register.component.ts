@@ -1,20 +1,22 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, ViewChild, ElementRef } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { AuthService } from '../../../core/services/auth/auth.service';
 import { Firestore, doc, setDoc, serverTimestamp } from '@angular/fire/firestore';
 import { Storage, ref, uploadBytes, getDownloadURL } from '@angular/fire/storage';
 import { Auth, createUserWithEmailAndPassword } from '@angular/fire/auth';;
-
+import { TranslateModule, TranslateService } from '@ngx-translate/core';
 @Component({
   selector: 'app-register',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, TranslateModule],
   templateUrl: './register.component.html',
   styleUrl: './register.component.scss'
 })
 export class RegisterComponent {
-    selectedImage: File | null = null;
+     @ViewChild('fileInput') fileInput!: ElementRef<HTMLInputElement>;
+ previewImage: string | null = null;
+ selectedImage: File | null = null;
 
     user = {
     firstName: '',
@@ -25,13 +27,25 @@ export class RegisterComponent {
   error: string | null = null;
   
   constructor(private authService: AuthService, private firestore: Firestore,
-    private storage: Storage, private auth: Auth
+    private storage: Storage, private auth: Auth,
+    public translate: TranslateService
 ) {}
 
-onFileSelected(event: any) {
-    this.selectedImage = event.target.files[0];
-  }
+ triggerFileInput() {
+   this.fileInput.nativeElement.click();
+ }
 
+ onFileSelected(event: any) {
+   const file = event.target.files[0];
+   if (file) {
+     this.selectedImage = file;
+     const reader = new FileReader();
+     reader.onload = (e: any) => {
+       this.previewImage = e.target.result;
+     };
+     reader.readAsDataURL(file);
+   }
+ }
 
 async onSubmit(form: any) {
     const { email, password, firstName, lastName } = form.value;
@@ -67,14 +81,14 @@ async onSubmit(form: any) {
     }
   }
 
-signInWithGoogle() {
-  this.authService.signInWithGoogle().then(() => {
+registerWithGoogle() {
+  this.authService.loginOrRegisterWithGoogle().then(() => {
     console.log('Signed in with Google');
   }).catch(err => console.error(err));
 }
 
-signInWithFacebook() {
-  this.authService.signInWithFacebook().then(() => {
+registerWithFacebook() {
+  this.authService.loginOrRegisterWithFacebook().then(() => {
     console.log('Signed in with Facebook');
   }).catch(err => console.error(err));
 }

@@ -1,0 +1,31 @@
+@import '../../../../../styles.scss';
+
+
+.profile-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    border: 1px solid #eee;
+    border-radius: 5px;
+    max-width: 400px;
+    margin: 20px auto;
+
+    .profile-card {
+        text-align: center;
+    }
+
+    .avatar {
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        object-fit: cover;
+    }
+
+    i{
+        cursor: pointer;
+        margin: 10px;
+        font-size: 1.5em;
+         color: $logo-color;
+    }
+}

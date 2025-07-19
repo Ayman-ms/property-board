@@ -1,2 +1,8 @@
 <app-navbar></app-navbar>
+
+<div class="language-switcher p-2 text-end">
+  <button class="btn btn-sm btn-outline-primary me-2" (click)="switchLang('en')">English</button>
+  <button class="btn btn-sm btn-outline-primary" (click)="switchLang('de')">Deutsch</button>
+</div>
+
 <router-outlet></router-outlet>

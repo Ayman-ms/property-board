@@ -3,11 +3,11 @@ import { AuthService } from '../../../../core/services/auth/auth.service';
 import { UserService } from '../../../../core/services/user/user.service';
 import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
-
+import { TranslateModule, TranslateService } from '@ngx-translate/core';
 @Component({
   selector: 'app-profile',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, TranslateModule],
   templateUrl: './profile.component.html',
   styleUrl: './profile.component.scss'
 })
@@ -18,7 +18,8 @@ export class ProfileComponent implements OnInit {
   constructor(
     private authService: AuthService,
     private userService: UserService,
-    private router: Router
+    public router: Router,
+    public translate: TranslateService
   ) { }
 
   ngOnInit(): void {

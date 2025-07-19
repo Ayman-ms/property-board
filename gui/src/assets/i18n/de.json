@@ -1,0 +1,72 @@
+{
+  "NAV": {
+    "BRAND": "Domix",
+    "BUY": "Kaufen",
+    "RENT": "Mieten",
+    "SELL": "Verkaufen",
+    "MANAGE": "Anzeigen verwalten",
+    "SEARCH": "Suchen"
+  }
+,
+  "LANGUAGE": {
+    "ENGLISH": "Englisch",
+    "GERMAN": "Deutsch"
+  },
+  "HOME":{
+    "Search": "Suche nach Ort oder Angebots-ID",
+    "Price": "Preis",
+    "Location": "Standort",
+    "Type": "Typ",
+    "RentSale": "Miete/Verkauf",
+    "FeaturedListings": "Empfohlene Angebote",
+    "ModernApartment": "Moderne Wohnung im Stadtzentrum",
+    "ModernApartmentDescription": "Geräumige 2-Zimmer-Wohnung mit modernen Annehmlichkeiten",
+    "LuxuryCondo": "Luxuswohnung mit Stadtblick",
+    "LuxuryCondoDescription": "Elegante Wohnung mit Panoramablick auf die Stadt",
+    "Townhouse": "Reihenhaus mit privatem Garten",
+    "TownhouseDescription": "Charmantes Reihenhaus mit privatem Garten"
+  },
+  "PROFILE": {
+    "Title": "Benutzerprofil",
+    "Loading": "Lade Profil..."
+  },
+  "EDITPROFILE": {
+    "Title": "Profil bearbeiten",
+    "SaveChanges": "Änderungen speichern",
+    "Cancel": "Abbrechen",
+    "FirstName": "Vorname",
+    "LastName": "Nachname",
+    "Email": "E-Mail",
+    "PhoneNumber": "Telefonnummer",
+    "Address": "Adresse",
+    "ProfilePicture": "Profilbild",
+    "RoleUser": "Benutzer",
+    "RoleAdmin": "Administrator",
+    "Save": "Speichern"
+  },
+  "REGISTER": {
+    "Title": "Registrieren",
+    "FirstName": "Vorname",
+    "LastName": "Nachname",
+    "Email": "E-Mail",
+    "Password": "Passwort",
+    "SignUp": "Registrieren",
+    "GoogleSignUp": "Mit Google registrieren",
+    "FacebookSignUp": "Mit Facebook registrieren"
+  },
+  "LOGIN": {
+    "Title": "Willkommen zurück",
+    "Email": "E-Mail",
+    "Password": "Passwort",
+    "Submit": "Anmelden",
+    "GoogleSignIn": "Mit Google anmelden",
+    "FacebookSignIn": "Mit Facebook anmelden",
+    "ForgotPassword": "Passwort vergessen?"
+  },
+  "FORGOT_PASSWORD": {
+    "Title": "Passwort zurücksetzen",
+    "Email": "Geben Sie Ihre E-Mail-Adresse ein",
+    "Submit": "Link zum Zurücksetzen senden",
+    "SuccessMessage": "Wenn ein Konto mit dieser E-Mail-Adresse existiert, wurde ein Link zum Zurücksetzen gesendet."
+  }
+}

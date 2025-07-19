@@ -1,0 +1,77 @@
+{
+  "NAV": {
+    "BRAND": "Domix",
+    "BUY": "Buy",
+    "RENT": "Rent",
+    "SELL": "Sell",
+    "MANAGE": "Manage Listing",
+    "SEARCH": "Search"
+  }
+,
+  "LANGUAGE": {
+    "ENGLISH": "English",
+    "GERMAN": "Deutsch"
+  },
+  "HOME": {
+    "Search": "Search by location or listing ID",
+    "Price": "Price",
+    "Location": "Location",
+    "Type": "Type",
+    "RentSale": "Rent/Sale",
+    "FeaturedListings": "Featured Listings",
+    "ModernApartment": "Modern Apartment in Downtown",
+    "ModernApartmentDescription": "Spacious 2-bedroom apartment with modern amenities",
+    "LuxuryCondo": "Luxury Condo with City Views",
+    "LuxuryCondoDescription": "Elegant condo with panoramic city views",
+    "Townhouse": "Townhouse with Private Garden",
+    "TownhouseDescription": "Charming townhouse with a private garden"
+  },
+  "PROFILE": {
+    "Title": "User Profile",
+    "Loading": "Loading profile..."
+  },
+  "EDITPROFILE": {
+    "Title": "Edit Profile",
+    "SaveChanges": "Save Changes",
+    "Cancel": "Cancel",
+    "FirstName": "First Name",
+    "LastName": "Last Name",
+    "Email": "Email",
+    "PhoneNumber": "Phone Number",
+    "Address": "Address",
+    "ProfilePicture": "Profile Picture",
+    "RoleUser": "User",
+    "RoleAdmin": "Admin",
+    "Save": "Save"
+  },
+  "REGISTER": {
+    "Title": "Sign Up",
+    "FirstName": "First Name",
+    "LastName": "Last Name",
+    "Email": "Email",
+    "Password": "Password",
+    "SignUp": "Sign Up",
+    "GoogleSignUp": "Sign up with Google",
+    "FacebookSignUp": "Sign up with Facebook"
+  },
+  "LOGIN": {
+    "Title": "Welcome back",
+    "Email": "Email",
+    "Password": "Password",
+    "Submit": "Log in",
+    "GoogleSignIn": "Sign in with Google",
+    "FacebookSignIn": "Sign in with Facebook",
+    "ForgotPassword": "Forgot password?"
+  },
+  "FORGOT_PASSWORD": {
+    "Title": "Reset Password",
+    "Email": "Enter your email address",
+    "Submit": "Send Reset Link",
+    "SuccessMessage": "If an account with that email exists, a reset link has been sent."
+  },
+  "ERROR": {
+    "NotFound": "Page not found",
+    "ServerError": "Server error, please try again later",
+    "Unauthorized": "You are not authorized to view this page"
+  }
+}
