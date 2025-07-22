@@ -9,21 +9,21 @@ export class AuthService {
 
   constructor(private auth: Auth, private firestore: Firestore) { }
 
-async register(email: string, password: string, firstName: string, lastName: string) {
-  const userCredential = await createUserWithEmailAndPassword(this.auth, email, password);
-  const uid = userCredential.user.uid;
+  async register(email: string, password: string, firstName: string, lastName: string) {
+    const userCredential = await createUserWithEmailAndPassword(this.auth, email, password);
+    const uid = userCredential.user.uid;
 
-  const userData = {
-    uid,
-    email,
-    firstName,
-    lastName,
-    role: 'user',
-    createdAt: serverTimestamp()
-  };
+    const userData = {
+      uid,
+      email,
+      firstName,
+      lastName,
+      role: 'user',
+      createdAt: serverTimestamp()
+    };
 
-  await setDoc(doc(this.firestore, `users/${uid}`), userData);
-}
+    await setDoc(doc(this.firestore, `users/${uid}`), userData);
+  }
 
 
   loginOrRegisterWithGoogle() {
@@ -77,6 +77,9 @@ async register(email: string, password: string, firstName: string, lastName: str
   }
 
   logout() {
+
+    localStorage.removeItem('token');
+    localStorage.removeItem('role');
     return this.auth.signOut();
   }
 
@@ -87,5 +90,15 @@ async register(email: string, password: string, firstName: string, lastName: str
 
   getauthState() {
     return this.auth;
+  }
+
+  getUserRole(): string | null {
+    const role = localStorage.getItem('role');
+    return role ? role : null;
+  }
+  
+  isAuthenticated(): boolean {
+    const token = localStorage.getItem('token');
+    return !!token;
   }
 }

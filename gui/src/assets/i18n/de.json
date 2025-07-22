@@ -63,7 +63,7 @@
     "FacebookSignIn": "Mit Facebook anmelden",
     "ForgotPassword": "Passwort vergessen?"
   },
-  "FORGOT_PASSWORD": {
+  "FORGOTPASSWORD": {
     "Title": "Passwort zurücksetzen",
     "Email": "Geben Sie Ihre E-Mail-Adresse ein",
     "Submit": "Link zum Zurücksetzen senden",

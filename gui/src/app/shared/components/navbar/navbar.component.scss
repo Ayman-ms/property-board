@@ -38,9 +38,9 @@ nav.navbar {
     input[type="search"] {
       padding-left: 50px;
       background-color: $logo-bg-color;
-      border: none;
+      border: solid 1px $logo-color;
       border-radius: 5px;
-      color: #333;
+      color: $logo-color;
 
       &::placeholder {
         color: $logo-color;

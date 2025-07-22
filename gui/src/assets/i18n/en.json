@@ -63,7 +63,7 @@
     "FacebookSignIn": "Sign in with Facebook",
     "ForgotPassword": "Forgot password?"
   },
-  "FORGOT_PASSWORD": {
+  "FORGOTPASSWORD": {
     "Title": "Reset Password",
     "Email": "Enter your email address",
     "Submit": "Send Reset Link",
