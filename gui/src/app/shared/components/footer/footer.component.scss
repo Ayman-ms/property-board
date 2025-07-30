@@ -1,0 +1,79 @@
+@import '../../../styles/variables.scss';
+
+.footer {
+    background-color: $background-color;
+    color: #c0c5ca;
+    text-align: center;
+    padding: 2rem 1rem;
+    font-family: 'Inter', sans-serif;
+    border-top: solid 1px $primary-color;
+
+    .footer-links {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 1.5rem;
+        margin-bottom: 1.5rem;
+
+        .footer-link {
+            color: $text-color;
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: color 0.3s;
+
+            &:hover {
+                color: $primary-color;
+            }
+        }
+    }
+
+    .footer-social {
+        margin-bottom: 1rem;
+
+        a {
+            margin: 0 0.5rem;
+            color: $logo-color;
+
+            font-size: 1.2rem;
+            transition: color 0.3s;
+
+            &:hover {
+                color: $secondary-color;
+
+            }
+        }
+    }
+
+    .footer-copy {
+        font-size: 0.85rem;
+        color: #889096;
+    }
+
+    :host-context(.dark-mode) {
+        .footer {
+            background-color: $background-color-dark;
+            border-top: solid 1px $primary-color-dark;
+
+            .footer-links {
+                .footer-link {
+                    color: #c0c5ca;
+
+                    &:hover {
+                        color: #ffffff;
+                    }
+                }
+            }
+
+            .footer-social {
+                a {
+                    color: #c0c5ca;
+
+                    &:hover {
+                        color: #ffffff;
+                    }
+                }
+            }
+        }
+    }
+
+}

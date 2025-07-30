@@ -1,4 +1,5 @@
 import { Injectable, inject } from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
 import { Auth, signInWithEmailAndPassword, createUserWithEmailAndPassword, signOut, UserCredential, authState } from '@angular/fire/auth';
 import { Firestore, doc, setDoc, getDoc, serverTimestamp } from '@angular/fire/firestore';
 import { GoogleAuthProvider, FacebookAuthProvider, signInWithPopup } from 'firebase/auth';
@@ -25,6 +26,8 @@ export class AuthService {
     await setDoc(doc(this.firestore, `users/${uid}`), userData);
   }
 
+  private loggedIn = new BehaviorSubject<boolean>(this.isAuthenticated());
+  isLoggedIn$ = this.loggedIn.asObservable();
 
   loginOrRegisterWithGoogle() {
     const provider = new GoogleAuthProvider();
@@ -32,7 +35,9 @@ export class AuthService {
       .then(async (result) => {
         const user = result.user;
 
-        // تحقق مما إذا كان المستخدم موجودًا مسبقًا في Firestore
+        const token = await user.getIdToken();
+        localStorage.setItem('token', token);
+
         const userRef = doc(this.firestore, 'users', user.uid);
         const snapshot = await getDoc(userRef);
         if (!snapshot.exists()) {
@@ -53,6 +58,10 @@ export class AuthService {
     return signInWithPopup(this.auth, provider)
       .then(async (result) => {
         const user = result.user;
+
+        const token = await user.getIdToken();
+        localStorage.setItem('token', token);
+
         const userRef = doc(this.firestore, 'users', user.uid);
         const snapshot = await getDoc(userRef);
         if (!snapshot.exists()) {
@@ -72,14 +81,32 @@ export class AuthService {
     return sendPasswordResetEmail(this.auth, email);
   }
 
-  login(email: string, password: string) {
-    return signInWithEmailAndPassword(this.auth, email, password);
+  async login(email: string, password: string) {
+    const userCredential = await signInWithEmailAndPassword(this.auth, email, password);
+    const token = await userCredential.user.getIdToken();
+    localStorage.setItem('token', token);
+    this.loggedIn.next(true);
+
+    return signInWithEmailAndPassword(this.auth, email, password)
+      .then(async (userCredential) => {
+        const token = await userCredential.user.getIdToken();
+        localStorage.setItem('token', token);
+
+        const userDoc = doc(this.firestore, `users/${userCredential.user.uid}`);
+        const snapshot = await getDoc(userDoc);
+        if (snapshot.exists()) {
+          const role = snapshot.data()['role'];
+          localStorage.setItem('role', role);
+        }
+        return userCredential;
+      });
   }
 
   logout() {
 
     localStorage.removeItem('token');
     localStorage.removeItem('role');
+    this.loggedIn.next(false);
     return this.auth.signOut();
   }
 
@@ -96,7 +123,7 @@ export class AuthService {
     const role = localStorage.getItem('role');
     return role ? role : null;
   }
-  
+
   isAuthenticated(): boolean {
     const token = localStorage.getItem('token');
     return !!token;

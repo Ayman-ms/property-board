@@ -5,9 +5,18 @@
     "RENT": "Mieten",
     "SELL": "Verkaufen",
     "MANAGE": "Anzeigen verwalten",
-    "SEARCH": "Suchen"
-  }
-,
+    "SEARCH": "Suchen",
+    "ABOUT": "Über uns",
+    "LOGIN": "Anmelden / Registrieren"
+  },
+  "FOOTER": {
+    "HOME": "Startseite",
+    "SEARCH": "Erweiterte Suche",
+    "LOGIN": "Anmelden/Registrieren",
+    "POST": "Anzeige aufgeben",
+    "ABOUT": "Über uns",
+    "CONTACT": "Kontakt"
+  },
   "LANGUAGE": {
     "ENGLISH": "Englisch",
     "GERMAN": "Deutsch"

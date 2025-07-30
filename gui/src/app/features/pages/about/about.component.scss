@@ -1,3 +1,5 @@
+@import '../../../styles/variables.scss';
+
 .aboutPage {
   display: flex;
   flex-direction: column;
@@ -42,51 +44,78 @@
     .name {
       font-size: 1rem;
       font-weight: 600;
-      color: #101518;
+      color: $primary-color;
+    }
+
+    body.dark-mode .name {
+      color: $primary-color-dark;
     }
 
     .role {
-      font-size: 0.875rem;
-      color: #5c748a;
+      font-size: 1rem;
+      color: $logo-color;
     }
   }
 
- .valuesGrid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 1rem;
-  padding: 1rem 0;
-}
-
-.valueCard {
-  display: flex;
-  flex-direction: column;
-  gap: 0.75rem;
-  padding: 1rem;
-  background-color: #f9fafb;
-  border: 1px solid #d4dce2;
-  border-radius: 0.5rem;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-
-  &:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  .valuesGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1rem;
+    padding: 1rem 0;
   }
 
-  svg {
-    color: #101518;
+  .valueCard {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    padding: 1rem;
+    background-color: $background-color;
+    border: 1px solid #d4dce2;
+    border-radius: 0.5rem;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+    &:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    svg {
+      color: $primary-color;
+    }
+
+    h2 {
+      font-weight: bold;
+      font-size: 1rem;
+      color: $primary-color;
+    }
+
+    p {
+      font-size: 0.875rem;
+      color: $primary-color;
+    }
   }
 
-  h2 {
-    font-weight: bold;
-    font-size: 1rem;
-    color: #101518;
-  }
+  :host-context(.dark-mode) {
+    .teamMember {
+      .name {
+        color: $primary-color-dark;
+      }
 
-  p {
-    font-size: 0.875rem;
-    color: #5c748a;
+      .role {
+        color: $logo-color;
+      }
+    }
+
+    .valueCard {
+      background-color: $background-color-dark;
+      border-color: #2c3e50;
+
+      svg,
+      h2,
+      p {
+        color: $primary-color-dark;
+      }
+    }
   }
-}
 
 }

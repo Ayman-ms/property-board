@@ -1,30 +1,42 @@
-import { Component, Renderer2 } from '@angular/core';
+import { Component } from '@angular/core';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { CommonModule } from '@angular/common';
-import { I18nService } from '../../../core/services/i18n/i18n.service'; // استيراد الخدمة
+import { ThemeService } from '../../../core/services/theme/theme.service';
+import { AuthService } from '../../../core/services/auth/auth.service';
+import { Router, RouterLink } from '@angular/router';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-navbar',
   standalone: true,
-  imports: [CommonModule, TranslateModule],
+  imports: [CommonModule, TranslateModule, RouterLink],
   templateUrl: './navbar.component.html',
   styleUrl: './navbar.component.scss'
 })
 export class NavbarComponent {
   isDarkMode = false;
+  isLoggedIn = false;
+  private authSub!: Subscription;
 
-  constructor(private renderer: Renderer2,
+  constructor(
     public translate: TranslateService,
-    private i18nService: I18nService
+    private themeService: ThemeService,
+    private authService: AuthService
   ) { }
 
+  ngOnInit(): void {
+    this.authSub = this.authService.isLoggedIn$.subscribe((loggedIn) => {
+      this.isLoggedIn = loggedIn;
+      console.log('User is logged in:', loggedIn);
+    });
+  }
+
+  ngOnDestroy(): void {
+    this.authSub.unsubscribe(); 
+  }
+
   toggleTheme() {
-    this.isDarkMode = !this.isDarkMode;
-    if (this.isDarkMode) {
-      this.renderer.addClass(document.body, 'dark-mode');
-    } else {
-      this.renderer.removeClass(document.body, 'dark-mode');
-    }
+    this.themeService.toggleTheme();
   }
 
 }

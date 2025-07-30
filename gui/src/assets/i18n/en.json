@@ -5,9 +5,18 @@
     "RENT": "Rent",
     "SELL": "Sell",
     "MANAGE": "Manage Listing",
-    "SEARCH": "Search"
-  }
-,
+    "SEARCH": "Search",
+    "ABOUT": "About Us",
+    "LOGIN": "Login / Register"
+  },
+  "FOOTER": {
+    "HOME": "Home",
+    "SEARCH": "Advanced Search",
+    "LOGIN": "Login/Register",
+    "POST": "Post Ad",
+    "ABOUT": "About Us",
+    "CONTACT": "Contact Us"
+  },
   "LANGUAGE": {
     "ENGLISH": "English",
     "GERMAN": "Deutsch"

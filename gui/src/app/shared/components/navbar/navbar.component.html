@@ -12,7 +12,8 @@
         <li class="nav-item"><a class="nav-link" href="#">{{ 'NAV.BUY' | translate }}</a></li>
         <li class="nav-item"><a class="nav-link" href="#">{{ 'NAV.RENT' | translate }}</a></li>
         <li class="nav-item"><a class="nav-link" href="#">{{ 'NAV.SELL' | translate }}</a></li>
-        <li class="nav-item"><a class="nav-link" href="#">{{ 'NAV.MANAGE' | translate }}</a></li>
+        <li class="nav-item"><a class="nav-link" routerLink="/pages/about" >{{ 'NAV.MANAGE' | translate }}</a></li>
+        <li class="nav-item"><a class="nav-link" routerLink="/pages/about" >{{ 'NAV.ABOUT' | translate }}</a></li>
       </ul>
 
       <form class="d-flex" role="search">
@@ -20,8 +21,9 @@
         <input class="form-control me-2" type="search" [placeholder]="'NAV.SEARCH' | translate" aria-label="Search">
       </form>
 
-      <i class="pi pi-bell"></i>
-      <i class="pi pi-user"></i>
+      <i class="pi pi-bell" *ngIf="isLoggedIn"></i>
+      <i class="pi pi-user" *ngIf="isLoggedIn"></i>
+      <p class="login-register" *ngIf="!isLoggedIn" routerLink="/auth/login">{{ 'NAV.LOGIN' | translate }}</p>
 
       <button class="btn btn-outline-secondary ms-2" (click)="toggleTheme()">🌙</button>
 

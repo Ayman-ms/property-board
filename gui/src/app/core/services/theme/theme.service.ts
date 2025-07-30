@@ -4,22 +4,27 @@ import { Injectable, Renderer2, RendererFactory2 } from '@angular/core';
   providedIn: 'root',
 })
 export class ThemeService {
-  private renderer: Renderer2;
-  private darkModeClass = 'dark-mode';
+  private readonly storageKey = 'darkMode';
 
-  constructor(rendererFactory: RendererFactory2) {
-    this.renderer = rendererFactory.createRenderer(null, null);
+  constructor() {}
+
+  initTheme(): void {
+    const saved = localStorage.getItem(this.storageKey);
+    const isDark = saved === 'true';
+    this.applyDarkMode(isDark);
   }
 
-  toggleDarkMode(): void {
-    if (document.body.classList.contains(this.darkModeClass)) {
-      this.renderer.removeClass(document.body, this.darkModeClass);
-    } else {
-      this.renderer.addClass(document.body, this.darkModeClass);
-    }
+  toggleTheme(): void {
+    const isDark = document.body.classList.contains('dark-mode');
+    this.applyDarkMode(!isDark);
+  }
+
+  private applyDarkMode(enable: boolean): void {
+    document.body.classList.toggle('dark-mode', enable);
+    localStorage.setItem(this.storageKey, String(enable));
   }
 
   isDarkMode(): boolean {
-    return document.body.classList.contains(this.darkModeClass);
+    return document.body.classList.contains('dark-mode');
   }
 }
