@@ -1,0 +1,117 @@
+<!-- add-property.component.html -->
+<div class="property-form">
+    <div class="layout-container">
+        <div class="form-wrapper">
+            <h1 class="form-title">List Your Property</h1>
+
+            <!-- Title -->
+            <div class="form-group">
+                <input type="text" placeholder="Listing Title" />
+            </div>
+
+            <!-- Short Description -->
+            <div class="form-group">
+                <textarea placeholder="Short Description"></textarea>
+            </div>
+
+            <!-- Full Description -->
+            <div class="form-group">
+                <textarea placeholder="Full Description"></textarea>
+            </div>
+
+            <!-- For Rent / Sale -->
+            <div class="radio-group">
+                <label>
+                    <input type="radio" name="listing-type" checked />
+                    <span>For Rent</span>
+                </label>
+                <label>
+                    <input type="radio" name="listing-type" />
+                    <span>For Sale</span>
+                </label>
+            </div>
+
+            <!-- Property Type -->
+            <div class="form-group">
+                <select>
+                    <option>Property Type</option>
+                    <option>Apartment</option>
+                    <option>Villa</option>
+                    <option>Office</option>
+                </select>
+            </div>
+
+            <!-- Price -->
+            <div class="form-group">
+                <input type="number" placeholder="Price (in local currency)" />
+            </div>
+
+            <!-- Area -->
+            <div class="form-group">
+                <input type="number" placeholder="Area (in square meters)" />
+            </div>
+
+            <!-- Floor Number -->
+            <div class="form-group">
+                <input type="number" placeholder="Floor Number" />
+            </div>
+
+            <!-- Bedrooms -->
+            <div class="form-group">
+                <input type="number" placeholder="Bedrooms" />
+            </div>
+
+            <!-- Bathrooms -->
+            <div class="form-group">
+                <input type="number" placeholder="Bathrooms" />
+            </div>
+
+            <!-- Country -->
+            <div class="form-group">
+                <select>
+                    <option>Country</option>
+                    <option>Country A</option>
+                </select>
+            </div>
+
+            <!-- State -->
+            <div class="form-group">
+                <select>
+                    <option>State / Province</option>
+                    <option>State A</option>
+                </select>
+            </div>
+
+            <!-- City -->
+            <div class="form-group">
+                <select>
+                    <option>City</option>
+                    <option>City A</option>
+                </select>
+            </div>
+
+            <!-- Street -->
+            <div class="form-group">
+                <input type="text" placeholder="Street" />
+            </div>
+
+            <!-- Upload Images -->
+            <div class="upload-box">
+                <p>Upload Images (up to 5)</p>
+                <p>Drag and drop or click to upload</p>
+                <button type="button">Upload</button>
+            </div>
+
+            <!-- Tags -->
+            <div class="form-group">
+                <input type="text" placeholder="Tags (optional, comma-separated)" />
+            </div>
+
+            <!-- Actions -->
+            <div class="form-actions">
+                <button type="button" class="preview">Preview Listing</button>
+                <button type="submit" class="submit">Submit Listing</button>
+            </div>
+        </div>
+    </div>
+</div>
