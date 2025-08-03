@@ -1,22 +1,22 @@
 <!-- add-property.component.html -->
-<div class="property-form">
+<form class="property-form" #propertyForm="ngForm" (ngSubmit)="onSubmit(propertyForm)">
     <div class="layout-container">
         <div class="form-wrapper">
             <h1 class="form-title">List Your Property</h1>
 
             <!-- Title -->
             <div class="form-group">
-                <input type="text" placeholder="Listing Title" />
+                <input type="text" placeholder="Listing Title" required/>
             </div>
 
             <!-- Short Description -->
             <div class="form-group">
-                <textarea placeholder="Short Description"></textarea>
+                <textarea placeholder="Short Description" required></textarea>
             </div>
 
             <!-- Full Description -->
             <div class="form-group">
-                <textarea placeholder="Full Description"></textarea>
+                <textarea placeholder="Full Description" required></textarea>
             </div>
 
             <!-- For Rent / Sale -->
@@ -32,62 +32,73 @@
             </div>
 
             <!-- Property Type -->
-            <div class="form-group">
-                <select>
-                    <option>Property Type</option>
-                    <option>Apartment</option>
-                    <option>Villa</option>
-                    <option>Office</option>
-                </select>
+            <!-- Property Type (Radio Buttons) -->
+            <div class="radio-group">
+                <label>
+                    <input type="radio" name="property-type" value="apartment" checked/>
+                    <span>Apartment</span>
+                </label>
+                <label>
+                    <input type="radio" name="property-type" value="villa" />
+                    <span>Villa</span>
+                </label>
+                <label>
+                    <input type="radio" name="property-type" value="office" />
+                    <span>Office</span>
+                </label>
             </div>
 
             <!-- Price -->
             <div class="form-group">
-                <input type="number" placeholder="Price (in local currency)" />
+                <input type="number" placeholder="Price (in local currency)" required/>
             </div>
 
             <!-- Area -->
             <div class="form-group">
-                <input type="number" placeholder="Area (in square meters)" />
+                <input type="number" placeholder="Area (in square meters)" required/>
             </div>
 
             <!-- Floor Number -->
             <div class="form-group">
-                <input type="number" placeholder="Floor Number" />
+                <input type="number" placeholder="Floor Number" required/>
             </div>
 
             <!-- Bedrooms -->
             <div class="form-group">
-                <input type="number" placeholder="Bedrooms" />
+                <input type="number" placeholder="Bedrooms" required/>
             </div>
 
             <!-- Bathrooms -->
             <div class="form-group">
-                <input type="number" placeholder="Bathrooms" />
+                <input type="number" placeholder="Bathrooms" required/>
             </div>
 
             <!-- Country -->
+            <!-- Country -->
+            <div class="radio-group">
+                <label>
+                    <input type="radio" name="country" [(ngModel)]="country" value="de" />
+                    <span>Germany</span>
+                </label>
+                <label>
+                    <input type="radio" name="country" [(ngModel)]="country" value="us" />
+                    <span>USA</span>
+                </label>
+            </div>
+
+            <!-- Zip Code -->
             <div class="form-group">
-                <select>
-                    <option>Country</option>
-                    <option>Country A</option>
-                </select>
+                <input type="text" placeholder="ZIP / Postal Code" [(ngModel)]="zipCode" (blur)="lookupZip()" required/>
             </div>
 
             <!-- State -->
             <div class="form-group">
-                <select>
-                    <option>State / Province</option>
-                    <option>State A</option>
-                </select>
+                <input type="text" placeholder="State / Province" [value]="state" readonly />
             </div>
 
             <!-- City -->
             <div class="form-group">
-                <select>
-                    <option>City</option>
-                    <option>City A</option>
-                </select>
+                <input type="text" placeholder="City" [value]="city" readonly />
             </div>
 
             <!-- Street -->
@@ -110,8 +121,8 @@
             <!-- Actions -->
             <div class="form-actions">
                 <button type="button" class="preview">Preview Listing</button>
-                <button type="submit" class="submit">Submit Listing</button>
+                <button type="submit" class="submit" [disabled]="propertyForm.invalid">Submit Listing</button>
             </div>
         </div>
     </div>
-</div>
+</form>
