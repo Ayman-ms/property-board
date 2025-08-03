@@ -6,7 +6,7 @@
 
             <!-- Title -->
             <div class="form-group">
-                <input type="text" placeholder="Listing Title" required/>
+                <input type="text" placeholder="Listing Title" required />
             </div>
 
             <!-- Short Description -->
@@ -35,7 +35,7 @@
             <!-- Property Type (Radio Buttons) -->
             <div class="radio-group">
                 <label>
-                    <input type="radio" name="property-type" value="apartment" checked/>
+                    <input type="radio" name="property-type" value="apartment" checked />
                     <span>Apartment</span>
                 </label>
                 <label>
@@ -50,27 +50,27 @@
 
             <!-- Price -->
             <div class="form-group">
-                <input type="number" placeholder="Price (in local currency)" required/>
+                <input type="number" placeholder="Price (in local currency)" required />
             </div>
 
             <!-- Area -->
             <div class="form-group">
-                <input type="number" placeholder="Area (in square meters)" required/>
+                <input type="number" placeholder="Area (in square meters)" required />
             </div>
 
             <!-- Floor Number -->
             <div class="form-group">
-                <input type="number" placeholder="Floor Number" required/>
+                <input type="number" placeholder="Floor Number" required />
             </div>
 
             <!-- Bedrooms -->
             <div class="form-group">
-                <input type="number" placeholder="Bedrooms" required/>
+                <input type="number" placeholder="Bedrooms" required />
             </div>
 
             <!-- Bathrooms -->
             <div class="form-group">
-                <input type="number" placeholder="Bathrooms" required/>
+                <input type="number" placeholder="Bathrooms" required />
             </div>
 
             <!-- Country -->
@@ -88,7 +88,8 @@
 
             <!-- Zip Code -->
             <div class="form-group">
-                <input type="text" placeholder="ZIP / Postal Code" [(ngModel)]="zipCode" (blur)="lookupZip()" required/>
+                <input type="text" placeholder="ZIP / Postal Code" [(ngModel)]="zipCode" (blur)="lookupZip()"
+                    required />
             </div>
 
             <!-- State -->
@@ -112,7 +113,17 @@
                 <p>Drag and drop or click to upload</p>
                 <button type="button">Upload</button>
             </div>
+            <div class="form-group">
+                <label>Upload Property Images</label>
+                <input type="file" (change)="onFileSelected($event)" multiple />
+            </div>
 
+            <!-- Preview -->
+            <div class="image-preview" *ngIf="previewImages.length > 0">
+                <div *ngFor="let img of previewImages" style="margin: 0.5rem 0;">
+                    <img [src]="img" style="width: 150px; border-radius: 6px;" />
+                </div>
+            </div>
             <!-- Tags -->
             <div class="form-group">
                 <input type="text" placeholder="Tags (optional, comma-separated)" />
