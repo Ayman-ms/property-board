@@ -1,9 +1,9 @@
-// contact.component.scss
+@import '../../../styles/variables.scss';
 
 .contact-page {
   font-family: "Public Sans", "Noto Sans", sans-serif;
-  background-color: #f9fafb;
-  color: #101518;
+  background-color: $background-color;
+  color: $text-color;
   padding: 2rem;
 
   .container {
@@ -20,7 +20,7 @@
     }
 
     .subtitle {
-      color: #5c748a;
+      color: $secondary-color;
       font-size: 0.875rem;
     }
   }
@@ -38,10 +38,10 @@
       display: grid;
       grid-template-columns: 20% 1fr;
       padding: 1rem 0;
-      border-top: 1px solid #d4dce2;
+      border-top: 1px solid $input-bg;
 
       .label {
-        color: #5c748a;
+        color: $secondary-color;
         font-size: 0.875rem;
       }
 
@@ -69,15 +69,15 @@
 
       input,
       textarea {
-        border: 1px solid #d4dce2;
-        border-radius: 0.75rem;
+        border: 1px solid $input-bg;
+        border-radius: $border-radius;
         padding: 0.75rem;
         font-size: 1rem;
-        background-color: #f1f5f9;
-        color: #101518;
+        background-color: $input-background-color;
+        color: $text-color;
 
         &::placeholder {
-          color: #5c748a;
+          color: $secondary-color;
         }
       }
 
@@ -88,10 +88,10 @@
     }
 
     button {
-      background-color: #dce8f3;
-      color: #101518;
+      background-color: $logo-bg-color;
+      color: $logo-color;
       padding: 0.5rem 1.5rem;
-      border-radius: 0.75rem;
+      border-radius: $border-radius;
       font-weight: bold;
       cursor: pointer;
       max-width: 160px;
@@ -105,46 +105,24 @@
     margin-top: 1.5rem;
 
     .social-item {
-      width: 80px;
-      background-color: #f1f5f9;
+      width: 50px;
+      background-color: $input-background-color;
       text-align: center;
       padding: 0.75rem;
-      border-radius: 0.5rem;
+      border-radius: 50%;
 
       .icon {
         margin: auto;
         width: 40px;
         height: 40px;
         border-radius: 50%;
-        background-color: #eaedf1;
-
-        &.twitter {
-          background-image: url('/assets/icons/twitter.svg');
-          background-size: 20px;
-          background-repeat: no-repeat;
-          background-position: center;
-        }
-
-        &.facebook {
-          background-image: url('/assets/icons/facebook.svg');
-          background-size: 20px;
-          background-repeat: no-repeat;
-          background-position: center;
-        }
-
-        &.instagram {
-          background-image: url('/assets/icons/instagram.svg');
-          background-size: 20px;
-          background-repeat: no-repeat;
-          background-position: center;
-        }
-
-        &.linkedin {
-          background-image: url('/assets/icons/linkedin.svg');
-          background-size: 20px;
-          background-repeat: no-repeat;
-          background-position: center;
-        }
+        background-color: $input-bg;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+       background-size: 20px;
+        background-repeat: no-repeat;
+        background-position: center;
       }
 
       p {
@@ -156,40 +134,39 @@
   }
 }
 
-// Dark Mode Support
- :host-context(.dark-mode) {
-
+// Dark Mode
+:host-context(.dark-mode) {
   .contact-page {
-    background-color: #0d1117;
-    color: #ffffff;
+    background-color: $background-color-dark;
+    color: $text-color-dark;
 
     .subtitle,
     .label {
-      color: #94a3b8;
+      color: $secondary-color-dark;
     }
 
     input,
     textarea {
-      background-color: #1e293b;
-      border-color: #334155;
-      color: #ffffff;
+      background-color: $input-bg-dark;
+      border-color: $input-bg;
+      color: $text-color-dark;
 
       &::placeholder {
-        color: #64748b;
+        color: $secondary-color-dark;
       }
     }
 
     .social-item {
-      background-color: #1e293b;
+      background-color: $input-bg-dark;
 
       .icon {
-        background-color: #334155;
+        background-color: $input-bg;
       }
     }
 
     button {
-      background-color: #334155;
-      color: #ffffff;
+      background-color: $input-bg-dark;
+      color: $text-color-dark;
     }
   }
 }
