@@ -4,6 +4,7 @@ import { authRoutes } from '../app/features/auth/auth.routes';
 import { HomeComponent } from './features/pages/home/home.component';
 import { propertyRoutes } from './features/properties/property.routes';
 import { pagesRoutes } from './features/pages/pages.routes';
+import { ContactComponent } from './features/pages/contact/contact.component';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -12,6 +13,7 @@ export const routes: Routes = [
   { path: 'properties', children: propertyRoutes },
   {path:'pages', children: pagesRoutes},
   { path: 'profile', component: ProfileComponent },
+  {path:'contact',component: ContactComponent},
   {
     path: 'user/edit',
     loadComponent: () => import('./features/user/pages/edit-profile/edit-profile.component').then(m => m.EditProfileComponent)

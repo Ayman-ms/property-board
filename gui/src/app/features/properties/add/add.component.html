@@ -1,138 +1,140 @@
-<!-- add-property.component.html -->
 <form class="property-form" #propertyForm="ngForm" (ngSubmit)="onSubmit(propertyForm)">
     <div class="layout-container">
         <div class="form-wrapper">
-            <h1 class="form-title">List Your Property</h1>
+            <h1 class="form-title">{{ 'ADD_PROPERTY.Title' | translate }}</h1>
 
             <!-- Title -->
             <div class="form-group">
-                <input type="text" placeholder="Listing Title" required />
+                <input type="text" name="title" placeholder="{{ 'ADD_PROPERTY.PropertyTitle' | translate }}" required ngModel />
             </div>
 
             <!-- Short Description -->
             <div class="form-group">
-                <textarea placeholder="Short Description" required></textarea>
+                <textarea name="shortDescription" placeholder="{{ 'ADD_PROPERTY.ShortDescriptionLabel' | translate }}" required ngModel></textarea>
             </div>
 
             <!-- Full Description -->
             <div class="form-group">
-                <textarea placeholder="Full Description" required></textarea>
+                <textarea name="fullDescription" placeholder="{{ 'ADD_PROPERTY.FullDescriptionLabel' | translate }}" required ngModel></textarea>
             </div>
 
             <!-- For Rent / Sale -->
             <div class="radio-group">
                 <label>
-                    <input type="radio" name="listing-type" checked />
-                    <span>For Rent</span>
+                    <input type="radio" name="listingType" value="rent" ngModel checked />
+                    <span>{{ 'ADD_PROPERTY.ForRent' | translate }}</span>
                 </label>
                 <label>
-                    <input type="radio" name="listing-type" />
-                    <span>For Sale</span>
+                    <input type="radio" name="listingType" value="sale" ngModel />
+                    <span>{{ 'ADD_PROPERTY.ForSale' | translate }}</span>
                 </label>
             </div>
 
             <!-- Property Type -->
-            <!-- Property Type (Radio Buttons) -->
             <div class="radio-group">
                 <label>
-                    <input type="radio" name="property-type" value="apartment" checked />
-                    <span>Apartment</span>
+                    <input type="radio" name="propertyType" value="apartment" ngModel checked />
+                    <span>{{ 'ADD_PROPERTY.APARTMENT' | translate }}</span>
                 </label>
                 <label>
-                    <input type="radio" name="property-type" value="villa" />
-                    <span>Villa</span>
+                    <input type="radio" name="propertyType" value="villa" ngModel />
+                    <span>{{ 'ADD_PROPERTY.VILLA' | translate }}</span>
                 </label>
                 <label>
-                    <input type="radio" name="property-type" value="office" />
-                    <span>Office</span>
+                    <input type="radio" name="propertyType" value="house" ngModel />
+                    <span>{{ 'ADD_PROPERTY.HOUSE' | translate }}</span>
+                </label>
+                <label>
+                    <input type="radio" name="propertyType" value="office" ngModel />
+                    <span>{{ 'ADD_PROPERTY.OFFICE' | translate }}</span>
                 </label>
             </div>
 
             <!-- Price -->
             <div class="form-group">
-                <input type="number" placeholder="Price (in local currency)" required />
+                <input type="number" name="price" placeholder="{{ 'ADD_PROPERTY.PriceLabel' | translate }}" required ngModel />
             </div>
 
             <!-- Area -->
             <div class="form-group">
-                <input type="number" placeholder="Area (in square meters)" required />
+                <input type="number" name="area" placeholder="{{ 'ADD_PROPERTY.AreaLabel' | translate }}" required ngModel />
             </div>
 
             <!-- Floor Number -->
             <div class="form-group">
-                <input type="number" placeholder="Floor Number" required />
+                <input type="number" name="floor" placeholder="{{ 'ADD_PROPERTY.FloorLabel' | translate }}" required ngModel />
             </div>
 
             <!-- Bedrooms -->
             <div class="form-group">
-                <input type="number" placeholder="Bedrooms" required />
+                <input type="number" name="bedrooms" placeholder="{{ 'ADD_PROPERTY.BedroomsLabel' | translate }}" required ngModel />
             </div>
 
             <!-- Bathrooms -->
             <div class="form-group">
-                <input type="number" placeholder="Bathrooms" required />
+                <input type="number" name="bathrooms" placeholder="{{ 'ADD_PROPERTY.BathroomsLabel' | translate }}" required ngModel />
             </div>
 
-            <!-- Country -->
             <!-- Country -->
             <div class="radio-group">
                 <label>
                     <input type="radio" name="country" [(ngModel)]="country" value="de" />
-                    <span>Germany</span>
+                    <span>{{ 'ADD_PROPERTY.GERMANY' | translate }}</span>
                 </label>
                 <label>
                     <input type="radio" name="country" [(ngModel)]="country" value="us" />
-                    <span>USA</span>
+                    <span>{{ 'ADD_PROPERTY.USA' | translate }}</span>
                 </label>
             </div>
 
             <!-- Zip Code -->
             <div class="form-group">
-                <input type="text" placeholder="ZIP / Postal Code" [(ngModel)]="zipCode" (blur)="lookupZip()"
-                    required />
+                <input type="text" name="zipCode" placeholder="{{ 'ADD_PROPERTY.POSTAL_CODE' | translate }}" [(ngModel)]="zipCode"
+                    (blur)="lookupZip()" required />
             </div>
 
             <!-- State -->
             <div class="form-group">
-                <input type="text" placeholder="State / Province" [value]="state" readonly />
+                <input type="text" placeholder="{{ 'ADD_PROPERTY.STATE_LABEL' | translate }}" [value]="state" readonly />
             </div>
 
             <!-- City -->
             <div class="form-group">
-                <input type="text" placeholder="City" [value]="city" readonly />
+                <input type="text" placeholder="{{ 'ADD_PROPERTY.CityLabel' | translate }}" [value]="city" readonly />
             </div>
 
             <!-- Street -->
             <div class="form-group">
-                <input type="text" placeholder="Street" />
+                <input type="text" name="street" placeholder="{{ 'ADD_PROPERTY.StreetLabel' | translate }}" ngModel />
             </div>
 
-            <!-- Upload Images -->
-            <div class="upload-box">
-                <p>Upload Images (up to 5)</p>
-                <p>Drag and drop or click to upload</p>
-                <button type="button">Upload</button>
-            </div>
-            <div class="form-group">
-                <label>Upload Property Images</label>
-                <input type="file" (change)="onFileSelected($event)" multiple />
-            </div>
+            <!-- Upload Images (unchanged) -->
+            <div class="image-upload-box">
+                <!-- Hidden input -->
+                <input id="images" type="file" (change)="onFileSelected($event)" multiple accept="image/*" hidden
+                    #fileInput />
 
-            <!-- Preview -->
-            <div class="image-preview" *ngIf="previewImages.length > 0">
-                <div *ngFor="let img of previewImages" style="margin: 0.5rem 0;">
-                    <img [src]="img" style="width: 150px; border-radius: 6px;" />
+                <!-- Custom styled upload area -->
+                <div class="custom-upload" (click)="fileInput.click()">
+                    <span>📁 {{ 'ADD_PROPERTY.ImagesLabel' | translate }}</span>
+                </div>
+
+                <!-- Preview Images -->
+                <div class="image-preview-container" *ngIf="previewImages.length > 0">
+                    <div class="image-wrapper" *ngFor="let img of previewImages; let i = index">
+                        <img [src]="img" alt="Preview" />
+                        <button class="delete-btn" type="button" (click)="removeImage(i)">×</button>
+                    </div>
+                    <button type="button" class="delete-all" (click)="clearAllImages()">{{ 'ADD_PROPERTY.DeleteAll' | translate }}</button>
                 </div>
             </div>
-            <!-- Tags -->
-            <div class="form-group">
-                <input type="text" placeholder="Tags (optional, comma-separated)" />
-            </div>
+
+
 
             <!-- Actions -->
             <div class="form-actions">
-                <button type="button" class="preview">Preview Listing</button>
-                <button type="submit" class="submit" [disabled]="propertyForm.invalid">Submit Listing</button>
+                <button type="button" class="preview">{{ 'ADD_PROPERTY.LISTING' | translate }}</button>
+                <button type="submit" class="submit" [disabled]="propertyForm.invalid">{{ 'ADD_PROPERTY.SubmitButton' | translate }}</button>
             </div>
         </div>
     </div>

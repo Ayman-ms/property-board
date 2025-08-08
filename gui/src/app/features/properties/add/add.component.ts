@@ -1,26 +1,93 @@
 import { Component } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { FormsModule , NgForm } from '@angular/forms';
+import { FormsModule, NgForm } from '@angular/forms';
 import { Firestore, collection, addDoc } from '@angular/fire/firestore';
 import { getStorage, ref, uploadBytes, getDownloadURL } from '@angular/fire/storage';
 import { CommonModule } from '@angular/common';
-
+import { FileSelectEvent, FileUploadModule } from 'primeng/fileupload';
+import { ToastModule } from 'primeng/toast';
+import { ButtonModule } from "primeng/button";
+import { ProgressBarModule } from 'primeng/progressbar';
+import { BadgeModule } from 'primeng/badge';
+import { MessageService } from 'primeng/api';
+import { TranslateModule } from '@ngx-translate/core';
 @Component({
   selector: 'app-add',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule,TranslateModule, FormsModule, FileUploadModule, ToastModule, ButtonModule, ProgressBarModule, BadgeModule],
+  providers: [MessageService],
   templateUrl: './add.component.html',
   styleUrl: './add.component.scss'
 })
 export class AddComponent {
+
+  previewImages: string[] = [];
+  totalSize: number = 0;
+  totalSizePercent: number = 0;
+  event: any;
+
+  selectedFiles: File[] = [];
+
+  onSelectedFiles(event: any): void {
+    if (!event.files) return;
+
+    for (let file of event.files) {
+      this.totalSize += file.size || 0;
+    }
+
+    this.updateTotalSizePercent();
+  }
+
+  onTemplatedUpload(): void {
+    this.totalSize = 0;
+    this.totalSizePercent = 0;
+  }
+
+  updateTotalSizePercent(): void {
+    // 1MB = 1,000,000 bytes
+    this.totalSizePercent = this.totalSize / 1000000 * 100;
+  }
+
+  choose(event: Event, chooseCallback: Function): void {
+    if (chooseCallback) {
+      chooseCallback(); 
+    }
+  }
+
+  uploadEvent(uploadCallback: Function): void {
+    if (uploadCallback) {
+      uploadCallback();
+    }
+  }
+
+  onRemoveTemplatingFile(event: Event, file: any, removeFileCallback: Function, index: number): void {
+    this.totalSize -= file.size;
+    this.updateTotalSizePercent();
+    removeFileCallback(index);
+  }
+
+  formatSize(bytes: number): string {
+    if (bytes === 0) {
+      return '0 Bytes';
+    }
+
+    const k = 1024;
+    const sizes = ['Bytes', 'KB', 'MB', 'GB', 'TB'];
+    const i = Math.floor(Math.log(bytes) / Math.log(k));
+    const size = parseFloat((bytes / Math.pow(k, i)).toFixed(2));
+
+    return `${size} ${sizes[i]}`;
+  }
+
+
   zipCode: string = '';
   country: string = ''; // 'us' or 'de'
   state: string = '';
   city: string = '';
 
-previewImages: string[] = [];
-  selectedFiles: File[] = [];
-  constructor(private http: HttpClient, private firestore: Firestore) {}
+
+  index: any;
+  constructor(private http: HttpClient, private firestore: Firestore) { }
 
   lookupZip() {
     if (!this.zipCode || this.zipCode.length < 4) return;
@@ -40,18 +107,6 @@ previewImages: string[] = [];
     });
   }
 
-  onFileSelected(event: any) {
-    const files = Array.from(event.target.files) as File[];
-    this.selectedFiles = files;
-
-    this.previewImages = [];
-    files.forEach(file => {
-      const reader = new FileReader();
-      reader.onload = () => this.previewImages.push(reader.result as string);
-      reader.readAsDataURL(file);
-    });
-  }
-
   async uploadImage(file: File): Promise<string> {
     const storage = getStorage();
     const fileRef = ref(storage, `property-images/${Date.now()}_${file.name}`);
@@ -59,34 +114,63 @@ previewImages: string[] = [];
     return getDownloadURL(snapshot.ref);
   }
 
-  async onSubmit(form: NgForm) {
-    const data = form.value;
 
-    // تحميل الصور أو تعيين صورة افتراضية
-    let imageUrls: string[] = [];
+  onFileSelected(event: Event): void {
+    const input = event.target as HTMLInputElement;
 
-    if (this.selectedFiles.length > 0) {
-      imageUrls = await Promise.all(this.selectedFiles.map(file => this.uploadImage(file)));
-    } else {
-      imageUrls = ['https://via.placeholder.com/800x600?text=No+Image']; // صورة افتراضية
+    if (input.files && input.files.length > 0) {
+      const newFiles = Array.from(input.files);
+
+      for (const file of newFiles) {
+        this.selectedFiles.push(file);
+
+        const reader = new FileReader();
+        reader.onload = (e: any) => {
+          this.previewImages.push(e.target.result);
+        };
+        reader.readAsDataURL(file);
+      }
     }
-
-    // إعداد بيانات العقار
-    const property = {
-      ...data,
-      state: this.state,
-      city: this.city,
-      country: this.country,
-      zipCode: this.zipCode,
-      images: imageUrls,
-      createdAt: new Date()
-    };
-
-    // حفظ في Firestore
-    await addDoc(collection(this.firestore, 'properties'), property);
-    alert('تم حفظ العقار بنجاح');
-    form.resetForm();
-    this.previewImages = [];
-    this.selectedFiles = [];
+    // Reset the input value to allow re-selection of the same file
+    input.value = '';
   }
+
+  removeImage(index: number): void {
+    this.selectedFiles.splice(index, 1);
+    this.previewImages.splice(index, 1);
+  }
+
+  clearAllImages(): void {
+    this.selectedFiles = [];
+    this.previewImages = [];
+  }
+
+  onSubmit(form: NgForm): void {
+    if (form.valid) {
+      const formData = new FormData();
+
+      // Add form fields
+      Object.keys(form.value).forEach(key => {
+        formData.append(key, form.value[key]);
+      });
+
+      // Add images
+      this.selectedFiles.forEach((file, index) => {
+        formData.append('propertyImages[]', file, file.name);
+      });
+
+      // Submit to server
+      this.http.post('/api/properties', formData).subscribe(
+        response => {
+          console.log('Form submitted successfully', response);
+        },
+        error => {
+          console.error('Form submission failed', error);
+        }
+      );
+    }
+  }
+
+
+
 }

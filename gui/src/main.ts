@@ -9,6 +9,7 @@ import { provideFirebaseApp, initializeApp } from '@angular/fire/app';
 import { provideFirestore, getFirestore } from '@angular/fire/firestore';
 import { provideAuth, getAuth } from '@angular/fire/auth';
 import { provideStorage, getStorage } from '@angular/fire/storage';
+import { provideFunctions, getFunctions } from '@angular/fire/functions';
 
 import { environment } from './environments/environment';
 import { importProvidersFrom } from '@angular/core';
@@ -16,7 +17,6 @@ import { importProvidersFrom } from '@angular/core';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
-
 // TranslateLoader
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -29,6 +29,7 @@ bootstrapApplication(AppComponent, {
     provideAuth(() => getAuth()),
     provideFirestore(() => getFirestore()),
     provideStorage(() => getStorage()),
+    provideFunctions(() => getFunctions()),
 
     importProvidersFrom(
       HttpClientModule,
