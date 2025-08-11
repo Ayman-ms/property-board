@@ -1,93 +1,33 @@
 import { Component } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { FormsModule, NgForm } from '@angular/forms';
-import { Firestore, collection, addDoc } from '@angular/fire/firestore';
+import { Firestore, collection, addDoc, serverTimestamp } from '@angular/fire/firestore';
 import { getStorage, ref, uploadBytes, getDownloadURL } from '@angular/fire/storage';
 import { CommonModule } from '@angular/common';
-import { FileSelectEvent, FileUploadModule } from 'primeng/fileupload';
-import { ToastModule } from 'primeng/toast';
-import { ButtonModule } from "primeng/button";
-import { ProgressBarModule } from 'primeng/progressbar';
-import { BadgeModule } from 'primeng/badge';
-import { MessageService } from 'primeng/api';
 import { TranslateModule } from '@ngx-translate/core';
+import { v4 as uuidv4 } from 'uuid';
+
+
+
 @Component({
   selector: 'app-add',
   standalone: true,
-  imports: [CommonModule,TranslateModule, FormsModule, FileUploadModule, ToastModule, ButtonModule, ProgressBarModule, BadgeModule],
-  providers: [MessageService],
+  imports: [CommonModule, TranslateModule, FormsModule],
+  providers: [],
   templateUrl: './add.component.html',
   styleUrl: './add.component.scss'
 })
 export class AddComponent {
 
   previewImages: string[] = [];
-  totalSize: number = 0;
-  totalSizePercent: number = 0;
-  event: any;
-
   selectedFiles: File[] = [];
 
-  onSelectedFiles(event: any): void {
-    if (!event.files) return;
+  zipCode = '';
+  country = '';
+  state = '';
+  city = '';
 
-    for (let file of event.files) {
-      this.totalSize += file.size || 0;
-    }
-
-    this.updateTotalSizePercent();
-  }
-
-  onTemplatedUpload(): void {
-    this.totalSize = 0;
-    this.totalSizePercent = 0;
-  }
-
-  updateTotalSizePercent(): void {
-    // 1MB = 1,000,000 bytes
-    this.totalSizePercent = this.totalSize / 1000000 * 100;
-  }
-
-  choose(event: Event, chooseCallback: Function): void {
-    if (chooseCallback) {
-      chooseCallback(); 
-    }
-  }
-
-  uploadEvent(uploadCallback: Function): void {
-    if (uploadCallback) {
-      uploadCallback();
-    }
-  }
-
-  onRemoveTemplatingFile(event: Event, file: any, removeFileCallback: Function, index: number): void {
-    this.totalSize -= file.size;
-    this.updateTotalSizePercent();
-    removeFileCallback(index);
-  }
-
-  formatSize(bytes: number): string {
-    if (bytes === 0) {
-      return '0 Bytes';
-    }
-
-    const k = 1024;
-    const sizes = ['Bytes', 'KB', 'MB', 'GB', 'TB'];
-    const i = Math.floor(Math.log(bytes) / Math.log(k));
-    const size = parseFloat((bytes / Math.pow(k, i)).toFixed(2));
-
-    return `${size} ${sizes[i]}`;
-  }
-
-
-  zipCode: string = '';
-  country: string = ''; // 'us' or 'de'
-  state: string = '';
-  city: string = '';
-
-
-  index: any;
-  constructor(private http: HttpClient, private firestore: Firestore) { }
+  constructor(private http: HttpClient, private firestore: Firestore) {}
 
   lookupZip() {
     if (!this.zipCode || this.zipCode.length < 4) return;
@@ -102,36 +42,22 @@ export class AddComponent {
       error: () => {
         this.city = '';
         this.state = '';
-        alert('ZIP code not found for ' + this.country.toUpperCase());
+        alert('ZIP code not found');
       }
     });
   }
 
-  async uploadImage(file: File): Promise<string> {
-    const storage = getStorage();
-    const fileRef = ref(storage, `property-images/${Date.now()}_${file.name}`);
-    const snapshot = await uploadBytes(fileRef, file);
-    return getDownloadURL(snapshot.ref);
-  }
-
-
   onFileSelected(event: Event): void {
     const input = event.target as HTMLInputElement;
-
     if (input.files && input.files.length > 0) {
       const newFiles = Array.from(input.files);
-
       for (const file of newFiles) {
         this.selectedFiles.push(file);
-
         const reader = new FileReader();
-        reader.onload = (e: any) => {
-          this.previewImages.push(e.target.result);
-        };
+        reader.onload = (e: any) => this.previewImages.push(e.target.result);
         reader.readAsDataURL(file);
       }
     }
-    // Reset the input value to allow re-selection of the same file
     input.value = '';
   }
 
@@ -145,32 +71,48 @@ export class AddComponent {
     this.previewImages = [];
   }
 
-  onSubmit(form: NgForm): void {
-    if (form.valid) {
-      const formData = new FormData();
-
-      // Add form fields
-      Object.keys(form.value).forEach(key => {
-        formData.append(key, form.value[key]);
-      });
-
-      // Add images
-      this.selectedFiles.forEach((file, index) => {
-        formData.append('propertyImages[]', file, file.name);
-      });
-
-      // Submit to server
-      this.http.post('/api/properties', formData).subscribe(
-        response => {
-          console.log('Form submitted successfully', response);
-        },
-        error => {
-          console.error('Form submission failed', error);
-        }
-      );
-    }
+  async uploadImage(file: File): Promise<string> {
+    const storage = getStorage();
+    const fileRef = ref(storage, `property-images/${uuidv4()}_${file.name}`);
+    const snapshot = await uploadBytes(fileRef, file);
+    return getDownloadURL(snapshot.ref);
   }
 
+  async onSubmit(form: NgForm): Promise<void> {
+    if (!form.valid) return;
 
+    try {
+      const imageUrls: string[] = [];
 
+      if (this.selectedFiles.length > 0) {
+        for (const file of this.selectedFiles) {
+          const url = await this.uploadImage(file);
+          imageUrls.push(url);
+        }
+      } else {
+        // صورة افتراضية إذا ما تم رفع أي صورة
+        imageUrls.push('https://via.placeholder.com/400x300?text=No+Image');
+      }
+
+      const propertyData = {
+        ...form.value,
+        country: this.country,
+        zipCode: this.zipCode,
+        state: this.state,
+        city: this.city,
+        images: imageUrls,
+        status: 'pending', // حالة الإعلان
+        createdAt: serverTimestamp()
+      };
+
+      const propertiesRef = collection(this.firestore, 'properties');
+      await addDoc(propertiesRef, propertyData);
+
+      alert('تم إضافة العقار بنجاح');
+      form.resetForm();
+      this.clearAllImages();
+    } catch (error) {
+      console.error('خطأ أثناء إضافة العقار:', error);
+    }
+  }
 }
