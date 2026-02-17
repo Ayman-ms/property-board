@@ -21,23 +21,26 @@ export class ProfileComponent implements OnInit {
     public router: Router,
     public translate: TranslateService
   ) { }
-
   ngOnInit(): void {
-    this.authService.getCurrentUser().subscribe((firebaseUser) => {
-      if (firebaseUser) {
-        console.log('Firebase user:', firebaseUser); // ✅
-        this.userService.getUserById(firebaseUser.uid).subscribe((userData) => {
-          console.log('User data from Firestore:', userData); // ✅
-          this.user = userData;
-        });
-      }
-    });
+    throw new Error('Method not implemented.');
   }
 
-  logout() {
-    this.authService.logout().then(() => {
-      this.router.navigate(['/auth/login']);
-    });
-  }
+  // ngOnInit(): void {
+  //   this.authService.getCurrentUser().subscribe((firebaseUser) => {
+  //     if (firebaseUser) {
+  //       console.log('Firebase user:', firebaseUser); // ✅
+  //       this.userService.getUserById(firebaseUser.uid).subscribe((userData) => {
+  //         console.log('User data from Firestore:', userData); // ✅
+  //         this.user = userData;
+  //       });
+  //     }
+  //   });
+  // }
+
+  // logout() {
+  //   this.authService.logout().then(() => {
+  //     this.router.navigate(['/auth/login']);
+  //   });
+  // }
 
 }

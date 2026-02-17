@@ -40,18 +40,18 @@
         class="form-input" />
     </div>
 
-    <button type="submit" class="login-button" [disabled]="registerForm.invalid">
+    <button type="submit" class="register-button" [disabled]="registerForm.invalid">
       {{ 'REGISTER.SignUp' | translate }}
     </button>
     <div class="form-group social-buttons">
-      <button type="button" class="google-button" (click)="registerWithGoogle()">
+      <!-- <button type="button" class="google-button" (click)="registerWithGoogle()">
         <img src="https://developers.google.com/identity/images/g-logo.png" alt="Google logo" />
         <span>{{ 'REGISTER.GoogleSignUp' | translate }}</span>
       </button>
       <button type="button" class="facebook-button" (click)="registerWithFacebook()">
         <img src="https://www.facebook.com/images/fb_icon_325x325.png" alt="Facebook logo" />
         <span>{{ 'REGISTER.FacebookSignUp' | translate }}</span>
-      </button>
+      </button> -->
     </div>
   </form>
 </div>

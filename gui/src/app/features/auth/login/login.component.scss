@@ -1,6 +1,24 @@
+@import '../../../styles/variables.scss';
 @import '../register/register.component.scss';
 
+.login-button {
+  @include button-base();
+  width: 100%;
+}
+.register-button{
+  margin: 10px 0;
+}
 .forgot-password {
-  margin-top: 20px;
+  // margin-top: 10px;
   cursor: pointer;
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: none;
+    filter: brightness(1.2);
+  }
+
+  :host-context(.dark-mode) .forgot-password {
+    color: $text-color-dark;
+  }
 }

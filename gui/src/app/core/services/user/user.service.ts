@@ -1,35 +1,24 @@
 import { Injectable } from '@angular/core';
-import {  Firestore,  doc,  setDoc,  updateDoc,  docData } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
-
-export interface AppUser {
-  uid: string;
-  firstName: string;
-  lastName: string;
-  email: string;
-  role: 'user' | 'admin';
-  photoURL?: string;
-  createdAt?: any;
-}
+import { HttpClient, HttpParams } from '@angular/common/http';
+import { ApiEndpoints } from '../../constants/api_endpoints';
+import { User } from '../../models/user';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
-  constructor(private firestore: Firestore) {}
+  constructor(private http: HttpClient) {}
 
-  getUserById(uid: string): Observable<AppUser> {
-    const userRef = doc(this.firestore, `users/${uid}`);
-    return docData(userRef, { idField: 'uid' }) as Observable<AppUser>;
+  getUsers () {
+    return this.http.get(ApiEndpoints.users.base).toPromise();
   }
 
-  async createUser(user: AppUser): Promise<void> {
-    const userRef = doc(this.firestore, `users/${user.uid}`);
-    await setDoc(userRef, user);
+  async createUser(user: User): Promise<void> {
+    await this.http.post(ApiEndpoints.users.base, user).toPromise();
   }
 
-  async updateUser(uid: string, data: Partial<AppUser>): Promise<void> {
-    const userRef = doc(this.firestore, `users/${uid}`);
-    await updateDoc(userRef, data);
+  async updateUser(user_id: string, data: Partial<User>): Promise<void> {
+    await this.http.put(`${ApiEndpoints.users.base}/${user_id}`, data).toPromise();
   }
 }

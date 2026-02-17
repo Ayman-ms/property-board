@@ -17,30 +17,11 @@ import { importProvidersFrom } from '@angular/core';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { MessageService } from 'primeng/api';
+import { appConfig } from './app/app.config';
 // TranslateLoader
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
 }
 
-bootstrapApplication(AppComponent, {
-  providers: [
-    provideRouter(routes),
-    provideFirebaseApp(() => initializeApp(environment.firebaseConfig)),
-    provideAuth(() => getAuth()),
-    provideFirestore(() => getFirestore()),
-    provideStorage(() => getStorage()),
-    provideFunctions(() => getFunctions()),
-
-    importProvidersFrom(
-      HttpClientModule,
-      TranslateModule.forRoot({
-        defaultLanguage: 'en', // Default language
-        loader: {
-          provide: TranslateLoader,
-          useFactory: createTranslateLoader,
-          deps: [HttpClient],
-        },
-      })
-    ),
-  ]
-}).catch(err => console.error(err));
+bootstrapApplication(AppComponent, appConfig).catch((err) => console.error(err));

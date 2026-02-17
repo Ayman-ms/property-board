@@ -2,10 +2,8 @@ import { CommonModule } from '@angular/common';
 import { Component, ViewChild, ElementRef } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { AuthService } from '../../../core/services/auth/auth.service';
-import { Firestore, doc, setDoc, serverTimestamp } from '@angular/fire/firestore';
-import { Storage, ref, uploadBytes, getDownloadURL } from '@angular/fire/storage';
-import { Auth, createUserWithEmailAndPassword } from '@angular/fire/auth';;
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-register',
   standalone: true,
@@ -14,83 +12,70 @@ import { TranslateModule, TranslateService } from '@ngx-translate/core';
   styleUrl: './register.component.scss'
 })
 export class RegisterComponent {
-     @ViewChild('fileInput') fileInput!: ElementRef<HTMLInputElement>;
- previewImage: string | null = null;
- selectedImage: File | null = null;
+  @ViewChild('fileInput') fileInput!: ElementRef<HTMLInputElement>;
+  previewImage: string | null = null;
+  selectedImage: File | null = null;
 
-    user = {
+  user = {
     firstName: '',
     lastName: '',
     email: '',
     password: ''
   };
   error: string | null = null;
-  
-  constructor(private authService: AuthService, private firestore: Firestore,
-    private storage: Storage, private auth: Auth,
+
+  constructor(private authService: AuthService,
+    private router: Router,
     public translate: TranslateService
-) {}
+  ) { }
 
- triggerFileInput() {
-   this.fileInput.nativeElement.click();
- }
-
- onFileSelected(event: any) {
-   const file = event.target.files[0];
-   if (file) {
-     this.selectedImage = file;
-     const reader = new FileReader();
-     reader.onload = (e: any) => {
-       this.previewImage = e.target.result;
-     };
-     reader.readAsDataURL(file);
-   }
- }
-
-async onSubmit(form: any) {
-    const { email, password, firstName, lastName } = form.value;
-
-    try {
-      const userCredential = await createUserWithEmailAndPassword(this.auth, email, password);
-      const uid = userCredential.user.uid;
-
-      let photoURL = `https://ui-avatars.com/api/?name=${firstName}+${lastName}&background=random`;
-
-
-      if (this.selectedImage) {
-        const filePath = `profileImages/${uid}`;
-        const storageRef = ref(this.storage, filePath);
-        await uploadBytes(storageRef, this.selectedImage);
-        photoURL = await getDownloadURL(storageRef);
-      }
-
-      await setDoc(doc(this.firestore, 'users', uid), {
-        uid,
-        email,
-        firstName,
-        lastName,
-        photoURL,
-        role: 'user',
-        createdAt: serverTimestamp()
-      });
-
-      console.log('User registered successfully');
-
-    } catch (error) {
-      console.error('Registration error:', error);
+  onFileSelected(event: any) {
+    const file = event.target.files[0];
+    if (file) {
+      this.selectedImage = file;
+      const reader = new FileReader();
+      reader.onload = (e: any) => this.previewImage = e.target.result;
+      reader.readAsDataURL(file);
     }
   }
 
-registerWithGoogle() {
-  this.authService.loginOrRegisterWithGoogle().then(() => {
-    console.log('Signed in with Google');
-  }).catch(err => console.error(err));
+onSubmit(form: any) {
+    if (form.invalid) return;
+
+    // تحويل البيانات إلى FormData لأننا نرسل ملفاً (IFormFile)
+    const formData = new FormData();
+    formData.append('firstName', this.user.firstName);
+    formData.append('lastName', this.user.lastName);
+    formData.append('email', this.user.email);
+    formData.append('password', this.user.password);
+    
+    if (this.selectedImage) {
+      formData.append('profileImage', this.selectedImage);
+    }
+
+    this.authService.register(formData).subscribe({
+      next: (res) => {
+        alert('Registered successfully!');
+        this.router.navigate(['/auth/login']);
+      },
+      error: (err) => alert(err.error?.message || 'Error occurred')
+    });
+  }
+
+  triggerFileInput() {
+    this.fileInput.nativeElement.click();
+  }
 }
 
-registerWithFacebook() {
-  this.authService.loginOrRegisterWithFacebook().then(() => {
-    console.log('Signed in with Facebook');
-  }).catch(err => console.error(err));
-}
 
-}
+  // registerWithGoogle() {
+  //   this.authService.loginOrRegisterWithGoogle().then(() => {
+  //     console.log('Signed in with Google');
+  //   }).catch(err => console.error(err));
+  // }
+
+  // registerWithFacebook() {
+  //   this.authService.loginOrRegisterWithFacebook().then(() => {
+  //     console.log('Signed in with Facebook');
+  //   }).catch(err => console.error(err));
+  // }

@@ -6,6 +6,7 @@
     "SELL": "Verkaufen",
     "MANAGE": "Anzeigen verwalten",
     "SEARCH": "Suchen",
+    "CONTACT": "Kontakt",
     "ABOUT": "Über uns",
     "LOGIN": "Anmelden / Registrieren"
   },
@@ -21,7 +22,7 @@
     "ENGLISH": "Englisch",
     "GERMAN": "Deutsch"
   },
-  "HOME":{
+  "HOME": {
     "Search": "Suche nach Ort oder Angebots-ID",
     "Price": "Preis",
     "Location": "Standort",
@@ -68,6 +69,7 @@
     "Email": "E-Mail",
     "Password": "Passwort",
     "Submit": "Anmelden",
+    "Register": "Registrieren",
     "GoogleSignIn": "Mit Google anmelden",
     "FacebookSignIn": "Mit Facebook anmelden",
     "ForgotPassword": "Passwort vergessen?"
@@ -78,6 +80,13 @@
     "Submit": "Link zum Zurücksetzen senden",
     "SuccessMessage": "Wenn ein Konto mit dieser E-Mail-Adresse existiert, wurde ein Link zum Zurücksetzen gesendet."
   },
+  "RESET_PASSWORD": {
+    "Title": "Passwort zurücksetzen",
+    "Password": "Neues Passwort",
+    "ConfirmPassword": "Passwort Bestätigen",
+    "Save": "Speichern...",
+    "Submit": "Passwort Ändern"
+  },
   "CONTACT": {
     "Title": "Kontakt",
     "Description": "Wir freuen uns auf Ihre Nachricht! Bitte füllen Sie das untenstehende Formular aus, um Kontakt mit uns aufzunehmen.",
@@ -85,9 +94,7 @@
     "Email": "E-Mail",
     "SUPPORT_EMAIL": "support@domix.com",
     "Phone": "Telefon",
-    "Phone_Number": "T+1 (555) 123-4567",
     "Address": "Adresse",
-    "Address_Details": "123 Main Street, Suite 100, City, State, ZIP",
     "CONTACT_FORM": "Kontaktformular",
     "Name": "Ihr Name",
     "Message": "Ihre Nachricht",
@@ -96,7 +103,7 @@
     "SUBMIT": "Nachricht senden",
     "FOLLOW_US": "Folgen Sie uns"
   },
-  "ABOUTE":{
+  "ABOUTE": {
     "About_Title": "Über Domix",
     "About_Description": "Domixist mehr als nur eine Immobilienplattform. Wir sind eine Community engagierter Menschen, die Ihnen helfen, Ihr perfektes Zuhause zu finden. Unsere Mission ist es, den Hauskaufprozess zu vereinfachen und ihn für alle zugänglich und angenehm zu gestalten.",
     "OurMission": "Unsere Mission",
@@ -113,7 +120,28 @@
     "CommunityDescription": "Wir fördern eine unterstützende und integrative Gemeinschaft für unsere Nutzer und unser Team.",
     "TransparencyDescription": "Wir glauben an offene und ehrliche Kommunikation während des gesamten Hauskaufprozesses."
   },
-   "ADD_PROPERTY": {
+  "ALL_PROPERTIES": {
+    "Filters": "Filter",
+    "ResetAll": "Alle zurücksetzen",
+    "PriceRange": "Preisspanne",
+    "PropertyType": "Immobilienart",
+    "Amenities": "Annehmlichkeiten",
+    "Apartment": "Apartment",
+    "Pool": "Pool",
+    "Garden": "Garten",
+    "Parking": "Parkplatz",
+    "Gym": "Fitnessstudio",
+    "ApplyFilters": "Filter anwenden",
+    "Bedrooms": "Schlafzimmer",
+    "Bathrooms": "Badezimmer",
+    "ViewDetails": "Details anzeigen",
+    "NewestFirst": "Neueste zuerst",
+    "PriceLowToHigh": "Preis: Niedrig bis Hoch",
+    "PriceHighToLow": "Preis: Hoch bis Niedrig",
+    "Rent": "Miet",
+    "Sale": "Verkauf"
+  },
+  "ADD_PROPERTY": {
     "Title": "Neue Immobilie hinzufügen",
     "PropertyTitle": "Immobilientitel",
     "ShortDescriptionLabel": "Kurze Beschreibung",
@@ -141,7 +169,7 @@
     "AddressLabel": "Adresse",
     "ImagesLabel": "Klicken Sie, um Bilder auszuwählen",
     "DeleteAll": "Alle Bilder löschen",
-    "LISTING":"Angebotsvorschau",
+    "LISTING": "Angebotsvorschau",
     "SubmitButton": "Angebot einreichen"
   }
 }

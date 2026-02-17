@@ -57,9 +57,24 @@ nav.navbar {
       }
     }
   }
+
+  button {
+    border: none;
+    background: transparent;
+
+    i {
+      display: inline-block; 
+      transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+      font-size: 1.2rem;
+    }
+
+    &:active i {
+      transform: rotate(360deg) scale(0.7);
+    }
+  }
+
 }
 
-// ✅ Dark mode using Angular recommended way
 :host-context(.dark-mode) {
   nav.navbar {
     background-color: $input-bg-dark;
@@ -67,6 +82,10 @@ nav.navbar {
     .nav-link,
     .login-register {
       color: $primary-color-dark !important;
+    }
+
+    bottom i {
+      transform: rotate(180deg);
     }
   }
 }

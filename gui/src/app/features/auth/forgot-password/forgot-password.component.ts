@@ -12,19 +12,21 @@ import { TranslateModule, TranslateService } from '@ngx-translate/core';
   styleUrl: './forgot-password.component.scss'
 })
 export class ForgotPasswordComponent {
-email: string = '';
+  email: string = '';
 
-  constructor(private authService: AuthService, private router: Router, public translate: TranslateService) {}
+  constructor(private authService: AuthService, private router: Router, public translate: TranslateService) { }
 
   onResetPassword() {
-    this.authService.resetPassword(this.email)
-      .then(() => {
+    this.authService.resetPassword(this.email).subscribe({
+      next: () => {
         alert('Check your email for reset link.');
         this.router.navigate(['/auth/login']);
-      })
-      .catch((error: { message: any; }) => {
-        console.error(error.message);
-        alert(error.message);
-      });
+      },
+      error: (err: any) => { 
+        console.error(err);
+        const errorMessage = err.error?.message || 'Something went wrong';
+        alert(errorMessage);
+      }
+    });
   }
 }

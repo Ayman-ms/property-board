@@ -6,14 +6,15 @@ import { ButtonModule } from 'primeng/button';
 import { CardModule } from 'primeng/card';
 import { InputTextModule } from 'primeng/inputtext';
 import { TranslateService } from '@ngx-translate/core';
-import { I18nService } from './core/services/i18n/i18n.service'; // استيراد الخدمة
+import { I18nService } from './core/services/i18n/i18n.service'; 
 import { ThemeService } from './core/services/theme/theme.service';
 import { FooterComponent } from './shared/components/footer/footer.component';
+import { ToastModule } from "primeng/toast";
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, LoginComponent, NavbarComponent, FooterComponent, ButtonModule, CardModule, InputTextModule],
+  imports: [RouterOutlet, LoginComponent, NavbarComponent, FooterComponent, ButtonModule, CardModule, InputTextModule, ToastModule],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })

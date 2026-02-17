@@ -1,3 +1,5 @@
+@import '../../../styles/variables.scss';
+
 .login-container {
   max-width: 400px;
   margin: 50px auto;
@@ -47,8 +49,10 @@
     }
   }
 
-
-  .login-button,
+  .register-button{
+      @include button-base();      
+      width: 100%;
+  }
   .google-button,
   .facebook-button {
     width: 100%;
@@ -96,29 +100,20 @@
 }
 
 .profile-placeholder {
-  width: 120px;
-  height: 120px;
+  width: 100px;
+  height: 100px;
   border-radius: 50%;
-  background-color: #f1f3f5;
+  background: #f0f2f5;
   display: flex;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
+  margin: 0 auto 1.5rem;
   cursor: pointer;
   overflow: hidden;
-  transition: transform 0.2s ease-in-out;
+  border: 2px dashed #ccc;
 
-  i {
-    font-size: 48px;
-    color: #6c757d;
-  }
+  i { font-size: 2.5rem; color: #999; }
+  .profile-img { width: 100%; height: 100%; object-fit: cover; }
 
-  img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
-
-  &:hover {
-    transform: scale(1.05);
-  }
+  &:hover { border-color: $logo-color; }
 }

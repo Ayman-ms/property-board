@@ -21,26 +21,41 @@ export class LoginComponent {
 
   constructor(private authService: AuthService, public router: Router, public translate: TranslateService) {}
 
-  onLogin() {
-    this.authService.login(this.loginData.email, this.loginData.password)
-      .then(() => {
-        console.log('Logged in successfully');
-        this.router.navigate(['/']); // وجه المستخدم للصفحة الرئيسية أو لوحة التحكم
-      })
-      .catch((error) => {
-        console.error(error.message);
-        alert(error.message); // يمكن تحسينها لاحقًا باستخدام toast
-      });
+onLogin() {
+    console.log('Attempting login with:', this.loginData.email);
+
+    this.authService.login(this.loginData).subscribe({
+      next: (response: any) => {
+        // فحص هيكلية الرد بناءً على ApiResponse في الباكيند
+        if (response && response.success) {
+          console.log('Login Successful');
+          
+          // حفظ التوكن (تأكد من أن الباكيند يعيد الحقل باسم token داخل data)
+          localStorage.setItem('token', response.data.token);
+          
+          // التوجه للرئيسية
+          this.router.navigate(['/']);
+        } else {
+          alert(response.message || 'Login failed');
+        }
+      },
+      error: (err) => {
+        console.error('Login Error:', err);
+        // عرض رسالة الخطأ القادمة من ASP.NET (مثل Invalid password)
+        const errorMessage = err.error?.message || 'Something went wrong';
+        alert(errorMessage);
+      }
+    });
   }
 
   signInWithGoogle() {
-    this.authService.loginOrRegisterWithGoogle()
+    this.authService.loginWithExternalProvider('Google')
       .then(() => this.router.navigate(['/']))
       .catch((error) => alert(error.message));
   }
 
   signInWithFacebook() {
-    this.authService.loginOrRegisterWithFacebook()
+    this.authService.loginWithExternalProvider('Facebook')
       .then(() => this.router.navigate(['/']))
       .catch((error) => alert(error.message));
   }

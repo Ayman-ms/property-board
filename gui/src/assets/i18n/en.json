@@ -7,6 +7,7 @@
     "MANAGE": "Manage Listing",
     "SEARCH": "Search",
     "ABOUT": "About Us",
+    "CONTACT": "Contact Us",
     "LOGIN": "Login / Register"
   },
   "FOOTER": {
@@ -68,6 +69,7 @@
     "Email": "Email",
     "Password": "Password",
     "Submit": "Log in",
+    "Register": "Register",
     "GoogleSignIn": "Sign in with Google",
     "FacebookSignIn": "Sign in with Facebook",
     "ForgotPassword": "Forgot password?"
@@ -77,6 +79,13 @@
     "Email": "Enter your email address",
     "Submit": "Send Reset Link",
     "SuccessMessage": "If an account with that email exists, a reset link has been sent."
+  },
+  "RESET_PASSWORD": {
+    "Title": "Reset Password",
+    "Password": "New Password",
+    "ConfirmPassword": "Confirm Password",
+    "Save":"Save...",
+    "Submit": "Change Password"
   },
   "ERROR": {
     "NotFound": "Page not found",
@@ -88,11 +97,8 @@
     "Description": "We would love to hear from you! Please fill out the form below to get in touch.",
     "CONTACT_INFO": "Contact Information",
     "Email": "Email",
-    "SUPPORT_EMAIL": "support@domix.com",
     "Phone": "Phone",
-    "Phone_Number": "T+1 (555) 123-4567",
     "Address": "Address",
-    "Address_Details": "123 Main Street, Suite 100, City, State, ZIP",
     "CONTACT_FORM": "Contact Form",
     "Name": "Your Name", 
     "Message": "Your Message",
@@ -117,6 +123,28 @@
     "IntegrityDescription": "We uphold the highest standards of honesty and ethics in all our interactions.",
     "CommunityDescription": "We foster a supportive and inclusive community for our users and team.",
     "TransparencyDescription": "We believe in open and honest communication throughout the home-buying process."
+  },
+  
+  "ALL_PROPERTIES": {
+    "Filters": "Filters",
+    "ResetAll": "Reset All",
+    "PriceRange": "Price Range",
+    "PropertyType": "Property Type",
+    "Apartment": "Apartment",
+    "Amenities": "Amenities",
+    "Pool": "Pool",
+    "Garden": "Garden",
+    "Parking": "Parking",
+    "Gym": "Gym",
+    "ApplyFilters": "Apply Filters",
+    "Bedrooms": "Bedrooms",
+    "Bathrooms": "Bathrooms",
+    "ViewDetails": "View Details",
+    "NewestFirst": "Newest First",
+    "PriceLowToHigh": "Price: Low to High",
+    "PriceHighToLow": "Price: High to Low",
+    "Rent": "Rent",
+    "Sale": "Sale"
   },
 
   "ADD_PROPERTY": {

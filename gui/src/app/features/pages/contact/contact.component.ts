@@ -1,7 +1,7 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, inject } from '@angular/core';
-import { httpsCallable } from '@angular/fire/functions';
-import { Functions } from '@angular/fire/functions';
 import { TranslateModule } from '@ngx-translate/core';
+import { ApiEndpoints } from '../../../core/constants/api_endpoints';
 
 @Component({
   selector: 'app-contact',
@@ -11,20 +11,13 @@ import { TranslateModule } from '@ngx-translate/core';
     standalone: true,
 })
 export class ContactComponent {
-  private functions = inject(Functions);
 
-  sendMessage() {
-    const sendContactEmail = httpsCallable(this.functions, 'sendContactEmail');
+constructor(private http:HttpClient) { }
 
-    sendContactEmail({
-      name: 'John Doe',
-      email: 'john@example.com',
-      subject: 'Test Subject',
-      message: 'This is a test message.'
-    })
-    .then((res) => console.log('Success!', res))
-    .catch((err) => console.error('Error:', err));
-  }
+sendEmail(contactForm: any) {
+  return this.http.post(ApiEndpoints.contact.base, contactForm)
 }
 
+
+}
 

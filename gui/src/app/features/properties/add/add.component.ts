@@ -6,7 +6,7 @@ import { getStorage, ref, uploadBytes, getDownloadURL } from '@angular/fire/stor
 import { CommonModule } from '@angular/common';
 import { TranslateModule } from '@ngx-translate/core';
 import { v4 as uuidv4 } from 'uuid';
-
+import { AppMessageService } from '../../../core/services/message/message.service';
 
 
 @Component({
@@ -27,7 +27,7 @@ export class AddComponent {
   state = '';
   city = '';
 
-  constructor(private http: HttpClient, private firestore: Firestore) {}
+  constructor(private http: HttpClient, private firestore: Firestore, private msg: AppMessageService) {}
 
   lookupZip() {
     if (!this.zipCode || this.zipCode.length < 4) return;
@@ -90,7 +90,7 @@ export class AddComponent {
           imageUrls.push(url);
         }
       } else {
-        // صورة افتراضية إذا ما تم رفع أي صورة
+        // defualt foto 
         imageUrls.push('https://via.placeholder.com/400x300?text=No+Image');
       }
 
@@ -101,18 +101,18 @@ export class AddComponent {
         state: this.state,
         city: this.city,
         images: imageUrls,
-        status: 'pending', // حالة الإعلان
+        status: 'pending', 
         createdAt: serverTimestamp()
       };
 
       const propertiesRef = collection(this.firestore, 'properties');
       await addDoc(propertiesRef, propertyData);
 
-      alert('تم إضافة العقار بنجاح');
+      this.msg.success('Success', 'Your property has been successfully added.');
       form.resetForm();
       this.clearAllImages();
     } catch (error) {
-      console.error('خطأ أثناء إضافة العقار:', error);
+      this.msg.error('Error:', String(error));
     }
   }
 }

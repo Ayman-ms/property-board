@@ -4,8 +4,8 @@
   <form class="login-form" (ngSubmit)="onLogin()" #loginForm="ngForm">
     <div class="form-group">
       <label for="email">{{ 'LOGIN.Email' | translate }}</label>
-      <input type="email" id="email" name="email" required [(ngModel)]="loginData.email" placeholder="{{ 'LOGIN.Email' | translate }}"
-        class="form-input" />
+      <input type="email" id="email" name="email" required [(ngModel)]="loginData.email"
+        placeholder="{{ 'LOGIN.Email' | translate }}" class="form-input" />
     </div>
 
     <div class="form-group">
@@ -17,7 +17,9 @@
     <button type="submit" class="login-button" [disabled]="loginForm.invalid">
       {{ 'LOGIN.Submit' | translate }}
     </button>
-
+    <button type="button" class="register-button" (click)="router.navigate(['auth/register'])">
+      {{ 'LOGIN.Register' | translate }}
+    </button>
     <div class="social-buttons form-group">
       <button type="button" class="google-button" (click)="signInWithGoogle()">
         <img src="https://developers.google.com/identity/images/g-logo.png" alt="Google logo" />
@@ -28,7 +30,8 @@
         <span>{{ 'LOGIN.FacebookSignIn' | translate }}</span>
       </button>
     </div>
-    <a class="forgot-password form-group"  (click)="router.navigate(['auth/forgot-password'])">{{ 'LOGIN.ForgotPassword' | translate }}</a>
+    <a class="forgot-password form-group" (click)="router.navigate(['auth/forgot-password'])">{{ 'LOGIN.ForgotPassword'
+      | translate }}</a>
 
   </form>
 </div>
