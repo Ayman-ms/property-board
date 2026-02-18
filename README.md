@@ -19,8 +19,11 @@ A responsive web application for listing, renting, and selling apartments and re
 
 ## 🔧 Tech Stack
 
-- **Frontend**: Angular
-- **Backend**: Firebase (Authentication, Firestore, Storage, Hosting)
+- **Frontend**: Angular (v17+)
+- **Backend**: ASP.NET Core Web API (C#)
 - **Design**: Stitch (for UI/UX mockups)
+- **Database**: SQL Server (Entity Framework Core)
+- **Email Service**: SMTP Integration
+
 
 ## 📁 Folder Structure
