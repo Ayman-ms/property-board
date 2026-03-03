@@ -14,6 +14,10 @@ export class UserService {
     return this.http.get(ApiEndpoints.users.base).toPromise();
   }
 
+  getUserById(user_id: string): Observable<User> {
+    return this.http.get<User>(`${ApiEndpoints.users.base}/${user_id}`);
+  }
+
   async createUser(user: User): Promise<void> {
     await this.http.post(ApiEndpoints.users.base, user).toPromise();
   }

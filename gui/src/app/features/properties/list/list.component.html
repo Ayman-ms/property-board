@@ -69,8 +69,9 @@
     <div [class]="viewMode === 'list' ? 'property-list-view' : 'property-grid'">
       <article class="property-card" *ngFor="let p of properties">
         <div class="card-image">
-          <img [src]="p.mainImageUrl || 'assets/images/default.jpg'" [alt]="p.title">
-          <span class="badge" *ngIf="p.status === 'Active'">{{ p.listingType }}</span>
+          <img [src]="p.mainImageUrl || 'assets/images/default.jpg'" [alt]="p.title"
+            [routerLink]="['/properties/detail']" [queryParams]="{ id: p.propertyId }" /> <span class="badge"
+            *ngIf="p.status === 'Active'">{{ p.listingType }}</span>
           <div class="price-tag">{{ p.price | currency: p.currency : 'symbol' : '1.0-0' }}</div>
         </div>
 

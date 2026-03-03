@@ -1,0 +1,120 @@
+<div class="property-detail-container" *ngIf="property">
+
+  <div id="propertyCarousel" class="carousel slide carousel-fade shadow-2-strong main-carousel" data-mdb-ride="carousel"
+    data-mdb-carousel-init>
+    <div class="carousel-indicators" *ngIf="property.images && property.images.length > 1" >
+      <button type="button" data-mdb-target="#propertyCarousel" data-mdb-slide-to="0" class="active" aria-current="true"
+        aria-label="Slide 1"></button>
+      <button type="button" data-mdb-target="#propertyCarousel" data-mdb-slide-to="1" aria-label="Slide 2"></button>
+      <button type="button" data-mdb-target="#propertyCarousel" data-mdb-slide-to="2" aria-label="Slide 3"></button>
+    </div>
+
+    <div class="carousel-inner rounded-4">
+      <ng-container *ngIf="property.images && property.images.length > 0; else noImages">
+        <div *ngFor="let img of property.images; let i = index" class="carousel-item" [class.active]="i === 0">
+          <img [src]="img.url || img" class="d-block w-100" [alt]="property.title" />
+          <div class="carousel-caption d-none d-md-block">
+            <h5>{{ property.title }}</h5>
+            <p>Image {{ i + 1 }} of {{ property.images.length }}</p>
+          </div>
+        </div>
+      </ng-container>
+
+      <ng-template #noImages>
+        <div class="carousel-item active">
+          <img [src]="property.mainImageUrl || 'assets/images/default.jpg'" class="d-block w-100"
+            [alt]="property.title" />
+          <div class="carousel-caption d-none d-md-block">
+            <h5>{{ property.title }}</h5>
+            <p>No additional images available</p>
+          </div>
+        </div>
+      </ng-template>
+    </div>
+    <!-- next and previous buttons -->
+    <button  *ngIf="property.images && property.images.length > 1" class="carousel-control-prev" type="button" data-mdb-target="#propertyCarousel" data-mdb-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button *ngIf="property.images && property.images.length > 1" class="carousel-control-next" type="button" data-mdb-target="#propertyCarousel" data-mdb-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
+
+  <div class="main-content-layout">
+
+    <div class="property-info-section">
+      <div class="header-flex">
+        <div>
+          <h1>{{ property.title }}</h1>
+          <p class="location-text"><i class="fas fa-map-marker-alt"></i> {{ property.address }}</p>
+        </div>
+        <div class="price-section">
+          <h2 class="price">{{ property.price | currency:'USD':'symbol':'1.0-0' }}<span class="period">/mo</span></h2>
+          <p class="mortgage">Est. Mortgage: $2,840/mo</p>
+        </div>
+      </div>
+
+      <div class="quick-specs">
+        <div class="spec-item"><i class="fas fa-bed"></i> <span>{{ property.bedrooms }}</span> Bedrooms</div>
+        <div class="spec-item"><i class="fas fa-bath"></i> <span>{{ property.bathrooms }}</span> Bathrooms</div>
+        <div class="spec-item"><i class="fas fa-ruler-combined"></i> <span>2,400</span> Sq Ft</div>
+      </div>
+
+      <hr>
+
+      <h3>About this property</h3>
+      <p class="description">{{ property.description }}</p>
+
+      <h3>What this place offers</h3>
+      <div class="amenities-grid">
+        <div class="amenity"><i class="fas fa-swimmer"></i> Infinity Pool</div>
+        <div class="amenity"><i class="fas fa-dumbbell"></i> Private Gym</div>
+        <div class="amenity"><i class="fas fa-parking"></i> 3 Car Garage</div>
+        <div class="amenity"><i class="fas fa-wifi"></i> Fiber Internet</div>
+        <div class="amenity"><i class="fas fa-shield-alt"></i> 24/7 Security</div>
+        <div class="amenity"><i class="fas fa-fire"></i> Modern Fireplace</div>
+      </div>
+    </div>
+
+    <div class="sidebar-section">
+      <div class="booking-card">
+        <h3>Book a Viewing</h3>
+        <p>Schedule a private tour with an agent.</p>
+
+        <form>
+          <div class="form-group">
+            <label>FULL NAME</label>
+            <input type="text" placeholder="John Doe">
+          </div>
+          <div class="form-group">
+            <label>EMAIL ADDRESS</label>
+            <input type="email" placeholder="john@example.com">
+          </div>
+          <div class="form-group">
+            <label>Message</label>
+            <input type="text" placeholder="I'm interested in this property. Please contact me.">
+          </div>
+          <button class="btn-request">Send Request</button>
+        </form>
+
+    <div class="agent-info" *ngIf="owner">
+  <img [src]="owner.profilePictureUrl || 'assets/images/default-avatar.png'" alt="Agent">
+  <div>
+    <p class="agent-name">{{ owner.firstName }} {{ owner.lastName }}</p>
+    <p class="agent-title">Licensed Professional</p>
+    <small class="agent-title">{{ owner.email }}</small>
+  </div>
+  <i class="far fa-comment-dots chat-icon"></i>
+</div>
+      </div>
+
+      <div class="hot-market-card">
+        <p><i class="fas fa-chart-line"></i> <strong>HOT MARKET</strong></p>
+        <p>Properties in this area typically receive 4+ offers in the first week.</p>
+      </div>
+    </div>
+
+  </div>
+</div>

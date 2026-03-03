@@ -3,6 +3,7 @@ import { Observable } from 'rxjs';
 import { Injectable } from '@angular/core';
 import { ApiEndpoints } from '../../constants/api_endpoints';
 import { environment } from '../../../../environments/environment';
+import { Property } from '../../models/propertie';
 
 @Injectable({
   providedIn: 'root'
@@ -15,6 +16,7 @@ export class PropertyService {
     return this.http.get<any[]>(ApiEndpoints.properties.base);
   }
 
+  
   getPropertyTypes(): Observable<any[]> {
     return this.http.get<any[]>(ApiEndpoints.properties.types);
   }
@@ -32,9 +34,10 @@ export class PropertyService {
     
     return this.http.get<any>(ApiEndpoints.properties.base, { params });
   }
-  async getPropertyById(propertyId: string) {
-    return this.http.get(`${ApiEndpoints.properties.base}/${propertyId}`).toPromise();
-  }
+  
+  getPropertyById(id: number | string): Observable<Property> {
+  return this.http.get<Property>(`${ApiEndpoints.properties.base}/${id}`);
+}
 
   async addProperty() {
 

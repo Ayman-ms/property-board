@@ -31,17 +31,26 @@ export class ListComponent implements OnInit {
 
   ngOnInit(): void {
     this.loadPropertyTypes();
-    
+
     this.route.queryParams.subscribe(params => {
       const typeFromUrl = params['type'];
-      if (typeFromUrl) {
-        this.filterModel.listingType = typeFromUrl;
-      } else {
-        this.filterModel.listingType = '';
-      }
-      this.loadProperties();
+
+      this.filterModel.listingType = typeFromUrl ? typeFromUrl : '';
+
+      this.fetchPropertiesData();
     });
-    this.loadProperties();
+  }
+
+  private fetchPropertiesData(): void {
+    this.propertyService.getProperties(this.filterModel).subscribe({
+      next: (data) => {
+        this.properties = data;
+        console.log('Data received successfully:', this.properties);
+      },
+      error: (err) => {
+        console.error('Error fetching data from API:', err);
+      }
+    });
   }
 
   setListingType(type: 'Rent' | 'Sale' | '') {
