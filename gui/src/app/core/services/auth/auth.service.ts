@@ -17,16 +17,32 @@ export class AuthService {
   ) { }
 
 
-  login(credentials: any): Observable<any> {
-    return this.http.post<any>(ApiEndpoints.auth.login, credentials).pipe(
-      map(response => {
-        if (response.success) {
-          this.setSession(response.data);
-        }
-        return response;
-      })
-    );
-  }
+  // login(credentials: any): Observable<any> {
+  //   return this.http.post<any>(ApiEndpoints.auth.login, credentials).pipe(
+  //     map(response => {
+  //       if (response.success) {
+  //         this.setSession(response.data);
+  //       }
+  //       return response;
+  //     })
+  //   );
+  // }
+
+  login(credentials: any) {
+  return this.http.post<any>(`${ApiEndpoints.auth.login}`, credentials).pipe(
+    map(response => {
+      if (response && response.isSuccess && response.data.token) {
+        // حفظ التوكن في المتصفح
+        localStorage.setItem('token', response.data.token);
+        this.setSession(response.data);
+        // اختيارياً: حفظ بيانات المستخدم الأخرى
+        localStorage.setItem('user', JSON.stringify(response.data.user));
+        
+        console.log('Token saved successfully!');
+      }
+    })
+  );
+}
 
   private externalLoginProvider(idToken: string, provider: string) {
     this.http.post<any>(`${ApiEndpoints.auth.login}/external`, { idToken, provider }).subscribe({

@@ -165,7 +165,7 @@ namespace Backend.Api.Controllers
 
             // save the token and its expiration time in the database
             user.PasswordResetToken = resetToken;
-            user.ResetTokenExpires = DateTime.UtcNow.AddHours(1);
+            user.ResetTokenExpires = DateTime.UtcNow.AddHours(1).ToString(); // token valid for 1 hour
             await _userRepository.UpdateAsync(user);
 
             //  Send the E-Mail
@@ -186,7 +186,7 @@ namespace Backend.Api.Controllers
         public async Task<ActionResult<ApiResponse<object>>> ResetPassword([FromBody] ResetPasswordDto dto)
         {
             var user = await _userRepository.GetByEmailAsync(dto.Email);
-            if (user == null || user.PasswordResetToken != dto.Token || user.ResetTokenExpires < DateTime.UtcNow)
+            if (user == null || user.PasswordResetToken != dto.Token || DateTime.Parse(user.ResetTokenExpires!) < DateTime.UtcNow)
             {
                 return BadRequest(ApiResponse<object>.Failure("Invalid or expired token."));
             }

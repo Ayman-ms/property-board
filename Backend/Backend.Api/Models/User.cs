@@ -63,7 +63,7 @@ namespace Backend.Api.Models
         public string? Provider { get; set; } = string.Empty;
 
         public string? PasswordResetToken { get; set; }
-        public DateTime? ResetTokenExpires { get; set; }
+        public string? ResetTokenExpires { get; set; }
     }
 
 }

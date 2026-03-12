@@ -2,7 +2,6 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Injectable } from '@angular/core';
 import { ApiEndpoints } from '../../constants/api_endpoints';
-import { environment } from '../../../../environments/environment';
 import { Property } from '../../models/propertie';
 
 @Injectable({

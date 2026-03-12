@@ -90,7 +90,7 @@ namespace Backend.Api.Controllers
 
             // 1. إيجاد أو إنشاء محادثة
             var conv = await _context.Conversations.FindAsync(dto.ConversationId);
-            if (conv == null) return NotFound("المحادثة غير موجودة");
+            if (conv == null) return NotFound("The conversation does not exist.");
 
             // 2. إضافة الرسالة
             var newMessage = new Message
@@ -113,8 +113,8 @@ namespace Backend.Api.Controllers
             {
                 UserId = receiverId,
                 Type = "NewMessage",
-                Title = "رسالة جديدة",
-                Message = $"لديك رسالة جديدة بخصوص العقار #{conv.PropertyId}",
+                Title = "New Message",
+                Message = $"You have a new message regarding property #{conv.PropertyId}",
                 RelatedId = conv.ConversationId,
                 CreatedAt = DateTime.UtcNow
             };
@@ -122,6 +122,70 @@ namespace Backend.Api.Controllers
 
             await _context.SaveChangesAsync();
             return Ok(newMessage);
+        }
+
+        // أضف هذه الدالة داخل ChatController
+[HttpPost("start")]
+public async Task<IActionResult> StartOrContinueConversation([FromBody] StartConversationDto dto)
+{
+    var currentUserId = int.Parse(User.FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier)!.Value);
+
+    // 1. البحث عن المحادثة
+    var conversation = await _context.Conversations
+        .FirstOrDefaultAsync(c => c.PropertyId == dto.PropertyId && 
+                                 ((c.BuyerUserId == currentUserId && c.SellerUserId == dto.SellerId) || 
+                                  (c.BuyerUserId == dto.SellerId && c.SellerUserId == currentUserId)));
+
+    if (conversation == null)
+    {
+        // إنشاء محادثة جديدة تماماً
+        conversation = new Conversation
+        {
+            PropertyId = dto.PropertyId,
+            BuyerUserId = currentUserId,
+            SellerUserId = dto.SellerId,
+            CreatedAt = DateTime.UtcNow,
+            UpdatedAt = DateTime.UtcNow
+        };
+        _context.Conversations.Add(conversation);
+        await _context.SaveChangesAsync(); // حفظ أولاً للحصول على ConversationId
+    }
+    else 
+    {
+        // تحديث المحادثة الموجودة
+        conversation.UpdatedAt = DateTime.UtcNow;
+        _context.Conversations.Update(conversation); // تأكيد التحديث
+    }
+
+    // 2. إضافة الرسالة (هذا هو الجزء الذي كان يفشل)
+    var newMessage = new Message
+    {
+        ConversationId = conversation.ConversationId,
+        SenderUserId = currentUserId,
+        MessageText = dto.MessageText,
+        CreatedAt = DateTime.UtcNow,
+        IsRead = false
+    };
+
+    try 
+    {
+        _context.Messages.Add(newMessage);
+        await _context.SaveChangesAsync(); // الحفظ النهائي
+        return Ok(new { success = true, msg = "Message Saved!" });
+    }
+    catch (Exception ex) 
+    {
+        // إذا فشل الحفظ، سيظهر لك السبب الحقيقي هنا في الـ Swagger أو الـ Console
+        return BadRequest(new { error = ex.Message, inner = ex.InnerException?.Message });
+    }
+}
+
+
+   public class StartConversationDto
+        {
+            public int PropertyId { get; set; }
+            public int SellerId { get; set; }
+            public string MessageText { get; set; }
         }
     }
 
