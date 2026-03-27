@@ -38,3 +38,36 @@ export interface Property {
     published_at: Date;
     expires_at: Date;
 }
+
+export interface PropertyCreateDto {
+  title: string;
+  description: string;
+  propertyTypeId: number;
+  listingType: string; // 'Rent' | 'Sale'
+  price: number;
+  currency: string;
+  bedrooms: number;
+  bathrooms: number;
+  areaSqm: number;
+  floorNumber?: number;
+  totalFloors?: number;
+  yearBuilt?: number;
+  isNegotiable: boolean;
+  // Location
+  street: string;
+  city: string;
+  region: string;
+  country: string;
+  postCode: string;
+  latitude?: number;
+  longitude?: number;
+  // Amenities
+  hasParking: boolean;
+  hasBalcony: boolean;
+  hasGarden: boolean;
+  hasElevator: boolean;
+  hasGarage: boolean;
+  isFurnished: boolean;
+  // Media
+  images: File[]; 
+}

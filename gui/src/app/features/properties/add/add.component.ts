@@ -8,30 +8,62 @@ import { TranslateModule } from '@ngx-translate/core';
 import { v4 as uuidv4 } from 'uuid';
 import { AppMessageService } from '../../../core/services/message/message.service';
 
-
 @Component({
   selector: 'app-add',
   standalone: true,
   imports: [CommonModule, TranslateModule, FormsModule],
-  providers: [],
   templateUrl: './add.component.html',
   styleUrl: './add.component.scss'
 })
 export class AddComponent {
-
+  currentStep = 1;
+  totalSteps = 5;
+propertyData = {
+    title: '',
+    description: '',
+    shortDescription: '',
+    propertyTypeId: null,
+    listingType: 'rent',
+    price: 0,
+    areaSqm: 0,
+    bedrooms: 0,
+    bathrooms: 0,
+    floorNumber: 0,
+    totalFloors: 0,
+    yearBuilt: new Date().getFullYear(),
+    hasParking: false,
+    hasBalcony: false,
+    hasGarden: false,
+    hasElevator: false,
+    hasGarage: false,
+    isFurnished: false,
+    isNegotiable: false,
+    street: '',
+    zipCode: '',
+    city: '',
+    state: '',
+    country: 'de'
+  };
+  // Form Data
+  listingType = 'rent';
+  propertyType = 'apartment';
+  country = 'de';
+  zipCode = '';
+  state = '';
+  city = '';
+  
+  // Media
   previewImages: string[] = [];
   selectedFiles: File[] = [];
 
-  zipCode = '';
-  country = '';
-  state = '';
-  city = '';
-
   constructor(private http: HttpClient, private firestore: Firestore, private msg: AppMessageService) {}
+
+  // التنقل بين الخطوات
+  nextStep() { if (this.currentStep < this.totalSteps) this.currentStep++; }
+  prevStep() { if (this.currentStep > 1) this.currentStep--; }
 
   lookupZip() {
     if (!this.zipCode || this.zipCode.length < 4) return;
-
     const url = `https://api.zippopotam.us/${this.country}/${this.zipCode}`;
     this.http.get<any>(url).subscribe({
       next: (res) => {
@@ -39,80 +71,52 @@ export class AddComponent {
         this.city = place['place name'];
         this.state = place['state'];
       },
-      error: () => {
-        this.city = '';
-        this.state = '';
-        alert('ZIP code not found');
-      }
+      error: () => { this.city = ''; this.state = ''; }
     });
   }
 
   onFileSelected(event: Event): void {
     const input = event.target as HTMLInputElement;
-    if (input.files && input.files.length > 0) {
+    if (input.files) {
       const newFiles = Array.from(input.files);
-      for (const file of newFiles) {
+      newFiles.forEach(file => {
         this.selectedFiles.push(file);
         const reader = new FileReader();
         reader.onload = (e: any) => this.previewImages.push(e.target.result);
         reader.readAsDataURL(file);
-      }
+      });
     }
-    input.value = '';
-  }
-
-  removeImage(index: number): void {
-    this.selectedFiles.splice(index, 1);
-    this.previewImages.splice(index, 1);
-  }
-
-  clearAllImages(): void {
-    this.selectedFiles = [];
-    this.previewImages = [];
-  }
-
-  async uploadImage(file: File): Promise<string> {
-    const storage = getStorage();
-    const fileRef = ref(storage, `property-images/${uuidv4()}_${file.name}`);
-    const snapshot = await uploadBytes(fileRef, file);
-    return getDownloadURL(snapshot.ref);
   }
 
   async onSubmit(form: NgForm): Promise<void> {
     if (!form.valid) return;
-
     try {
-      const imageUrls: string[] = [];
-
-      if (this.selectedFiles.length > 0) {
-        for (const file of this.selectedFiles) {
-          const url = await this.uploadImage(file);
-          imageUrls.push(url);
-        }
-      } else {
-        // defualt foto 
-        imageUrls.push('https://via.placeholder.com/400x300?text=No+Image');
+      const imageUrls = [];
+      for (const file of this.selectedFiles) {
+        const storage = getStorage();
+        const fileRef = ref(storage, `property-images/${uuidv4()}_${file.name}`);
+        const snapshot = await uploadBytes(fileRef, file);
+        const url = await getDownloadURL(snapshot.ref);
+        imageUrls.push(url);
       }
 
       const propertyData = {
         ...form.value,
+        listingType: this.listingType,
+        propertyType: this.propertyType,
         country: this.country,
-        zipCode: this.zipCode,
-        state: this.state,
         city: this.city,
+        state: this.state,
         images: imageUrls,
-        status: 'pending', 
         createdAt: serverTimestamp()
       };
 
-      const propertiesRef = collection(this.firestore, 'properties');
-      await addDoc(propertiesRef, propertyData);
-
-      this.msg.success('Success', 'Your property has been successfully added.');
+      await addDoc(collection(this.firestore, 'properties'), propertyData);
+      this.msg.success('Success', 'Property Added Successfully');
+      this.currentStep = 1;
       form.resetForm();
-      this.clearAllImages();
     } catch (error) {
-      this.msg.error('Error:', String(error));
+      this.msg.error('Error', String(error));
     }
   }
 }
