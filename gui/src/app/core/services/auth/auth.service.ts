@@ -40,6 +40,8 @@ export class AuthService {
         
         console.log('Token saved successfully!');
       }
+      this.router.navigate(['/']);
+      return response;
     })
   );
 }

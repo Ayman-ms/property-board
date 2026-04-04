@@ -7,29 +7,44 @@ import { CommonModule } from '@angular/common';
 import { TranslateModule } from '@ngx-translate/core';
 import { v4 as uuidv4 } from 'uuid';
 import { AppMessageService } from '../../../core/services/message/message.service';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { faP, faTree, faPersonShelter, faCouch, faMoneyBills, faArrowsUpDown, faWarehouse } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-add',
   standalone: true,
-  imports: [CommonModule, TranslateModule, FormsModule],
+  imports: [CommonModule, TranslateModule, FormsModule, FontAwesomeModule],
   templateUrl: './add.component.html',
   styleUrl: './add.component.scss'
 })
 export class AddComponent {
+
+  // Font Awesome Icons
+  faParking = faP;
+  faGarden = faTree;
+  faElevator = faArrowsUpDown;
+  faGarage = faWarehouse;
+  faFurnished = faCouch;
+  faNegotiable = faMoneyBills;
+  faBalcony = faPersonShelter;
+
+  // Stepper
   currentStep = 1;
   totalSteps = 5;
-propertyData = {
+
+  // All property data in one object (no duplicates)
+  propertyData = {
     title: '',
     description: '',
     shortDescription: '',
     propertyTypeId: null,
     listingType: 'rent',
-    price: 0,
-    areaSqm: 0,
-    bedrooms: 0,
-    bathrooms: 0,
-    floorNumber: 0,
-    totalFloors: 0,
+    price: null,
+    areaSqm: null,
+    bedrooms: null,
+    bathrooms: null,
+    floorNumber: null,
+    totalFloors: null,
     yearBuilt: new Date().getFullYear(),
     hasParking: false,
     hasBalcony: false,
@@ -44,37 +59,39 @@ propertyData = {
     state: '',
     country: 'de'
   };
-  // Form Data
-  listingType = 'rent';
-  propertyType = 'apartment';
-  country = 'de';
-  zipCode = '';
-  state = '';
-  city = '';
-  
+
   // Media
   previewImages: string[] = [];
   selectedFiles: File[] = [];
 
-  constructor(private http: HttpClient, private firestore: Firestore, private msg: AppMessageService) {}
+  constructor(
+    private http: HttpClient,
+    private firestore: Firestore,
+    private msg: AppMessageService
+  ) {}
 
-  // التنقل بين الخطوات
+  // Stepper Navigation
   nextStep() { if (this.currentStep < this.totalSteps) this.currentStep++; }
   prevStep() { if (this.currentStep > 1) this.currentStep--; }
 
+  // Zip Code Lookup
   lookupZip() {
-    if (!this.zipCode || this.zipCode.length < 4) return;
-    const url = `https://api.zippopotam.us/${this.country}/${this.zipCode}`;
+    if (!this.propertyData.zipCode || this.propertyData.zipCode.length < 4) return;
+    const url = `https://api.zippopotam.us/${this.propertyData.country}/${this.propertyData.zipCode}`;
     this.http.get<any>(url).subscribe({
       next: (res) => {
         const place = res.places[0];
-        this.city = place['place name'];
-        this.state = place['state'];
+        this.propertyData.city = place['place name'];
+        this.propertyData.state = place['state'];
       },
-      error: () => { this.city = ''; this.state = ''; }
+      error: () => {
+        this.propertyData.city = '';
+        this.propertyData.state = '';
+      }
     });
   }
 
+  // File Selection
   onFileSelected(event: Event): void {
     const input = event.target as HTMLInputElement;
     if (input.files) {
@@ -88,10 +105,11 @@ propertyData = {
     }
   }
 
+  // Submit
   async onSubmit(form: NgForm): Promise<void> {
     if (!form.valid) return;
     try {
-      const imageUrls = [];
+      const imageUrls: string[] = [];
       for (const file of this.selectedFiles) {
         const storage = getStorage();
         const fileRef = ref(storage, `property-images/${uuidv4()}_${file.name}`);
@@ -100,21 +118,19 @@ propertyData = {
         imageUrls.push(url);
       }
 
-      const propertyData = {
-        ...form.value,
-        listingType: this.listingType,
-        propertyType: this.propertyType,
-        country: this.country,
-        city: this.city,
-        state: this.state,
+      const dataToSubmit = {
+        ...this.propertyData,
         images: imageUrls,
         createdAt: serverTimestamp()
       };
 
-      await addDoc(collection(this.firestore, 'properties'), propertyData);
+      await addDoc(collection(this.firestore, 'properties'), dataToSubmit);
       this.msg.success('Success', 'Property Added Successfully');
       this.currentStep = 1;
       form.resetForm();
+      this.propertyData.listingType = 'rent';
+      this.previewImages = [];
+      this.selectedFiles = [];
     } catch (error) {
       this.msg.error('Error', String(error));
     }

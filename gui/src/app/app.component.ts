@@ -10,11 +10,12 @@ import { I18nService } from './core/services/i18n/i18n.service';
 import { ThemeService } from './core/services/theme/theme.service';
 import { FooterComponent } from './shared/components/footer/footer.component';
 import { ToastModule } from "primeng/toast";
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, LoginComponent, NavbarComponent, FooterComponent, ButtonModule, CardModule, InputTextModule, ToastModule],
+  imports: [RouterOutlet, LoginComponent, NavbarComponent, FooterComponent, ButtonModule, CardModule, InputTextModule, ToastModule, FontAwesomeModule],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })

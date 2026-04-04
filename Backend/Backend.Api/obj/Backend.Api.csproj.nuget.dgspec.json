@@ -1,28 +1,25 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\amslmani\\OneDrive - Meta-Level Software AG\\Desktop\\Angular\\property-board\\Backend\\Backend.Api\\Backend.Api.csproj": {}
+    "/Volumes/Mac Mini Disk/project/property-board/Backend/Backend.Api/Backend.Api.csproj": {}
   },
   "projects": {
-    "C:\\Users\\amslmani\\OneDrive - Meta-Level Software AG\\Desktop\\Angular\\property-board\\Backend\\Backend.Api\\Backend.Api.csproj": {
+    "/Volumes/Mac Mini Disk/project/property-board/Backend/Backend.Api/Backend.Api.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\amslmani\\OneDrive - Meta-Level Software AG\\Desktop\\Angular\\property-board\\Backend\\Backend.Api\\Backend.Api.csproj",
+        "projectUniqueName": "/Volumes/Mac Mini Disk/project/property-board/Backend/Backend.Api/Backend.Api.csproj",
         "projectName": "Backend.Api",
-        "projectPath": "C:\\Users\\amslmani\\OneDrive - Meta-Level Software AG\\Desktop\\Angular\\property-board\\Backend\\Backend.Api\\Backend.Api.csproj",
-        "packagesPath": "C:\\Users\\amslmani\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\amslmani\\OneDrive - Meta-Level Software AG\\Desktop\\Angular\\property-board\\Backend\\Backend.Api\\obj\\",
+        "projectPath": "/Volumes/Mac Mini Disk/project/property-board/Backend/Backend.Api/Backend.Api.csproj",
+        "packagesPath": "/Volumes/Mac Mini Disk/mohamadaymanmslmani/.nuget/packages/",
+        "outputPath": "/Volumes/Mac Mini Disk/project/property-board/Backend/Backend.Api/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\amslmani\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "/Volumes/Mac Mini Disk/mohamadaymanmslmani/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net8.0"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -35,11 +32,6 @@
           "warnAsError": [
             "NU1605"
           ]
-        },
-        "restoreAuditProperties": {
-          "enableAudit": "true",
-          "auditLevel": "low",
-          "auditMode": "direct"
         }
       },
       "frameworks": {
@@ -110,7 +102,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.404/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/opt/homebrew/Cellar/dotnet@8/8.0.125/libexec/sdk/8.0.125/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

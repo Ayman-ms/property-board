@@ -1,162 +1,324 @@
-C:\Users\amslmani\OneDrive - Meta-Level Software AG\Desktop\Angular\property-board\Backend\Backend.Api\bin\Debug\net8.0\appsettings.Development.json
-C:\Users\amslmani\OneDrive - Meta-Level Software AG\Desktop\Angular\property-board\Backend\Backend.Api\bin\Debug\net8.0\appsettings.json
-C:\Users\amslmani\OneDrive - Meta-Level Software AG\Desktop\Angular\property-board\Backend\Backend.Api\bin\Debug\net8.0\Backend.Api.exe
-C:\Users\amslmani\OneDrive - Meta-Level Software AG\Desktop\Angular\property-board\Backend\Backend.Api\bin\Debug\net8.0\Backend.Api.deps.json
-C:\Users\amslmani\OneDrive - Meta-Level Software AG\Desktop\Angular\property-board\Backend\Backend.Api\bin\Debug\net8.0\Backend.Api.runtimeconfig.json
-C:\Users\amslmani\OneDrive - Meta-Level Software AG\Desktop\Angular\property-board\Backend\Backend.Api\bin\Debug\net8.0\Backend.Api.dll
-C:\Users\amslmani\OneDrive - Meta-Level Software AG\Desktop\Angular\property-board\Backend\Backend.Api\bin\Debug\net8.0\Backend.Api.pdb
-C:\Users\amslmani\OneDrive - Meta-Level Software AG\Desktop\Angular\property-board\Backend\Backend.Api\bin\Debug\net8.0\Azure.Core.dll
-C:\Users\amslmani\OneDrive - Meta-Level Software AG\Desktop\Angular\property-board\Backend\Backend.Api\bin\Debug\net8.0\Azure.Identity.dll
-C:\Users\amslmani\OneDrive - Meta-Level Software AG\Desktop\Angular\property-board\Backend\Backend.Api\bin\Debug\net8.0\BCrypt.Net-Next.dll
-C:\Users\amslmani\OneDrive - Meta-Level Software AG\Desktop\Angular\property-board\Backend\Backend.Api\bin\Debug\net8.0\Humanizer.dll
-C:\Users\amslmani\OneDrive - Meta-Level Software AG\Desktop\Angular\property-board\Backend\Backend.Api\bin\Debug\net8.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
-C:\Users\amslmani\OneDrive - Meta-Level Software AG\Desktop\Angular\property-board\Backend\Backend.Api\bin\Debug\net8.0\Microsoft.Bcl.AsyncInterfaces.dll
-C:\Users\amslmani\OneDrive - Meta-Level Software AG\Desktop\Angular\property-board\Backend\Backend.Api\bin\Debug\net8.0\Microsoft.CodeAnalysis.dll
-C:\Users\amslmani\OneDrive - Meta-Level Software AG\Desktop\Angular\property-board\Backend\Backend.Api\bin\Debug\net8.0\Microsoft.CodeAnalysis.CSharp.dll
-C:\Users\amslmani\OneDrive - Meta-Level Software AG\Desktop\Angular\property-board\Backend\Backend.Api\bin\Debug\net8.0\Microsoft.CodeAnalysis.CSharp.Workspaces.dll
-C:\Users\amslmani\OneDrive - Meta-Level Software AG\Desktop\Angular\property-board\Backend\Backend.Api\bin\Debug\net8.0\Microsoft.CodeAnalysis.Workspaces.dll
-C:\Users\amslmani\OneDrive - Meta-Level Software AG\Desktop\Angular\property-board\Backend\Backend.Api\bin\Debug\net8.0\Microsoft.Data.SqlClient.dll
-C:\Users\amslmani\OneDrive - Meta-Level Software AG\Desktop\Angular\property-board\Backend\Backend.Api\bin\Debug\net8.0\Microsoft.EntityFrameworkCore.dll
-C:\Users\amslmani\OneDrive - Meta-Level Software AG\Desktop\Angular\property-board\Backend\Backend.Api\bin\Debug\net8.0\Microsoft.EntityFrameworkCore.Abstractions.dll
-C:\Users\amslmani\OneDrive - Meta-Level Software AG\Desktop\Angular\property-board\Backend\Backend.Api\bin\Debug\net8.0\Microsoft.EntityFrameworkCore.Design.dll
-C:\Users\amslmani\OneDrive - Meta-Level Software AG\Desktop\Angular\property-board\Backend\Backend.Api\bin\Debug\net8.0\Microsoft.EntityFrameworkCore.Relational.dll
-C:\Users\amslmani\OneDrive - Meta-Level Software AG\Desktop\Angular\property-board\Backend\Backend.Api\bin\Debug\net8.0\Microsoft.EntityFrameworkCore.SqlServer.dll
-C:\Users\amslmani\OneDrive - Meta-Level Software AG\Desktop\Angular\property-board\Backend\Backend.Api\bin\Debug\net8.0\Microsoft.Extensions.Caching.Memory.dll
-C:\Users\amslmani\OneDrive - Meta-Level Software AG\Desktop\Angular\property-board\Backend\Backend.Api\bin\Debug\net8.0\Microsoft.Extensions.DependencyInjection.dll
-C:\Users\amslmani\OneDrive - Meta-Level Software AG\Desktop\Angular\property-board\Backend\Backend.Api\bin\Debug\net8.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll
-C:\Users\amslmani\OneDrive - Meta-Level Software AG\Desktop\Angular\property-board\Backend\Backend.Api\bin\Debug\net8.0\Microsoft.Extensions.DependencyModel.dll
-C:\Users\amslmani\OneDrive - Meta-Level Software AG\Desktop\Angular\property-board\Backend\Backend.Api\bin\Debug\net8.0\Microsoft.Extensions.Logging.dll
-C:\Users\amslmani\OneDrive - Meta-Level Software AG\Desktop\Angular\property-board\Backend\Backend.Api\bin\Debug\net8.0\Microsoft.Extensions.Logging.Abstractions.dll
-C:\Users\amslmani\OneDrive - Meta-Level Software AG\Desktop\Angular\property-board\Backend\Backend.Api\bin\Debug\net8.0\Microsoft.Extensions.Options.dll
-C:\Users\amslmani\OneDrive - Meta-Level Software AG\Desktop\Angular\property-board\Backend\Backend.Api\bin\Debug\net8.0\Microsoft.Identity.Client.dll
-C:\Users\amslmani\OneDrive - Meta-Level Software AG\Desktop\Angular\property-board\Backend\Backend.Api\bin\Debug\net8.0\Microsoft.Identity.Client.Extensions.Msal.dll
-C:\Users\amslmani\OneDrive - Meta-Level Software AG\Desktop\Angular\property-board\Backend\Backend.Api\bin\Debug\net8.0\Microsoft.IdentityModel.Abstractions.dll
-C:\Users\amslmani\OneDrive - Meta-Level Software AG\Desktop\Angular\property-board\Backend\Backend.Api\bin\Debug\net8.0\Microsoft.IdentityModel.JsonWebTokens.dll
-C:\Users\amslmani\OneDrive - Meta-Level Software AG\Desktop\Angular\property-board\Backend\Backend.Api\bin\Debug\net8.0\Microsoft.IdentityModel.Logging.dll
-C:\Users\amslmani\OneDrive - Meta-Level Software AG\Desktop\Angular\property-board\Backend\Backend.Api\bin\Debug\net8.0\Microsoft.IdentityModel.Protocols.dll
-C:\Users\amslmani\OneDrive - Meta-Level Software AG\Desktop\Angular\property-board\Backend\Backend.Api\bin\Debug\net8.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
-C:\Users\amslmani\OneDrive - Meta-Level Software AG\Desktop\Angular\property-board\Backend\Backend.Api\bin\Debug\net8.0\Microsoft.IdentityModel.Tokens.dll
-C:\Users\amslmani\OneDrive - Meta-Level Software AG\Desktop\Angular\property-board\Backend\Backend.Api\bin\Debug\net8.0\Microsoft.OpenApi.dll
-C:\Users\amslmani\OneDrive - Meta-Level Software AG\Desktop\Angular\property-board\Backend\Backend.Api\bin\Debug\net8.0\Microsoft.SqlServer.Server.dll
-C:\Users\amslmani\OneDrive - Meta-Level Software AG\Desktop\Angular\property-board\Backend\Backend.Api\bin\Debug\net8.0\Microsoft.Win32.SystemEvents.dll
-C:\Users\amslmani\OneDrive - Meta-Level Software AG\Desktop\Angular\property-board\Backend\Backend.Api\bin\Debug\net8.0\Mono.TextTemplating.dll
-C:\Users\amslmani\OneDrive - Meta-Level Software AG\Desktop\Angular\property-board\Backend\Backend.Api\bin\Debug\net8.0\Swashbuckle.AspNetCore.Swagger.dll
-C:\Users\amslmani\OneDrive - Meta-Level Software AG\Desktop\Angular\property-board\Backend\Backend.Api\bin\Debug\net8.0\Swashbuckle.AspNetCore.SwaggerGen.dll
-C:\Users\amslmani\OneDrive - Meta-Level Software AG\Desktop\Angular\property-board\Backend\Backend.Api\bin\Debug\net8.0\Swashbuckle.AspNetCore.SwaggerUI.dll
-C:\Users\amslmani\OneDrive - Meta-Level Software AG\Desktop\Angular\property-board\Backend\Backend.Api\bin\Debug\net8.0\System.ClientModel.dll
-C:\Users\amslmani\OneDrive - Meta-Level Software AG\Desktop\Angular\property-board\Backend\Backend.Api\bin\Debug\net8.0\System.CodeDom.dll
-C:\Users\amslmani\OneDrive - Meta-Level Software AG\Desktop\Angular\property-board\Backend\Backend.Api\bin\Debug\net8.0\System.Composition.AttributedModel.dll
-C:\Users\amslmani\OneDrive - Meta-Level Software AG\Desktop\Angular\property-board\Backend\Backend.Api\bin\Debug\net8.0\System.Composition.Convention.dll
-C:\Users\amslmani\OneDrive - Meta-Level Software AG\Desktop\Angular\property-board\Backend\Backend.Api\bin\Debug\net8.0\System.Composition.Hosting.dll
-C:\Users\amslmani\OneDrive - Meta-Level Software AG\Desktop\Angular\property-board\Backend\Backend.Api\bin\Debug\net8.0\System.Composition.Runtime.dll
-C:\Users\amslmani\OneDrive - Meta-Level Software AG\Desktop\Angular\property-board\Backend\Backend.Api\bin\Debug\net8.0\System.Composition.TypedParts.dll
-C:\Users\amslmani\OneDrive - Meta-Level Software AG\Desktop\Angular\property-board\Backend\Backend.Api\bin\Debug\net8.0\System.Configuration.ConfigurationManager.dll
-C:\Users\amslmani\OneDrive - Meta-Level Software AG\Desktop\Angular\property-board\Backend\Backend.Api\bin\Debug\net8.0\System.Drawing.Common.dll
-C:\Users\amslmani\OneDrive - Meta-Level Software AG\Desktop\Angular\property-board\Backend\Backend.Api\bin\Debug\net8.0\System.IdentityModel.Tokens.Jwt.dll
-C:\Users\amslmani\OneDrive - Meta-Level Software AG\Desktop\Angular\property-board\Backend\Backend.Api\bin\Debug\net8.0\System.Memory.Data.dll
-C:\Users\amslmani\OneDrive - Meta-Level Software AG\Desktop\Angular\property-board\Backend\Backend.Api\bin\Debug\net8.0\System.Runtime.Caching.dll
-C:\Users\amslmani\OneDrive - Meta-Level Software AG\Desktop\Angular\property-board\Backend\Backend.Api\bin\Debug\net8.0\System.Security.Cryptography.ProtectedData.dll
-C:\Users\amslmani\OneDrive - Meta-Level Software AG\Desktop\Angular\property-board\Backend\Backend.Api\bin\Debug\net8.0\System.Security.Permissions.dll
-C:\Users\amslmani\OneDrive - Meta-Level Software AG\Desktop\Angular\property-board\Backend\Backend.Api\bin\Debug\net8.0\System.Windows.Extensions.dll
-C:\Users\amslmani\OneDrive - Meta-Level Software AG\Desktop\Angular\property-board\Backend\Backend.Api\bin\Debug\net8.0\cs\Microsoft.CodeAnalysis.resources.dll
-C:\Users\amslmani\OneDrive - Meta-Level Software AG\Desktop\Angular\property-board\Backend\Backend.Api\bin\Debug\net8.0\de\Microsoft.CodeAnalysis.resources.dll
-C:\Users\amslmani\OneDrive - Meta-Level Software AG\Desktop\Angular\property-board\Backend\Backend.Api\bin\Debug\net8.0\es\Microsoft.CodeAnalysis.resources.dll
-C:\Users\amslmani\OneDrive - Meta-Level Software AG\Desktop\Angular\property-board\Backend\Backend.Api\bin\Debug\net8.0\fr\Microsoft.CodeAnalysis.resources.dll
-C:\Users\amslmani\OneDrive - Meta-Level Software AG\Desktop\Angular\property-board\Backend\Backend.Api\bin\Debug\net8.0\it\Microsoft.CodeAnalysis.resources.dll
-C:\Users\amslmani\OneDrive - Meta-Level Software AG\Desktop\Angular\property-board\Backend\Backend.Api\bin\Debug\net8.0\ja\Microsoft.CodeAnalysis.resources.dll
-C:\Users\amslmani\OneDrive - Meta-Level Software AG\Desktop\Angular\property-board\Backend\Backend.Api\bin\Debug\net8.0\ko\Microsoft.CodeAnalysis.resources.dll
-C:\Users\amslmani\OneDrive - Meta-Level Software AG\Desktop\Angular\property-board\Backend\Backend.Api\bin\Debug\net8.0\pl\Microsoft.CodeAnalysis.resources.dll
-C:\Users\amslmani\OneDrive - Meta-Level Software AG\Desktop\Angular\property-board\Backend\Backend.Api\bin\Debug\net8.0\pt-BR\Microsoft.CodeAnalysis.resources.dll
-C:\Users\amslmani\OneDrive - Meta-Level Software AG\Desktop\Angular\property-board\Backend\Backend.Api\bin\Debug\net8.0\ru\Microsoft.CodeAnalysis.resources.dll
-C:\Users\amslmani\OneDrive - Meta-Level Software AG\Desktop\Angular\property-board\Backend\Backend.Api\bin\Debug\net8.0\tr\Microsoft.CodeAnalysis.resources.dll
-C:\Users\amslmani\OneDrive - Meta-Level Software AG\Desktop\Angular\property-board\Backend\Backend.Api\bin\Debug\net8.0\zh-Hans\Microsoft.CodeAnalysis.resources.dll
-C:\Users\amslmani\OneDrive - Meta-Level Software AG\Desktop\Angular\property-board\Backend\Backend.Api\bin\Debug\net8.0\zh-Hant\Microsoft.CodeAnalysis.resources.dll
-C:\Users\amslmani\OneDrive - Meta-Level Software AG\Desktop\Angular\property-board\Backend\Backend.Api\bin\Debug\net8.0\cs\Microsoft.CodeAnalysis.CSharp.resources.dll
-C:\Users\amslmani\OneDrive - Meta-Level Software AG\Desktop\Angular\property-board\Backend\Backend.Api\bin\Debug\net8.0\de\Microsoft.CodeAnalysis.CSharp.resources.dll
-C:\Users\amslmani\OneDrive - Meta-Level Software AG\Desktop\Angular\property-board\Backend\Backend.Api\bin\Debug\net8.0\es\Microsoft.CodeAnalysis.CSharp.resources.dll
-C:\Users\amslmani\OneDrive - Meta-Level Software AG\Desktop\Angular\property-board\Backend\Backend.Api\bin\Debug\net8.0\fr\Microsoft.CodeAnalysis.CSharp.resources.dll
-C:\Users\amslmani\OneDrive - Meta-Level Software AG\Desktop\Angular\property-board\Backend\Backend.Api\bin\Debug\net8.0\it\Microsoft.CodeAnalysis.CSharp.resources.dll
-C:\Users\amslmani\OneDrive - Meta-Level Software AG\Desktop\Angular\property-board\Backend\Backend.Api\bin\Debug\net8.0\ja\Microsoft.CodeAnalysis.CSharp.resources.dll
-C:\Users\amslmani\OneDrive - Meta-Level Software AG\Desktop\Angular\property-board\Backend\Backend.Api\bin\Debug\net8.0\ko\Microsoft.CodeAnalysis.CSharp.resources.dll
-C:\Users\amslmani\OneDrive - Meta-Level Software AG\Desktop\Angular\property-board\Backend\Backend.Api\bin\Debug\net8.0\pl\Microsoft.CodeAnalysis.CSharp.resources.dll
-C:\Users\amslmani\OneDrive - Meta-Level Software AG\Desktop\Angular\property-board\Backend\Backend.Api\bin\Debug\net8.0\pt-BR\Microsoft.CodeAnalysis.CSharp.resources.dll
-C:\Users\amslmani\OneDrive - Meta-Level Software AG\Desktop\Angular\property-board\Backend\Backend.Api\bin\Debug\net8.0\ru\Microsoft.CodeAnalysis.CSharp.resources.dll
-C:\Users\amslmani\OneDrive - Meta-Level Software AG\Desktop\Angular\property-board\Backend\Backend.Api\bin\Debug\net8.0\tr\Microsoft.CodeAnalysis.CSharp.resources.dll
-C:\Users\amslmani\OneDrive - Meta-Level Software AG\Desktop\Angular\property-board\Backend\Backend.Api\bin\Debug\net8.0\zh-Hans\Microsoft.CodeAnalysis.CSharp.resources.dll
-C:\Users\amslmani\OneDrive - Meta-Level Software AG\Desktop\Angular\property-board\Backend\Backend.Api\bin\Debug\net8.0\zh-Hant\Microsoft.CodeAnalysis.CSharp.resources.dll
-C:\Users\amslmani\OneDrive - Meta-Level Software AG\Desktop\Angular\property-board\Backend\Backend.Api\bin\Debug\net8.0\cs\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
-C:\Users\amslmani\OneDrive - Meta-Level Software AG\Desktop\Angular\property-board\Backend\Backend.Api\bin\Debug\net8.0\de\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
-C:\Users\amslmani\OneDrive - Meta-Level Software AG\Desktop\Angular\property-board\Backend\Backend.Api\bin\Debug\net8.0\es\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
-C:\Users\amslmani\OneDrive - Meta-Level Software AG\Desktop\Angular\property-board\Backend\Backend.Api\bin\Debug\net8.0\fr\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
-C:\Users\amslmani\OneDrive - Meta-Level Software AG\Desktop\Angular\property-board\Backend\Backend.Api\bin\Debug\net8.0\it\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
-C:\Users\amslmani\OneDrive - Meta-Level Software AG\Desktop\Angular\property-board\Backend\Backend.Api\bin\Debug\net8.0\ja\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
-C:\Users\amslmani\OneDrive - Meta-Level Software AG\Desktop\Angular\property-board\Backend\Backend.Api\bin\Debug\net8.0\ko\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
-C:\Users\amslmani\OneDrive - Meta-Level Software AG\Desktop\Angular\property-board\Backend\Backend.Api\bin\Debug\net8.0\pl\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
-C:\Users\amslmani\OneDrive - Meta-Level Software AG\Desktop\Angular\property-board\Backend\Backend.Api\bin\Debug\net8.0\pt-BR\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
-C:\Users\amslmani\OneDrive - Meta-Level Software AG\Desktop\Angular\property-board\Backend\Backend.Api\bin\Debug\net8.0\ru\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
-C:\Users\amslmani\OneDrive - Meta-Level Software AG\Desktop\Angular\property-board\Backend\Backend.Api\bin\Debug\net8.0\tr\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
-C:\Users\amslmani\OneDrive - Meta-Level Software AG\Desktop\Angular\property-board\Backend\Backend.Api\bin\Debug\net8.0\zh-Hans\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
-C:\Users\amslmani\OneDrive - Meta-Level Software AG\Desktop\Angular\property-board\Backend\Backend.Api\bin\Debug\net8.0\zh-Hant\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
-C:\Users\amslmani\OneDrive - Meta-Level Software AG\Desktop\Angular\property-board\Backend\Backend.Api\bin\Debug\net8.0\cs\Microsoft.CodeAnalysis.Workspaces.resources.dll
-C:\Users\amslmani\OneDrive - Meta-Level Software AG\Desktop\Angular\property-board\Backend\Backend.Api\bin\Debug\net8.0\de\Microsoft.CodeAnalysis.Workspaces.resources.dll
-C:\Users\amslmani\OneDrive - Meta-Level Software AG\Desktop\Angular\property-board\Backend\Backend.Api\bin\Debug\net8.0\es\Microsoft.CodeAnalysis.Workspaces.resources.dll
-C:\Users\amslmani\OneDrive - Meta-Level Software AG\Desktop\Angular\property-board\Backend\Backend.Api\bin\Debug\net8.0\fr\Microsoft.CodeAnalysis.Workspaces.resources.dll
-C:\Users\amslmani\OneDrive - Meta-Level Software AG\Desktop\Angular\property-board\Backend\Backend.Api\bin\Debug\net8.0\it\Microsoft.CodeAnalysis.Workspaces.resources.dll
-C:\Users\amslmani\OneDrive - Meta-Level Software AG\Desktop\Angular\property-board\Backend\Backend.Api\bin\Debug\net8.0\ja\Microsoft.CodeAnalysis.Workspaces.resources.dll
-C:\Users\amslmani\OneDrive - Meta-Level Software AG\Desktop\Angular\property-board\Backend\Backend.Api\bin\Debug\net8.0\ko\Microsoft.CodeAnalysis.Workspaces.resources.dll
-C:\Users\amslmani\OneDrive - Meta-Level Software AG\Desktop\Angular\property-board\Backend\Backend.Api\bin\Debug\net8.0\pl\Microsoft.CodeAnalysis.Workspaces.resources.dll
-C:\Users\amslmani\OneDrive - Meta-Level Software AG\Desktop\Angular\property-board\Backend\Backend.Api\bin\Debug\net8.0\pt-BR\Microsoft.CodeAnalysis.Workspaces.resources.dll
-C:\Users\amslmani\OneDrive - Meta-Level Software AG\Desktop\Angular\property-board\Backend\Backend.Api\bin\Debug\net8.0\ru\Microsoft.CodeAnalysis.Workspaces.resources.dll
-C:\Users\amslmani\OneDrive - Meta-Level Software AG\Desktop\Angular\property-board\Backend\Backend.Api\bin\Debug\net8.0\tr\Microsoft.CodeAnalysis.Workspaces.resources.dll
-C:\Users\amslmani\OneDrive - Meta-Level Software AG\Desktop\Angular\property-board\Backend\Backend.Api\bin\Debug\net8.0\zh-Hans\Microsoft.CodeAnalysis.Workspaces.resources.dll
-C:\Users\amslmani\OneDrive - Meta-Level Software AG\Desktop\Angular\property-board\Backend\Backend.Api\bin\Debug\net8.0\zh-Hant\Microsoft.CodeAnalysis.Workspaces.resources.dll
-C:\Users\amslmani\OneDrive - Meta-Level Software AG\Desktop\Angular\property-board\Backend\Backend.Api\bin\Debug\net8.0\runtimes\unix\lib\net6.0\Microsoft.Data.SqlClient.dll
-C:\Users\amslmani\OneDrive - Meta-Level Software AG\Desktop\Angular\property-board\Backend\Backend.Api\bin\Debug\net8.0\runtimes\win\lib\net6.0\Microsoft.Data.SqlClient.dll
-C:\Users\amslmani\OneDrive - Meta-Level Software AG\Desktop\Angular\property-board\Backend\Backend.Api\bin\Debug\net8.0\runtimes\win-arm\native\Microsoft.Data.SqlClient.SNI.dll
-C:\Users\amslmani\OneDrive - Meta-Level Software AG\Desktop\Angular\property-board\Backend\Backend.Api\bin\Debug\net8.0\runtimes\win-arm64\native\Microsoft.Data.SqlClient.SNI.dll
-C:\Users\amslmani\OneDrive - Meta-Level Software AG\Desktop\Angular\property-board\Backend\Backend.Api\bin\Debug\net8.0\runtimes\win-x64\native\Microsoft.Data.SqlClient.SNI.dll
-C:\Users\amslmani\OneDrive - Meta-Level Software AG\Desktop\Angular\property-board\Backend\Backend.Api\bin\Debug\net8.0\runtimes\win-x86\native\Microsoft.Data.SqlClient.SNI.dll
-C:\Users\amslmani\OneDrive - Meta-Level Software AG\Desktop\Angular\property-board\Backend\Backend.Api\bin\Debug\net8.0\runtimes\win\lib\net6.0\Microsoft.Win32.SystemEvents.dll
-C:\Users\amslmani\OneDrive - Meta-Level Software AG\Desktop\Angular\property-board\Backend\Backend.Api\bin\Debug\net8.0\runtimes\unix\lib\net6.0\System.Drawing.Common.dll
-C:\Users\amslmani\OneDrive - Meta-Level Software AG\Desktop\Angular\property-board\Backend\Backend.Api\bin\Debug\net8.0\runtimes\win\lib\net6.0\System.Drawing.Common.dll
-C:\Users\amslmani\OneDrive - Meta-Level Software AG\Desktop\Angular\property-board\Backend\Backend.Api\bin\Debug\net8.0\runtimes\win\lib\net6.0\System.Runtime.Caching.dll
-C:\Users\amslmani\OneDrive - Meta-Level Software AG\Desktop\Angular\property-board\Backend\Backend.Api\bin\Debug\net8.0\runtimes\win\lib\net6.0\System.Security.Cryptography.ProtectedData.dll
-C:\Users\amslmani\OneDrive - Meta-Level Software AG\Desktop\Angular\property-board\Backend\Backend.Api\bin\Debug\net8.0\runtimes\win\lib\net6.0\System.Windows.Extensions.dll
-C:\Users\amslmani\OneDrive - Meta-Level Software AG\Desktop\Angular\property-board\Backend\Backend.Api\obj\Debug\net8.0\Backend.Api.csproj.AssemblyReference.cache
-C:\Users\amslmani\OneDrive - Meta-Level Software AG\Desktop\Angular\property-board\Backend\Backend.Api\obj\Debug\net8.0\Backend.Api.GeneratedMSBuildEditorConfig.editorconfig
-C:\Users\amslmani\OneDrive - Meta-Level Software AG\Desktop\Angular\property-board\Backend\Backend.Api\obj\Debug\net8.0\Backend.Api.AssemblyInfoInputs.cache
-C:\Users\amslmani\OneDrive - Meta-Level Software AG\Desktop\Angular\property-board\Backend\Backend.Api\obj\Debug\net8.0\Backend.Api.AssemblyInfo.cs
-C:\Users\amslmani\OneDrive - Meta-Level Software AG\Desktop\Angular\property-board\Backend\Backend.Api\obj\Debug\net8.0\Backend.Api.csproj.CoreCompileInputs.cache
-C:\Users\amslmani\OneDrive - Meta-Level Software AG\Desktop\Angular\property-board\Backend\Backend.Api\obj\Debug\net8.0\Backend.Api.MvcApplicationPartsAssemblyInfo.cs
-C:\Users\amslmani\OneDrive - Meta-Level Software AG\Desktop\Angular\property-board\Backend\Backend.Api\obj\Debug\net8.0\Backend.Api.MvcApplicationPartsAssemblyInfo.cache
-C:\Users\amslmani\OneDrive - Meta-Level Software AG\Desktop\Angular\property-board\Backend\Backend.Api\obj\Debug\net8.0\Backend.Api.sourcelink.json
-C:\Users\amslmani\OneDrive - Meta-Level Software AG\Desktop\Angular\property-board\Backend\Backend.Api\obj\Debug\net8.0\staticwebassets.build.json
-C:\Users\amslmani\OneDrive - Meta-Level Software AG\Desktop\Angular\property-board\Backend\Backend.Api\obj\Debug\net8.0\staticwebassets.development.json
-C:\Users\amslmani\OneDrive - Meta-Level Software AG\Desktop\Angular\property-board\Backend\Backend.Api\obj\Debug\net8.0\staticwebassets\msbuild.Backend.Api.Microsoft.AspNetCore.StaticWebAssets.props
-C:\Users\amslmani\OneDrive - Meta-Level Software AG\Desktop\Angular\property-board\Backend\Backend.Api\obj\Debug\net8.0\staticwebassets\msbuild.build.Backend.Api.props
-C:\Users\amslmani\OneDrive - Meta-Level Software AG\Desktop\Angular\property-board\Backend\Backend.Api\obj\Debug\net8.0\staticwebassets\msbuild.buildMultiTargeting.Backend.Api.props
-C:\Users\amslmani\OneDrive - Meta-Level Software AG\Desktop\Angular\property-board\Backend\Backend.Api\obj\Debug\net8.0\staticwebassets\msbuild.buildTransitive.Backend.Api.props
-C:\Users\amslmani\OneDrive - Meta-Level Software AG\Desktop\Angular\property-board\Backend\Backend.Api\obj\Debug\net8.0\staticwebassets.pack.json
-C:\Users\amslmani\OneDrive - Meta-Level Software AG\Desktop\Angular\property-board\Backend\Backend.Api\obj\Debug\net8.0\scopedcss\bundle\Backend.Api.styles.css
-C:\Users\amslmani\OneDrive - Meta-Level Software AG\Desktop\Angular\property-board\Backend\Backend.Api\obj\Debug\net8.0\Backend..0C93C9B3.Up2Date
-C:\Users\amslmani\OneDrive - Meta-Level Software AG\Desktop\Angular\property-board\Backend\Backend.Api\obj\Debug\net8.0\Backend.Api.dll
-C:\Users\amslmani\OneDrive - Meta-Level Software AG\Desktop\Angular\property-board\Backend\Backend.Api\obj\Debug\net8.0\refint\Backend.Api.dll
-C:\Users\amslmani\OneDrive - Meta-Level Software AG\Desktop\Angular\property-board\Backend\Backend.Api\obj\Debug\net8.0\Backend.Api.pdb
-C:\Users\amslmani\OneDrive - Meta-Level Software AG\Desktop\Angular\property-board\Backend\Backend.Api\obj\Debug\net8.0\Backend.Api.genruntimeconfig.cache
-C:\Users\amslmani\OneDrive - Meta-Level Software AG\Desktop\Angular\property-board\Backend\Backend.Api\obj\Debug\net8.0\ref\Backend.Api.dll
-C:\Users\amslmani\OneDrive - Meta-Level Software AG\Desktop\Angular\property-board\Backend\Backend.Api\bin\Debug\net8.0\Backend.Api.staticwebassets.runtime.json
-C:\Users\amslmani\OneDrive - Meta-Level Software AG\Desktop\Angular\property-board\Backend\Backend.Api\bin\Debug\net8.0\FirebaseAdmin.dll
-C:\Users\amslmani\OneDrive - Meta-Level Software AG\Desktop\Angular\property-board\Backend\Backend.Api\bin\Debug\net8.0\Google.Api.Gax.dll
-C:\Users\amslmani\OneDrive - Meta-Level Software AG\Desktop\Angular\property-board\Backend\Backend.Api\bin\Debug\net8.0\Google.Api.Gax.Rest.dll
-C:\Users\amslmani\OneDrive - Meta-Level Software AG\Desktop\Angular\property-board\Backend\Backend.Api\bin\Debug\net8.0\Google.Apis.dll
-C:\Users\amslmani\OneDrive - Meta-Level Software AG\Desktop\Angular\property-board\Backend\Backend.Api\bin\Debug\net8.0\Google.Apis.Auth.dll
-C:\Users\amslmani\OneDrive - Meta-Level Software AG\Desktop\Angular\property-board\Backend\Backend.Api\bin\Debug\net8.0\Google.Apis.Core.dll
-C:\Users\amslmani\OneDrive - Meta-Level Software AG\Desktop\Angular\property-board\Backend\Backend.Api\bin\Debug\net8.0\Newtonsoft.Json.dll
-C:\Users\amslmani\OneDrive - Meta-Level Software AG\Desktop\Angular\property-board\Backend\Backend.Api\bin\Debug\net8.0\System.Management.dll
-C:\Users\amslmani\OneDrive - Meta-Level Software AG\Desktop\Angular\property-board\Backend\Backend.Api\bin\Debug\net8.0\runtimes\win\lib\net7.0\System.Management.dll
-C:\Users\amslmani\OneDrive - Meta-Level Software AG\Desktop\Angular\property-board\Backend\Backend.Api\bin\Debug\net8.0\serviceAccountKey.json
-C:\Users\amslmani\OneDrive - Meta-Level Software AG\Desktop\Angular\property-board\Backend\Backend.Api\bin\Debug\net8.0\BouncyCastle.Cryptography.dll
-C:\Users\amslmani\OneDrive - Meta-Level Software AG\Desktop\Angular\property-board\Backend\Backend.Api\bin\Debug\net8.0\MailKit.dll
-C:\Users\amslmani\OneDrive - Meta-Level Software AG\Desktop\Angular\property-board\Backend\Backend.Api\bin\Debug\net8.0\MimeKit.dll
-C:\Users\amslmani\OneDrive - Meta-Level Software AG\Desktop\Angular\property-board\Backend\Backend.Api\bin\Debug\net8.0\System.Security.Cryptography.Pkcs.dll
-C:\Users\amslmani\OneDrive - Meta-Level Software AG\Desktop\Angular\property-board\Backend\Backend.Api\bin\Debug\net8.0\runtimes\win\lib\net8.0\System.Security.Cryptography.Pkcs.dll
+C:/Users/amslmani/OneDrive - Meta-Level Software AG/Desktop/Angular/property-board/Backend/Backend.Api/bin/Debug/net8.0/appsettings.Development.json
+C:/Users/amslmani/OneDrive - Meta-Level Software AG/Desktop/Angular/property-board/Backend/Backend.Api/bin/Debug/net8.0/appsettings.json
+C:/Users/amslmani/OneDrive - Meta-Level Software AG/Desktop/Angular/property-board/Backend/Backend.Api/bin/Debug/net8.0/Backend.Api.exe
+C:/Users/amslmani/OneDrive - Meta-Level Software AG/Desktop/Angular/property-board/Backend/Backend.Api/bin/Debug/net8.0/Backend.Api.deps.json
+C:/Users/amslmani/OneDrive - Meta-Level Software AG/Desktop/Angular/property-board/Backend/Backend.Api/bin/Debug/net8.0/Backend.Api.runtimeconfig.json
+C:/Users/amslmani/OneDrive - Meta-Level Software AG/Desktop/Angular/property-board/Backend/Backend.Api/bin/Debug/net8.0/Backend.Api.dll
+C:/Users/amslmani/OneDrive - Meta-Level Software AG/Desktop/Angular/property-board/Backend/Backend.Api/bin/Debug/net8.0/Backend.Api.pdb
+C:/Users/amslmani/OneDrive - Meta-Level Software AG/Desktop/Angular/property-board/Backend/Backend.Api/bin/Debug/net8.0/Azure.Core.dll
+C:/Users/amslmani/OneDrive - Meta-Level Software AG/Desktop/Angular/property-board/Backend/Backend.Api/bin/Debug/net8.0/Azure.Identity.dll
+C:/Users/amslmani/OneDrive - Meta-Level Software AG/Desktop/Angular/property-board/Backend/Backend.Api/bin/Debug/net8.0/BCrypt.Net-Next.dll
+C:/Users/amslmani/OneDrive - Meta-Level Software AG/Desktop/Angular/property-board/Backend/Backend.Api/bin/Debug/net8.0/Humanizer.dll
+C:/Users/amslmani/OneDrive - Meta-Level Software AG/Desktop/Angular/property-board/Backend/Backend.Api/bin/Debug/net8.0/Microsoft.AspNetCore.Authentication.JwtBearer.dll
+C:/Users/amslmani/OneDrive - Meta-Level Software AG/Desktop/Angular/property-board/Backend/Backend.Api/bin/Debug/net8.0/Microsoft.Bcl.AsyncInterfaces.dll
+C:/Users/amslmani/OneDrive - Meta-Level Software AG/Desktop/Angular/property-board/Backend/Backend.Api/bin/Debug/net8.0/Microsoft.CodeAnalysis.dll
+C:/Users/amslmani/OneDrive - Meta-Level Software AG/Desktop/Angular/property-board/Backend/Backend.Api/bin/Debug/net8.0/Microsoft.CodeAnalysis.CSharp.dll
+C:/Users/amslmani/OneDrive - Meta-Level Software AG/Desktop/Angular/property-board/Backend/Backend.Api/bin/Debug/net8.0/Microsoft.CodeAnalysis.CSharp.Workspaces.dll
+C:/Users/amslmani/OneDrive - Meta-Level Software AG/Desktop/Angular/property-board/Backend/Backend.Api/bin/Debug/net8.0/Microsoft.CodeAnalysis.Workspaces.dll
+C:/Users/amslmani/OneDrive - Meta-Level Software AG/Desktop/Angular/property-board/Backend/Backend.Api/bin/Debug/net8.0/Microsoft.Data.SqlClient.dll
+C:/Users/amslmani/OneDrive - Meta-Level Software AG/Desktop/Angular/property-board/Backend/Backend.Api/bin/Debug/net8.0/Microsoft.EntityFrameworkCore.dll
+C:/Users/amslmani/OneDrive - Meta-Level Software AG/Desktop/Angular/property-board/Backend/Backend.Api/bin/Debug/net8.0/Microsoft.EntityFrameworkCore.Abstractions.dll
+C:/Users/amslmani/OneDrive - Meta-Level Software AG/Desktop/Angular/property-board/Backend/Backend.Api/bin/Debug/net8.0/Microsoft.EntityFrameworkCore.Design.dll
+C:/Users/amslmani/OneDrive - Meta-Level Software AG/Desktop/Angular/property-board/Backend/Backend.Api/bin/Debug/net8.0/Microsoft.EntityFrameworkCore.Relational.dll
+C:/Users/amslmani/OneDrive - Meta-Level Software AG/Desktop/Angular/property-board/Backend/Backend.Api/bin/Debug/net8.0/Microsoft.EntityFrameworkCore.SqlServer.dll
+C:/Users/amslmani/OneDrive - Meta-Level Software AG/Desktop/Angular/property-board/Backend/Backend.Api/bin/Debug/net8.0/Microsoft.Extensions.Caching.Memory.dll
+C:/Users/amslmani/OneDrive - Meta-Level Software AG/Desktop/Angular/property-board/Backend/Backend.Api/bin/Debug/net8.0/Microsoft.Extensions.DependencyInjection.dll
+C:/Users/amslmani/OneDrive - Meta-Level Software AG/Desktop/Angular/property-board/Backend/Backend.Api/bin/Debug/net8.0/Microsoft.Extensions.DependencyInjection.Abstractions.dll
+C:/Users/amslmani/OneDrive - Meta-Level Software AG/Desktop/Angular/property-board/Backend/Backend.Api/bin/Debug/net8.0/Microsoft.Extensions.DependencyModel.dll
+C:/Users/amslmani/OneDrive - Meta-Level Software AG/Desktop/Angular/property-board/Backend/Backend.Api/bin/Debug/net8.0/Microsoft.Extensions.Logging.dll
+C:/Users/amslmani/OneDrive - Meta-Level Software AG/Desktop/Angular/property-board/Backend/Backend.Api/bin/Debug/net8.0/Microsoft.Extensions.Logging.Abstractions.dll
+C:/Users/amslmani/OneDrive - Meta-Level Software AG/Desktop/Angular/property-board/Backend/Backend.Api/bin/Debug/net8.0/Microsoft.Extensions.Options.dll
+C:/Users/amslmani/OneDrive - Meta-Level Software AG/Desktop/Angular/property-board/Backend/Backend.Api/bin/Debug/net8.0/Microsoft.Identity.Client.dll
+C:/Users/amslmani/OneDrive - Meta-Level Software AG/Desktop/Angular/property-board/Backend/Backend.Api/bin/Debug/net8.0/Microsoft.Identity.Client.Extensions.Msal.dll
+C:/Users/amslmani/OneDrive - Meta-Level Software AG/Desktop/Angular/property-board/Backend/Backend.Api/bin/Debug/net8.0/Microsoft.IdentityModel.Abstractions.dll
+C:/Users/amslmani/OneDrive - Meta-Level Software AG/Desktop/Angular/property-board/Backend/Backend.Api/bin/Debug/net8.0/Microsoft.IdentityModel.JsonWebTokens.dll
+C:/Users/amslmani/OneDrive - Meta-Level Software AG/Desktop/Angular/property-board/Backend/Backend.Api/bin/Debug/net8.0/Microsoft.IdentityModel.Logging.dll
+C:/Users/amslmani/OneDrive - Meta-Level Software AG/Desktop/Angular/property-board/Backend/Backend.Api/bin/Debug/net8.0/Microsoft.IdentityModel.Protocols.dll
+C:/Users/amslmani/OneDrive - Meta-Level Software AG/Desktop/Angular/property-board/Backend/Backend.Api/bin/Debug/net8.0/Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+C:/Users/amslmani/OneDrive - Meta-Level Software AG/Desktop/Angular/property-board/Backend/Backend.Api/bin/Debug/net8.0/Microsoft.IdentityModel.Tokens.dll
+C:/Users/amslmani/OneDrive - Meta-Level Software AG/Desktop/Angular/property-board/Backend/Backend.Api/bin/Debug/net8.0/Microsoft.OpenApi.dll
+C:/Users/amslmani/OneDrive - Meta-Level Software AG/Desktop/Angular/property-board/Backend/Backend.Api/bin/Debug/net8.0/Microsoft.SqlServer.Server.dll
+C:/Users/amslmani/OneDrive - Meta-Level Software AG/Desktop/Angular/property-board/Backend/Backend.Api/bin/Debug/net8.0/Microsoft.Win32.SystemEvents.dll
+C:/Users/amslmani/OneDrive - Meta-Level Software AG/Desktop/Angular/property-board/Backend/Backend.Api/bin/Debug/net8.0/Mono.TextTemplating.dll
+C:/Users/amslmani/OneDrive - Meta-Level Software AG/Desktop/Angular/property-board/Backend/Backend.Api/bin/Debug/net8.0/Swashbuckle.AspNetCore.Swagger.dll
+C:/Users/amslmani/OneDrive - Meta-Level Software AG/Desktop/Angular/property-board/Backend/Backend.Api/bin/Debug/net8.0/Swashbuckle.AspNetCore.SwaggerGen.dll
+C:/Users/amslmani/OneDrive - Meta-Level Software AG/Desktop/Angular/property-board/Backend/Backend.Api/bin/Debug/net8.0/Swashbuckle.AspNetCore.SwaggerUI.dll
+C:/Users/amslmani/OneDrive - Meta-Level Software AG/Desktop/Angular/property-board/Backend/Backend.Api/bin/Debug/net8.0/System.ClientModel.dll
+C:/Users/amslmani/OneDrive - Meta-Level Software AG/Desktop/Angular/property-board/Backend/Backend.Api/bin/Debug/net8.0/System.CodeDom.dll
+C:/Users/amslmani/OneDrive - Meta-Level Software AG/Desktop/Angular/property-board/Backend/Backend.Api/bin/Debug/net8.0/System.Composition.AttributedModel.dll
+C:/Users/amslmani/OneDrive - Meta-Level Software AG/Desktop/Angular/property-board/Backend/Backend.Api/bin/Debug/net8.0/System.Composition.Convention.dll
+C:/Users/amslmani/OneDrive - Meta-Level Software AG/Desktop/Angular/property-board/Backend/Backend.Api/bin/Debug/net8.0/System.Composition.Hosting.dll
+C:/Users/amslmani/OneDrive - Meta-Level Software AG/Desktop/Angular/property-board/Backend/Backend.Api/bin/Debug/net8.0/System.Composition.Runtime.dll
+C:/Users/amslmani/OneDrive - Meta-Level Software AG/Desktop/Angular/property-board/Backend/Backend.Api/bin/Debug/net8.0/System.Composition.TypedParts.dll
+C:/Users/amslmani/OneDrive - Meta-Level Software AG/Desktop/Angular/property-board/Backend/Backend.Api/bin/Debug/net8.0/System.Configuration.ConfigurationManager.dll
+C:/Users/amslmani/OneDrive - Meta-Level Software AG/Desktop/Angular/property-board/Backend/Backend.Api/bin/Debug/net8.0/System.Drawing.Common.dll
+C:/Users/amslmani/OneDrive - Meta-Level Software AG/Desktop/Angular/property-board/Backend/Backend.Api/bin/Debug/net8.0/System.IdentityModel.Tokens.Jwt.dll
+C:/Users/amslmani/OneDrive - Meta-Level Software AG/Desktop/Angular/property-board/Backend/Backend.Api/bin/Debug/net8.0/System.Memory.Data.dll
+C:/Users/amslmani/OneDrive - Meta-Level Software AG/Desktop/Angular/property-board/Backend/Backend.Api/bin/Debug/net8.0/System.Runtime.Caching.dll
+C:/Users/amslmani/OneDrive - Meta-Level Software AG/Desktop/Angular/property-board/Backend/Backend.Api/bin/Debug/net8.0/System.Security.Cryptography.ProtectedData.dll
+C:/Users/amslmani/OneDrive - Meta-Level Software AG/Desktop/Angular/property-board/Backend/Backend.Api/bin/Debug/net8.0/System.Security.Permissions.dll
+C:/Users/amslmani/OneDrive - Meta-Level Software AG/Desktop/Angular/property-board/Backend/Backend.Api/bin/Debug/net8.0/System.Windows.Extensions.dll
+C:/Users/amslmani/OneDrive - Meta-Level Software AG/Desktop/Angular/property-board/Backend/Backend.Api/bin/Debug/net8.0/cs/Microsoft.CodeAnalysis.resources.dll
+C:/Users/amslmani/OneDrive - Meta-Level Software AG/Desktop/Angular/property-board/Backend/Backend.Api/bin/Debug/net8.0/de/Microsoft.CodeAnalysis.resources.dll
+C:/Users/amslmani/OneDrive - Meta-Level Software AG/Desktop/Angular/property-board/Backend/Backend.Api/bin/Debug/net8.0/es/Microsoft.CodeAnalysis.resources.dll
+C:/Users/amslmani/OneDrive - Meta-Level Software AG/Desktop/Angular/property-board/Backend/Backend.Api/bin/Debug/net8.0/fr/Microsoft.CodeAnalysis.resources.dll
+C:/Users/amslmani/OneDrive - Meta-Level Software AG/Desktop/Angular/property-board/Backend/Backend.Api/bin/Debug/net8.0/it/Microsoft.CodeAnalysis.resources.dll
+C:/Users/amslmani/OneDrive - Meta-Level Software AG/Desktop/Angular/property-board/Backend/Backend.Api/bin/Debug/net8.0/ja/Microsoft.CodeAnalysis.resources.dll
+C:/Users/amslmani/OneDrive - Meta-Level Software AG/Desktop/Angular/property-board/Backend/Backend.Api/bin/Debug/net8.0/ko/Microsoft.CodeAnalysis.resources.dll
+C:/Users/amslmani/OneDrive - Meta-Level Software AG/Desktop/Angular/property-board/Backend/Backend.Api/bin/Debug/net8.0/pl/Microsoft.CodeAnalysis.resources.dll
+C:/Users/amslmani/OneDrive - Meta-Level Software AG/Desktop/Angular/property-board/Backend/Backend.Api/bin/Debug/net8.0/pt-BR/Microsoft.CodeAnalysis.resources.dll
+C:/Users/amslmani/OneDrive - Meta-Level Software AG/Desktop/Angular/property-board/Backend/Backend.Api/bin/Debug/net8.0/ru/Microsoft.CodeAnalysis.resources.dll
+C:/Users/amslmani/OneDrive - Meta-Level Software AG/Desktop/Angular/property-board/Backend/Backend.Api/bin/Debug/net8.0/tr/Microsoft.CodeAnalysis.resources.dll
+C:/Users/amslmani/OneDrive - Meta-Level Software AG/Desktop/Angular/property-board/Backend/Backend.Api/bin/Debug/net8.0/zh-Hans/Microsoft.CodeAnalysis.resources.dll
+C:/Users/amslmani/OneDrive - Meta-Level Software AG/Desktop/Angular/property-board/Backend/Backend.Api/bin/Debug/net8.0/zh-Hant/Microsoft.CodeAnalysis.resources.dll
+C:/Users/amslmani/OneDrive - Meta-Level Software AG/Desktop/Angular/property-board/Backend/Backend.Api/bin/Debug/net8.0/cs/Microsoft.CodeAnalysis.CSharp.resources.dll
+C:/Users/amslmani/OneDrive - Meta-Level Software AG/Desktop/Angular/property-board/Backend/Backend.Api/bin/Debug/net8.0/de/Microsoft.CodeAnalysis.CSharp.resources.dll
+C:/Users/amslmani/OneDrive - Meta-Level Software AG/Desktop/Angular/property-board/Backend/Backend.Api/bin/Debug/net8.0/es/Microsoft.CodeAnalysis.CSharp.resources.dll
+C:/Users/amslmani/OneDrive - Meta-Level Software AG/Desktop/Angular/property-board/Backend/Backend.Api/bin/Debug/net8.0/fr/Microsoft.CodeAnalysis.CSharp.resources.dll
+C:/Users/amslmani/OneDrive - Meta-Level Software AG/Desktop/Angular/property-board/Backend/Backend.Api/bin/Debug/net8.0/it/Microsoft.CodeAnalysis.CSharp.resources.dll
+C:/Users/amslmani/OneDrive - Meta-Level Software AG/Desktop/Angular/property-board/Backend/Backend.Api/bin/Debug/net8.0/ja/Microsoft.CodeAnalysis.CSharp.resources.dll
+C:/Users/amslmani/OneDrive - Meta-Level Software AG/Desktop/Angular/property-board/Backend/Backend.Api/bin/Debug/net8.0/ko/Microsoft.CodeAnalysis.CSharp.resources.dll
+C:/Users/amslmani/OneDrive - Meta-Level Software AG/Desktop/Angular/property-board/Backend/Backend.Api/bin/Debug/net8.0/pl/Microsoft.CodeAnalysis.CSharp.resources.dll
+C:/Users/amslmani/OneDrive - Meta-Level Software AG/Desktop/Angular/property-board/Backend/Backend.Api/bin/Debug/net8.0/pt-BR/Microsoft.CodeAnalysis.CSharp.resources.dll
+C:/Users/amslmani/OneDrive - Meta-Level Software AG/Desktop/Angular/property-board/Backend/Backend.Api/bin/Debug/net8.0/ru/Microsoft.CodeAnalysis.CSharp.resources.dll
+C:/Users/amslmani/OneDrive - Meta-Level Software AG/Desktop/Angular/property-board/Backend/Backend.Api/bin/Debug/net8.0/tr/Microsoft.CodeAnalysis.CSharp.resources.dll
+C:/Users/amslmani/OneDrive - Meta-Level Software AG/Desktop/Angular/property-board/Backend/Backend.Api/bin/Debug/net8.0/zh-Hans/Microsoft.CodeAnalysis.CSharp.resources.dll
+C:/Users/amslmani/OneDrive - Meta-Level Software AG/Desktop/Angular/property-board/Backend/Backend.Api/bin/Debug/net8.0/zh-Hant/Microsoft.CodeAnalysis.CSharp.resources.dll
+C:/Users/amslmani/OneDrive - Meta-Level Software AG/Desktop/Angular/property-board/Backend/Backend.Api/bin/Debug/net8.0/cs/Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:/Users/amslmani/OneDrive - Meta-Level Software AG/Desktop/Angular/property-board/Backend/Backend.Api/bin/Debug/net8.0/de/Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:/Users/amslmani/OneDrive - Meta-Level Software AG/Desktop/Angular/property-board/Backend/Backend.Api/bin/Debug/net8.0/es/Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:/Users/amslmani/OneDrive - Meta-Level Software AG/Desktop/Angular/property-board/Backend/Backend.Api/bin/Debug/net8.0/fr/Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:/Users/amslmani/OneDrive - Meta-Level Software AG/Desktop/Angular/property-board/Backend/Backend.Api/bin/Debug/net8.0/it/Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:/Users/amslmani/OneDrive - Meta-Level Software AG/Desktop/Angular/property-board/Backend/Backend.Api/bin/Debug/net8.0/ja/Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:/Users/amslmani/OneDrive - Meta-Level Software AG/Desktop/Angular/property-board/Backend/Backend.Api/bin/Debug/net8.0/ko/Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:/Users/amslmani/OneDrive - Meta-Level Software AG/Desktop/Angular/property-board/Backend/Backend.Api/bin/Debug/net8.0/pl/Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:/Users/amslmani/OneDrive - Meta-Level Software AG/Desktop/Angular/property-board/Backend/Backend.Api/bin/Debug/net8.0/pt-BR/Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:/Users/amslmani/OneDrive - Meta-Level Software AG/Desktop/Angular/property-board/Backend/Backend.Api/bin/Debug/net8.0/ru/Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:/Users/amslmani/OneDrive - Meta-Level Software AG/Desktop/Angular/property-board/Backend/Backend.Api/bin/Debug/net8.0/tr/Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:/Users/amslmani/OneDrive - Meta-Level Software AG/Desktop/Angular/property-board/Backend/Backend.Api/bin/Debug/net8.0/zh-Hans/Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:/Users/amslmani/OneDrive - Meta-Level Software AG/Desktop/Angular/property-board/Backend/Backend.Api/bin/Debug/net8.0/zh-Hant/Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:/Users/amslmani/OneDrive - Meta-Level Software AG/Desktop/Angular/property-board/Backend/Backend.Api/bin/Debug/net8.0/cs/Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:/Users/amslmani/OneDrive - Meta-Level Software AG/Desktop/Angular/property-board/Backend/Backend.Api/bin/Debug/net8.0/de/Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:/Users/amslmani/OneDrive - Meta-Level Software AG/Desktop/Angular/property-board/Backend/Backend.Api/bin/Debug/net8.0/es/Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:/Users/amslmani/OneDrive - Meta-Level Software AG/Desktop/Angular/property-board/Backend/Backend.Api/bin/Debug/net8.0/fr/Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:/Users/amslmani/OneDrive - Meta-Level Software AG/Desktop/Angular/property-board/Backend/Backend.Api/bin/Debug/net8.0/it/Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:/Users/amslmani/OneDrive - Meta-Level Software AG/Desktop/Angular/property-board/Backend/Backend.Api/bin/Debug/net8.0/ja/Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:/Users/amslmani/OneDrive - Meta-Level Software AG/Desktop/Angular/property-board/Backend/Backend.Api/bin/Debug/net8.0/ko/Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:/Users/amslmani/OneDrive - Meta-Level Software AG/Desktop/Angular/property-board/Backend/Backend.Api/bin/Debug/net8.0/pl/Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:/Users/amslmani/OneDrive - Meta-Level Software AG/Desktop/Angular/property-board/Backend/Backend.Api/bin/Debug/net8.0/pt-BR/Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:/Users/amslmani/OneDrive - Meta-Level Software AG/Desktop/Angular/property-board/Backend/Backend.Api/bin/Debug/net8.0/ru/Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:/Users/amslmani/OneDrive - Meta-Level Software AG/Desktop/Angular/property-board/Backend/Backend.Api/bin/Debug/net8.0/tr/Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:/Users/amslmani/OneDrive - Meta-Level Software AG/Desktop/Angular/property-board/Backend/Backend.Api/bin/Debug/net8.0/zh-Hans/Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:/Users/amslmani/OneDrive - Meta-Level Software AG/Desktop/Angular/property-board/Backend/Backend.Api/bin/Debug/net8.0/zh-Hant/Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:/Users/amslmani/OneDrive - Meta-Level Software AG/Desktop/Angular/property-board/Backend/Backend.Api/bin/Debug/net8.0/runtimes/unix/lib/net6.0/Microsoft.Data.SqlClient.dll
+C:/Users/amslmani/OneDrive - Meta-Level Software AG/Desktop/Angular/property-board/Backend/Backend.Api/bin/Debug/net8.0/runtimes/win/lib/net6.0/Microsoft.Data.SqlClient.dll
+C:/Users/amslmani/OneDrive - Meta-Level Software AG/Desktop/Angular/property-board/Backend/Backend.Api/bin/Debug/net8.0/runtimes/win-arm/native/Microsoft.Data.SqlClient.SNI.dll
+C:/Users/amslmani/OneDrive - Meta-Level Software AG/Desktop/Angular/property-board/Backend/Backend.Api/bin/Debug/net8.0/runtimes/win-arm64/native/Microsoft.Data.SqlClient.SNI.dll
+C:/Users/amslmani/OneDrive - Meta-Level Software AG/Desktop/Angular/property-board/Backend/Backend.Api/bin/Debug/net8.0/runtimes/win-x64/native/Microsoft.Data.SqlClient.SNI.dll
+C:/Users/amslmani/OneDrive - Meta-Level Software AG/Desktop/Angular/property-board/Backend/Backend.Api/bin/Debug/net8.0/runtimes/win-x86/native/Microsoft.Data.SqlClient.SNI.dll
+C:/Users/amslmani/OneDrive - Meta-Level Software AG/Desktop/Angular/property-board/Backend/Backend.Api/bin/Debug/net8.0/runtimes/win/lib/net6.0/Microsoft.Win32.SystemEvents.dll
+C:/Users/amslmani/OneDrive - Meta-Level Software AG/Desktop/Angular/property-board/Backend/Backend.Api/bin/Debug/net8.0/runtimes/unix/lib/net6.0/System.Drawing.Common.dll
+C:/Users/amslmani/OneDrive - Meta-Level Software AG/Desktop/Angular/property-board/Backend/Backend.Api/bin/Debug/net8.0/runtimes/win/lib/net6.0/System.Drawing.Common.dll
+C:/Users/amslmani/OneDrive - Meta-Level Software AG/Desktop/Angular/property-board/Backend/Backend.Api/bin/Debug/net8.0/runtimes/win/lib/net6.0/System.Runtime.Caching.dll
+C:/Users/amslmani/OneDrive - Meta-Level Software AG/Desktop/Angular/property-board/Backend/Backend.Api/bin/Debug/net8.0/runtimes/win/lib/net6.0/System.Security.Cryptography.ProtectedData.dll
+C:/Users/amslmani/OneDrive - Meta-Level Software AG/Desktop/Angular/property-board/Backend/Backend.Api/bin/Debug/net8.0/runtimes/win/lib/net6.0/System.Windows.Extensions.dll
+C:/Users/amslmani/OneDrive - Meta-Level Software AG/Desktop/Angular/property-board/Backend/Backend.Api/obj/Debug/net8.0/Backend.Api.csproj.AssemblyReference.cache
+C:/Users/amslmani/OneDrive - Meta-Level Software AG/Desktop/Angular/property-board/Backend/Backend.Api/obj/Debug/net8.0/Backend.Api.GeneratedMSBuildEditorConfig.editorconfig
+C:/Users/amslmani/OneDrive - Meta-Level Software AG/Desktop/Angular/property-board/Backend/Backend.Api/obj/Debug/net8.0/Backend.Api.AssemblyInfoInputs.cache
+C:/Users/amslmani/OneDrive - Meta-Level Software AG/Desktop/Angular/property-board/Backend/Backend.Api/obj/Debug/net8.0/Backend.Api.AssemblyInfo.cs
+C:/Users/amslmani/OneDrive - Meta-Level Software AG/Desktop/Angular/property-board/Backend/Backend.Api/obj/Debug/net8.0/Backend.Api.csproj.CoreCompileInputs.cache
+C:/Users/amslmani/OneDrive - Meta-Level Software AG/Desktop/Angular/property-board/Backend/Backend.Api/obj/Debug/net8.0/Backend.Api.MvcApplicationPartsAssemblyInfo.cs
+C:/Users/amslmani/OneDrive - Meta-Level Software AG/Desktop/Angular/property-board/Backend/Backend.Api/obj/Debug/net8.0/Backend.Api.MvcApplicationPartsAssemblyInfo.cache
+C:/Users/amslmani/OneDrive - Meta-Level Software AG/Desktop/Angular/property-board/Backend/Backend.Api/obj/Debug/net8.0/Backend.Api.sourcelink.json
+C:/Users/amslmani/OneDrive - Meta-Level Software AG/Desktop/Angular/property-board/Backend/Backend.Api/obj/Debug/net8.0/staticwebassets.build.json
+C:/Users/amslmani/OneDrive - Meta-Level Software AG/Desktop/Angular/property-board/Backend/Backend.Api/obj/Debug/net8.0/staticwebassets.development.json
+C:/Users/amslmani/OneDrive - Meta-Level Software AG/Desktop/Angular/property-board/Backend/Backend.Api/obj/Debug/net8.0/staticwebassets/msbuild.Backend.Api.Microsoft.AspNetCore.StaticWebAssets.props
+C:/Users/amslmani/OneDrive - Meta-Level Software AG/Desktop/Angular/property-board/Backend/Backend.Api/obj/Debug/net8.0/staticwebassets/msbuild.build.Backend.Api.props
+C:/Users/amslmani/OneDrive - Meta-Level Software AG/Desktop/Angular/property-board/Backend/Backend.Api/obj/Debug/net8.0/staticwebassets/msbuild.buildMultiTargeting.Backend.Api.props
+C:/Users/amslmani/OneDrive - Meta-Level Software AG/Desktop/Angular/property-board/Backend/Backend.Api/obj/Debug/net8.0/staticwebassets/msbuild.buildTransitive.Backend.Api.props
+C:/Users/amslmani/OneDrive - Meta-Level Software AG/Desktop/Angular/property-board/Backend/Backend.Api/obj/Debug/net8.0/staticwebassets.pack.json
+C:/Users/amslmani/OneDrive - Meta-Level Software AG/Desktop/Angular/property-board/Backend/Backend.Api/obj/Debug/net8.0/scopedcss/bundle/Backend.Api.styles.css
+C:/Users/amslmani/OneDrive - Meta-Level Software AG/Desktop/Angular/property-board/Backend/Backend.Api/obj/Debug/net8.0/Backend..0C93C9B3.Up2Date
+C:/Users/amslmani/OneDrive - Meta-Level Software AG/Desktop/Angular/property-board/Backend/Backend.Api/obj/Debug/net8.0/Backend.Api.dll
+C:/Users/amslmani/OneDrive - Meta-Level Software AG/Desktop/Angular/property-board/Backend/Backend.Api/obj/Debug/net8.0/refint/Backend.Api.dll
+C:/Users/amslmani/OneDrive - Meta-Level Software AG/Desktop/Angular/property-board/Backend/Backend.Api/obj/Debug/net8.0/Backend.Api.pdb
+C:/Users/amslmani/OneDrive - Meta-Level Software AG/Desktop/Angular/property-board/Backend/Backend.Api/obj/Debug/net8.0/Backend.Api.genruntimeconfig.cache
+C:/Users/amslmani/OneDrive - Meta-Level Software AG/Desktop/Angular/property-board/Backend/Backend.Api/obj/Debug/net8.0/ref/Backend.Api.dll
+C:/Users/amslmani/OneDrive - Meta-Level Software AG/Desktop/Angular/property-board/Backend/Backend.Api/bin/Debug/net8.0/Backend.Api.staticwebassets.runtime.json
+C:/Users/amslmani/OneDrive - Meta-Level Software AG/Desktop/Angular/property-board/Backend/Backend.Api/bin/Debug/net8.0/FirebaseAdmin.dll
+C:/Users/amslmani/OneDrive - Meta-Level Software AG/Desktop/Angular/property-board/Backend/Backend.Api/bin/Debug/net8.0/Google.Api.Gax.dll
+C:/Users/amslmani/OneDrive - Meta-Level Software AG/Desktop/Angular/property-board/Backend/Backend.Api/bin/Debug/net8.0/Google.Api.Gax.Rest.dll
+C:/Users/amslmani/OneDrive - Meta-Level Software AG/Desktop/Angular/property-board/Backend/Backend.Api/bin/Debug/net8.0/Google.Apis.dll
+C:/Users/amslmani/OneDrive - Meta-Level Software AG/Desktop/Angular/property-board/Backend/Backend.Api/bin/Debug/net8.0/Google.Apis.Auth.dll
+C:/Users/amslmani/OneDrive - Meta-Level Software AG/Desktop/Angular/property-board/Backend/Backend.Api/bin/Debug/net8.0/Google.Apis.Core.dll
+C:/Users/amslmani/OneDrive - Meta-Level Software AG/Desktop/Angular/property-board/Backend/Backend.Api/bin/Debug/net8.0/Newtonsoft.Json.dll
+C:/Users/amslmani/OneDrive - Meta-Level Software AG/Desktop/Angular/property-board/Backend/Backend.Api/bin/Debug/net8.0/System.Management.dll
+C:/Users/amslmani/OneDrive - Meta-Level Software AG/Desktop/Angular/property-board/Backend/Backend.Api/bin/Debug/net8.0/runtimes/win/lib/net7.0/System.Management.dll
+C:/Users/amslmani/OneDrive - Meta-Level Software AG/Desktop/Angular/property-board/Backend/Backend.Api/bin/Debug/net8.0/serviceAccountKey.json
+C:/Users/amslmani/OneDrive - Meta-Level Software AG/Desktop/Angular/property-board/Backend/Backend.Api/bin/Debug/net8.0/BouncyCastle.Cryptography.dll
+C:/Users/amslmani/OneDrive - Meta-Level Software AG/Desktop/Angular/property-board/Backend/Backend.Api/bin/Debug/net8.0/MailKit.dll
+C:/Users/amslmani/OneDrive - Meta-Level Software AG/Desktop/Angular/property-board/Backend/Backend.Api/bin/Debug/net8.0/MimeKit.dll
+C:/Users/amslmani/OneDrive - Meta-Level Software AG/Desktop/Angular/property-board/Backend/Backend.Api/bin/Debug/net8.0/System.Security.Cryptography.Pkcs.dll
+C:/Users/amslmani/OneDrive - Meta-Level Software AG/Desktop/Angular/property-board/Backend/Backend.Api/bin/Debug/net8.0/runtimes/win/lib/net8.0/System.Security.Cryptography.Pkcs.dll
+/Volumes/Mac Mini Disk/project/property-board/Backend/Backend.Api/bin/Debug/net8.0/appsettings.Development.json
+/Volumes/Mac Mini Disk/project/property-board/Backend/Backend.Api/bin/Debug/net8.0/appsettings.json
+/Volumes/Mac Mini Disk/project/property-board/Backend/Backend.Api/bin/Debug/net8.0/serviceAccountKey.json
+/Volumes/Mac Mini Disk/project/property-board/Backend/Backend.Api/bin/Debug/net8.0/Backend.Api.staticwebassets.runtime.json
+/Volumes/Mac Mini Disk/project/property-board/Backend/Backend.Api/bin/Debug/net8.0/Backend.Api
+/Volumes/Mac Mini Disk/project/property-board/Backend/Backend.Api/bin/Debug/net8.0/Backend.Api.deps.json
+/Volumes/Mac Mini Disk/project/property-board/Backend/Backend.Api/bin/Debug/net8.0/Backend.Api.runtimeconfig.json
+/Volumes/Mac Mini Disk/project/property-board/Backend/Backend.Api/bin/Debug/net8.0/Backend.Api.dll
+/Volumes/Mac Mini Disk/project/property-board/Backend/Backend.Api/bin/Debug/net8.0/Backend.Api.pdb
+/Volumes/Mac Mini Disk/project/property-board/Backend/Backend.Api/bin/Debug/net8.0/Azure.Core.dll
+/Volumes/Mac Mini Disk/project/property-board/Backend/Backend.Api/bin/Debug/net8.0/Azure.Identity.dll
+/Volumes/Mac Mini Disk/project/property-board/Backend/Backend.Api/bin/Debug/net8.0/BCrypt.Net-Next.dll
+/Volumes/Mac Mini Disk/project/property-board/Backend/Backend.Api/bin/Debug/net8.0/BouncyCastle.Cryptography.dll
+/Volumes/Mac Mini Disk/project/property-board/Backend/Backend.Api/bin/Debug/net8.0/FirebaseAdmin.dll
+/Volumes/Mac Mini Disk/project/property-board/Backend/Backend.Api/bin/Debug/net8.0/Google.Api.Gax.dll
+/Volumes/Mac Mini Disk/project/property-board/Backend/Backend.Api/bin/Debug/net8.0/Google.Api.Gax.Rest.dll
+/Volumes/Mac Mini Disk/project/property-board/Backend/Backend.Api/bin/Debug/net8.0/Google.Apis.dll
+/Volumes/Mac Mini Disk/project/property-board/Backend/Backend.Api/bin/Debug/net8.0/Google.Apis.Auth.dll
+/Volumes/Mac Mini Disk/project/property-board/Backend/Backend.Api/bin/Debug/net8.0/Google.Apis.Core.dll
+/Volumes/Mac Mini Disk/project/property-board/Backend/Backend.Api/bin/Debug/net8.0/Humanizer.dll
+/Volumes/Mac Mini Disk/project/property-board/Backend/Backend.Api/bin/Debug/net8.0/MailKit.dll
+/Volumes/Mac Mini Disk/project/property-board/Backend/Backend.Api/bin/Debug/net8.0/Microsoft.AspNetCore.Authentication.JwtBearer.dll
+/Volumes/Mac Mini Disk/project/property-board/Backend/Backend.Api/bin/Debug/net8.0/Microsoft.Bcl.AsyncInterfaces.dll
+/Volumes/Mac Mini Disk/project/property-board/Backend/Backend.Api/bin/Debug/net8.0/Microsoft.CodeAnalysis.dll
+/Volumes/Mac Mini Disk/project/property-board/Backend/Backend.Api/bin/Debug/net8.0/Microsoft.CodeAnalysis.CSharp.dll
+/Volumes/Mac Mini Disk/project/property-board/Backend/Backend.Api/bin/Debug/net8.0/Microsoft.CodeAnalysis.CSharp.Workspaces.dll
+/Volumes/Mac Mini Disk/project/property-board/Backend/Backend.Api/bin/Debug/net8.0/Microsoft.CodeAnalysis.Workspaces.dll
+/Volumes/Mac Mini Disk/project/property-board/Backend/Backend.Api/bin/Debug/net8.0/Microsoft.Data.SqlClient.dll
+/Volumes/Mac Mini Disk/project/property-board/Backend/Backend.Api/bin/Debug/net8.0/Microsoft.EntityFrameworkCore.dll
+/Volumes/Mac Mini Disk/project/property-board/Backend/Backend.Api/bin/Debug/net8.0/Microsoft.EntityFrameworkCore.Abstractions.dll
+/Volumes/Mac Mini Disk/project/property-board/Backend/Backend.Api/bin/Debug/net8.0/Microsoft.EntityFrameworkCore.Design.dll
+/Volumes/Mac Mini Disk/project/property-board/Backend/Backend.Api/bin/Debug/net8.0/Microsoft.EntityFrameworkCore.Relational.dll
+/Volumes/Mac Mini Disk/project/property-board/Backend/Backend.Api/bin/Debug/net8.0/Microsoft.EntityFrameworkCore.SqlServer.dll
+/Volumes/Mac Mini Disk/project/property-board/Backend/Backend.Api/bin/Debug/net8.0/Microsoft.Extensions.Caching.Memory.dll
+/Volumes/Mac Mini Disk/project/property-board/Backend/Backend.Api/bin/Debug/net8.0/Microsoft.Extensions.DependencyInjection.dll
+/Volumes/Mac Mini Disk/project/property-board/Backend/Backend.Api/bin/Debug/net8.0/Microsoft.Extensions.DependencyInjection.Abstractions.dll
+/Volumes/Mac Mini Disk/project/property-board/Backend/Backend.Api/bin/Debug/net8.0/Microsoft.Extensions.DependencyModel.dll
+/Volumes/Mac Mini Disk/project/property-board/Backend/Backend.Api/bin/Debug/net8.0/Microsoft.Extensions.Logging.dll
+/Volumes/Mac Mini Disk/project/property-board/Backend/Backend.Api/bin/Debug/net8.0/Microsoft.Extensions.Logging.Abstractions.dll
+/Volumes/Mac Mini Disk/project/property-board/Backend/Backend.Api/bin/Debug/net8.0/Microsoft.Extensions.Options.dll
+/Volumes/Mac Mini Disk/project/property-board/Backend/Backend.Api/bin/Debug/net8.0/Microsoft.Identity.Client.dll
+/Volumes/Mac Mini Disk/project/property-board/Backend/Backend.Api/bin/Debug/net8.0/Microsoft.Identity.Client.Extensions.Msal.dll
+/Volumes/Mac Mini Disk/project/property-board/Backend/Backend.Api/bin/Debug/net8.0/Microsoft.IdentityModel.Abstractions.dll
+/Volumes/Mac Mini Disk/project/property-board/Backend/Backend.Api/bin/Debug/net8.0/Microsoft.IdentityModel.JsonWebTokens.dll
+/Volumes/Mac Mini Disk/project/property-board/Backend/Backend.Api/bin/Debug/net8.0/Microsoft.IdentityModel.Logging.dll
+/Volumes/Mac Mini Disk/project/property-board/Backend/Backend.Api/bin/Debug/net8.0/Microsoft.IdentityModel.Protocols.dll
+/Volumes/Mac Mini Disk/project/property-board/Backend/Backend.Api/bin/Debug/net8.0/Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+/Volumes/Mac Mini Disk/project/property-board/Backend/Backend.Api/bin/Debug/net8.0/Microsoft.IdentityModel.Tokens.dll
+/Volumes/Mac Mini Disk/project/property-board/Backend/Backend.Api/bin/Debug/net8.0/Microsoft.OpenApi.dll
+/Volumes/Mac Mini Disk/project/property-board/Backend/Backend.Api/bin/Debug/net8.0/Microsoft.SqlServer.Server.dll
+/Volumes/Mac Mini Disk/project/property-board/Backend/Backend.Api/bin/Debug/net8.0/Microsoft.Win32.SystemEvents.dll
+/Volumes/Mac Mini Disk/project/property-board/Backend/Backend.Api/bin/Debug/net8.0/MimeKit.dll
+/Volumes/Mac Mini Disk/project/property-board/Backend/Backend.Api/bin/Debug/net8.0/Mono.TextTemplating.dll
+/Volumes/Mac Mini Disk/project/property-board/Backend/Backend.Api/bin/Debug/net8.0/Newtonsoft.Json.dll
+/Volumes/Mac Mini Disk/project/property-board/Backend/Backend.Api/bin/Debug/net8.0/Swashbuckle.AspNetCore.Swagger.dll
+/Volumes/Mac Mini Disk/project/property-board/Backend/Backend.Api/bin/Debug/net8.0/Swashbuckle.AspNetCore.SwaggerGen.dll
+/Volumes/Mac Mini Disk/project/property-board/Backend/Backend.Api/bin/Debug/net8.0/Swashbuckle.AspNetCore.SwaggerUI.dll
+/Volumes/Mac Mini Disk/project/property-board/Backend/Backend.Api/bin/Debug/net8.0/System.ClientModel.dll
+/Volumes/Mac Mini Disk/project/property-board/Backend/Backend.Api/bin/Debug/net8.0/System.CodeDom.dll
+/Volumes/Mac Mini Disk/project/property-board/Backend/Backend.Api/bin/Debug/net8.0/System.Composition.AttributedModel.dll
+/Volumes/Mac Mini Disk/project/property-board/Backend/Backend.Api/bin/Debug/net8.0/System.Composition.Convention.dll
+/Volumes/Mac Mini Disk/project/property-board/Backend/Backend.Api/bin/Debug/net8.0/System.Composition.Hosting.dll
+/Volumes/Mac Mini Disk/project/property-board/Backend/Backend.Api/bin/Debug/net8.0/System.Composition.Runtime.dll
+/Volumes/Mac Mini Disk/project/property-board/Backend/Backend.Api/bin/Debug/net8.0/System.Composition.TypedParts.dll
+/Volumes/Mac Mini Disk/project/property-board/Backend/Backend.Api/bin/Debug/net8.0/System.Configuration.ConfigurationManager.dll
+/Volumes/Mac Mini Disk/project/property-board/Backend/Backend.Api/bin/Debug/net8.0/System.Drawing.Common.dll
+/Volumes/Mac Mini Disk/project/property-board/Backend/Backend.Api/bin/Debug/net8.0/System.IdentityModel.Tokens.Jwt.dll
+/Volumes/Mac Mini Disk/project/property-board/Backend/Backend.Api/bin/Debug/net8.0/System.Management.dll
+/Volumes/Mac Mini Disk/project/property-board/Backend/Backend.Api/bin/Debug/net8.0/System.Memory.Data.dll
+/Volumes/Mac Mini Disk/project/property-board/Backend/Backend.Api/bin/Debug/net8.0/System.Runtime.Caching.dll
+/Volumes/Mac Mini Disk/project/property-board/Backend/Backend.Api/bin/Debug/net8.0/System.Security.Cryptography.Pkcs.dll
+/Volumes/Mac Mini Disk/project/property-board/Backend/Backend.Api/bin/Debug/net8.0/System.Security.Cryptography.ProtectedData.dll
+/Volumes/Mac Mini Disk/project/property-board/Backend/Backend.Api/bin/Debug/net8.0/System.Security.Permissions.dll
+/Volumes/Mac Mini Disk/project/property-board/Backend/Backend.Api/bin/Debug/net8.0/System.Windows.Extensions.dll
+/Volumes/Mac Mini Disk/project/property-board/Backend/Backend.Api/bin/Debug/net8.0/cs/Microsoft.CodeAnalysis.resources.dll
+/Volumes/Mac Mini Disk/project/property-board/Backend/Backend.Api/bin/Debug/net8.0/de/Microsoft.CodeAnalysis.resources.dll
+/Volumes/Mac Mini Disk/project/property-board/Backend/Backend.Api/bin/Debug/net8.0/es/Microsoft.CodeAnalysis.resources.dll
+/Volumes/Mac Mini Disk/project/property-board/Backend/Backend.Api/bin/Debug/net8.0/fr/Microsoft.CodeAnalysis.resources.dll
+/Volumes/Mac Mini Disk/project/property-board/Backend/Backend.Api/bin/Debug/net8.0/it/Microsoft.CodeAnalysis.resources.dll
+/Volumes/Mac Mini Disk/project/property-board/Backend/Backend.Api/bin/Debug/net8.0/ja/Microsoft.CodeAnalysis.resources.dll
+/Volumes/Mac Mini Disk/project/property-board/Backend/Backend.Api/bin/Debug/net8.0/ko/Microsoft.CodeAnalysis.resources.dll
+/Volumes/Mac Mini Disk/project/property-board/Backend/Backend.Api/bin/Debug/net8.0/pl/Microsoft.CodeAnalysis.resources.dll
+/Volumes/Mac Mini Disk/project/property-board/Backend/Backend.Api/bin/Debug/net8.0/pt-BR/Microsoft.CodeAnalysis.resources.dll
+/Volumes/Mac Mini Disk/project/property-board/Backend/Backend.Api/bin/Debug/net8.0/ru/Microsoft.CodeAnalysis.resources.dll
+/Volumes/Mac Mini Disk/project/property-board/Backend/Backend.Api/bin/Debug/net8.0/tr/Microsoft.CodeAnalysis.resources.dll
+/Volumes/Mac Mini Disk/project/property-board/Backend/Backend.Api/bin/Debug/net8.0/zh-Hans/Microsoft.CodeAnalysis.resources.dll
+/Volumes/Mac Mini Disk/project/property-board/Backend/Backend.Api/bin/Debug/net8.0/zh-Hant/Microsoft.CodeAnalysis.resources.dll
+/Volumes/Mac Mini Disk/project/property-board/Backend/Backend.Api/bin/Debug/net8.0/cs/Microsoft.CodeAnalysis.CSharp.resources.dll
+/Volumes/Mac Mini Disk/project/property-board/Backend/Backend.Api/bin/Debug/net8.0/de/Microsoft.CodeAnalysis.CSharp.resources.dll
+/Volumes/Mac Mini Disk/project/property-board/Backend/Backend.Api/bin/Debug/net8.0/es/Microsoft.CodeAnalysis.CSharp.resources.dll
+/Volumes/Mac Mini Disk/project/property-board/Backend/Backend.Api/bin/Debug/net8.0/fr/Microsoft.CodeAnalysis.CSharp.resources.dll
+/Volumes/Mac Mini Disk/project/property-board/Backend/Backend.Api/bin/Debug/net8.0/it/Microsoft.CodeAnalysis.CSharp.resources.dll
+/Volumes/Mac Mini Disk/project/property-board/Backend/Backend.Api/bin/Debug/net8.0/ja/Microsoft.CodeAnalysis.CSharp.resources.dll
+/Volumes/Mac Mini Disk/project/property-board/Backend/Backend.Api/bin/Debug/net8.0/ko/Microsoft.CodeAnalysis.CSharp.resources.dll
+/Volumes/Mac Mini Disk/project/property-board/Backend/Backend.Api/bin/Debug/net8.0/pl/Microsoft.CodeAnalysis.CSharp.resources.dll
+/Volumes/Mac Mini Disk/project/property-board/Backend/Backend.Api/bin/Debug/net8.0/pt-BR/Microsoft.CodeAnalysis.CSharp.resources.dll
+/Volumes/Mac Mini Disk/project/property-board/Backend/Backend.Api/bin/Debug/net8.0/ru/Microsoft.CodeAnalysis.CSharp.resources.dll
+/Volumes/Mac Mini Disk/project/property-board/Backend/Backend.Api/bin/Debug/net8.0/tr/Microsoft.CodeAnalysis.CSharp.resources.dll
+/Volumes/Mac Mini Disk/project/property-board/Backend/Backend.Api/bin/Debug/net8.0/zh-Hans/Microsoft.CodeAnalysis.CSharp.resources.dll
+/Volumes/Mac Mini Disk/project/property-board/Backend/Backend.Api/bin/Debug/net8.0/zh-Hant/Microsoft.CodeAnalysis.CSharp.resources.dll
+/Volumes/Mac Mini Disk/project/property-board/Backend/Backend.Api/bin/Debug/net8.0/cs/Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+/Volumes/Mac Mini Disk/project/property-board/Backend/Backend.Api/bin/Debug/net8.0/de/Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+/Volumes/Mac Mini Disk/project/property-board/Backend/Backend.Api/bin/Debug/net8.0/es/Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+/Volumes/Mac Mini Disk/project/property-board/Backend/Backend.Api/bin/Debug/net8.0/fr/Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+/Volumes/Mac Mini Disk/project/property-board/Backend/Backend.Api/bin/Debug/net8.0/it/Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+/Volumes/Mac Mini Disk/project/property-board/Backend/Backend.Api/bin/Debug/net8.0/ja/Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+/Volumes/Mac Mini Disk/project/property-board/Backend/Backend.Api/bin/Debug/net8.0/ko/Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+/Volumes/Mac Mini Disk/project/property-board/Backend/Backend.Api/bin/Debug/net8.0/pl/Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+/Volumes/Mac Mini Disk/project/property-board/Backend/Backend.Api/bin/Debug/net8.0/pt-BR/Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+/Volumes/Mac Mini Disk/project/property-board/Backend/Backend.Api/bin/Debug/net8.0/ru/Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+/Volumes/Mac Mini Disk/project/property-board/Backend/Backend.Api/bin/Debug/net8.0/tr/Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+/Volumes/Mac Mini Disk/project/property-board/Backend/Backend.Api/bin/Debug/net8.0/zh-Hans/Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+/Volumes/Mac Mini Disk/project/property-board/Backend/Backend.Api/bin/Debug/net8.0/zh-Hant/Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+/Volumes/Mac Mini Disk/project/property-board/Backend/Backend.Api/bin/Debug/net8.0/cs/Microsoft.CodeAnalysis.Workspaces.resources.dll
+/Volumes/Mac Mini Disk/project/property-board/Backend/Backend.Api/bin/Debug/net8.0/de/Microsoft.CodeAnalysis.Workspaces.resources.dll
+/Volumes/Mac Mini Disk/project/property-board/Backend/Backend.Api/bin/Debug/net8.0/es/Microsoft.CodeAnalysis.Workspaces.resources.dll
+/Volumes/Mac Mini Disk/project/property-board/Backend/Backend.Api/bin/Debug/net8.0/fr/Microsoft.CodeAnalysis.Workspaces.resources.dll
+/Volumes/Mac Mini Disk/project/property-board/Backend/Backend.Api/bin/Debug/net8.0/it/Microsoft.CodeAnalysis.Workspaces.resources.dll
+/Volumes/Mac Mini Disk/project/property-board/Backend/Backend.Api/bin/Debug/net8.0/ja/Microsoft.CodeAnalysis.Workspaces.resources.dll
+/Volumes/Mac Mini Disk/project/property-board/Backend/Backend.Api/bin/Debug/net8.0/ko/Microsoft.CodeAnalysis.Workspaces.resources.dll
+/Volumes/Mac Mini Disk/project/property-board/Backend/Backend.Api/bin/Debug/net8.0/pl/Microsoft.CodeAnalysis.Workspaces.resources.dll
+/Volumes/Mac Mini Disk/project/property-board/Backend/Backend.Api/bin/Debug/net8.0/pt-BR/Microsoft.CodeAnalysis.Workspaces.resources.dll
+/Volumes/Mac Mini Disk/project/property-board/Backend/Backend.Api/bin/Debug/net8.0/ru/Microsoft.CodeAnalysis.Workspaces.resources.dll
+/Volumes/Mac Mini Disk/project/property-board/Backend/Backend.Api/bin/Debug/net8.0/tr/Microsoft.CodeAnalysis.Workspaces.resources.dll
+/Volumes/Mac Mini Disk/project/property-board/Backend/Backend.Api/bin/Debug/net8.0/zh-Hans/Microsoft.CodeAnalysis.Workspaces.resources.dll
+/Volumes/Mac Mini Disk/project/property-board/Backend/Backend.Api/bin/Debug/net8.0/zh-Hant/Microsoft.CodeAnalysis.Workspaces.resources.dll
+/Volumes/Mac Mini Disk/project/property-board/Backend/Backend.Api/bin/Debug/net8.0/runtimes/unix/lib/net6.0/Microsoft.Data.SqlClient.dll
+/Volumes/Mac Mini Disk/project/property-board/Backend/Backend.Api/bin/Debug/net8.0/runtimes/win/lib/net6.0/Microsoft.Data.SqlClient.dll
+/Volumes/Mac Mini Disk/project/property-board/Backend/Backend.Api/bin/Debug/net8.0/runtimes/win-arm/native/Microsoft.Data.SqlClient.SNI.dll
+/Volumes/Mac Mini Disk/project/property-board/Backend/Backend.Api/bin/Debug/net8.0/runtimes/win-arm64/native/Microsoft.Data.SqlClient.SNI.dll
+/Volumes/Mac Mini Disk/project/property-board/Backend/Backend.Api/bin/Debug/net8.0/runtimes/win-x64/native/Microsoft.Data.SqlClient.SNI.dll
+/Volumes/Mac Mini Disk/project/property-board/Backend/Backend.Api/bin/Debug/net8.0/runtimes/win-x86/native/Microsoft.Data.SqlClient.SNI.dll
+/Volumes/Mac Mini Disk/project/property-board/Backend/Backend.Api/bin/Debug/net8.0/runtimes/win/lib/net6.0/Microsoft.Win32.SystemEvents.dll
+/Volumes/Mac Mini Disk/project/property-board/Backend/Backend.Api/bin/Debug/net8.0/runtimes/unix/lib/net6.0/System.Drawing.Common.dll
+/Volumes/Mac Mini Disk/project/property-board/Backend/Backend.Api/bin/Debug/net8.0/runtimes/win/lib/net6.0/System.Drawing.Common.dll
+/Volumes/Mac Mini Disk/project/property-board/Backend/Backend.Api/bin/Debug/net8.0/runtimes/win/lib/net7.0/System.Management.dll
+/Volumes/Mac Mini Disk/project/property-board/Backend/Backend.Api/bin/Debug/net8.0/runtimes/win/lib/net6.0/System.Runtime.Caching.dll
+/Volumes/Mac Mini Disk/project/property-board/Backend/Backend.Api/bin/Debug/net8.0/runtimes/win/lib/net8.0/System.Security.Cryptography.Pkcs.dll
+/Volumes/Mac Mini Disk/project/property-board/Backend/Backend.Api/bin/Debug/net8.0/runtimes/win/lib/net6.0/System.Security.Cryptography.ProtectedData.dll
+/Volumes/Mac Mini Disk/project/property-board/Backend/Backend.Api/bin/Debug/net8.0/runtimes/win/lib/net6.0/System.Windows.Extensions.dll
+/Volumes/Mac Mini Disk/project/property-board/Backend/Backend.Api/obj/Debug/net8.0/Backend.Api.csproj.AssemblyReference.cache
+/Volumes/Mac Mini Disk/project/property-board/Backend/Backend.Api/obj/Debug/net8.0/Backend.Api.GeneratedMSBuildEditorConfig.editorconfig
+/Volumes/Mac Mini Disk/project/property-board/Backend/Backend.Api/obj/Debug/net8.0/Backend.Api.AssemblyInfoInputs.cache
+/Volumes/Mac Mini Disk/project/property-board/Backend/Backend.Api/obj/Debug/net8.0/Backend.Api.AssemblyInfo.cs
+/Volumes/Mac Mini Disk/project/property-board/Backend/Backend.Api/obj/Debug/net8.0/Backend.Api.csproj.CoreCompileInputs.cache
+/Volumes/Mac Mini Disk/project/property-board/Backend/Backend.Api/obj/Debug/net8.0/Backend.Api.MvcApplicationPartsAssemblyInfo.cs
+/Volumes/Mac Mini Disk/project/property-board/Backend/Backend.Api/obj/Debug/net8.0/Backend.Api.MvcApplicationPartsAssemblyInfo.cache
+/Volumes/Mac Mini Disk/project/property-board/Backend/Backend.Api/obj/Debug/net8.0/Backend.Api.sourcelink.json
+/Volumes/Mac Mini Disk/project/property-board/Backend/Backend.Api/obj/Debug/net8.0/scopedcss/bundle/Backend.Api.styles.css
+/Volumes/Mac Mini Disk/project/property-board/Backend/Backend.Api/obj/Debug/net8.0/staticwebassets.build.json
+/Volumes/Mac Mini Disk/project/property-board/Backend/Backend.Api/obj/Debug/net8.0/staticwebassets.development.json
+/Volumes/Mac Mini Disk/project/property-board/Backend/Backend.Api/obj/Debug/net8.0/staticwebassets/msbuild.Backend.Api.Microsoft.AspNetCore.StaticWebAssets.props
+/Volumes/Mac Mini Disk/project/property-board/Backend/Backend.Api/obj/Debug/net8.0/staticwebassets/msbuild.build.Backend.Api.props
+/Volumes/Mac Mini Disk/project/property-board/Backend/Backend.Api/obj/Debug/net8.0/staticwebassets/msbuild.buildMultiTargeting.Backend.Api.props
+/Volumes/Mac Mini Disk/project/property-board/Backend/Backend.Api/obj/Debug/net8.0/staticwebassets/msbuild.buildTransitive.Backend.Api.props
+/Volumes/Mac Mini Disk/project/property-board/Backend/Backend.Api/obj/Debug/net8.0/staticwebassets.pack.json
+/Volumes/Mac Mini Disk/project/property-board/Backend/Backend.Api/obj/Debug/net8.0/Backend.Api.dll
+/Volumes/Mac Mini Disk/project/property-board/Backend/Backend.Api/obj/Debug/net8.0/refint/Backend.Api.dll
+/Volumes/Mac Mini Disk/project/property-board/Backend/Backend.Api/obj/Debug/net8.0/Backend.Api.pdb
+/Volumes/Mac Mini Disk/project/property-board/Backend/Backend.Api/obj/Debug/net8.0/Backend.Api.genruntimeconfig.cache
+/Volumes/Mac Mini Disk/project/property-board/Backend/Backend.Api/obj/Debug/net8.0/ref/Backend.Api.dll
+/Volumes/Mac Mini Disk/project/property-board/Backend/Backend.Api/obj/Debug/net8.0/Backend.Api.csproj.CopyComplete

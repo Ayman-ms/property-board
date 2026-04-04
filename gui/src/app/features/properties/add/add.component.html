@@ -8,130 +8,123 @@
 
     <form #propertyForm="ngForm" (ngSubmit)="onSubmit(propertyForm)">
 
+        <!-- Step 1: Basic Information -->
         <div *ngIf="currentStep === 1" class="step-content">
             <h2>Basic Information</h2>
+
             <div class="listing-toggle">
-                <button type="button" [class.active]="listingType === 'rent'" (click)="listingType = 'rent'">For
-                    Rent</button>
-                <button type="button" [class.active]="listingType === 'sale'" (click)="listingType = 'sale'">For
-                    Sale</button>
+                <button type="button" [class.active]="propertyData.listingType === 'rent'"
+                    (click)="propertyData.listingType = 'rent'">
+                    For Rent
+                </button>
+                <button type="button" [class.active]="propertyData.listingType === 'sale'"
+                    (click)="propertyData.listingType = 'sale'">
+                    For Sale
+                </button>
             </div>
-            <input type="text" name="title" placeholder="Property Title" required ngModel />
-            <textarea name="description" placeholder="Description" required ngModel></textarea>
+
+            <input type="text" name="title" placeholder="Property Title" required [(ngModel)]="propertyData.title" />
+
+            <textarea name="description" placeholder="Description" required [(ngModel)]="propertyData.description">
+      </textarea>
         </div>
 
+        <!-- Step 2: Location -->
         <div *ngIf="currentStep === 2" class="step-content">
             <h2>Where is your property located?</h2>
-            <input type="text" name="street" placeholder="Street Address" ngModel />
+
+            <input type="text" name="street" placeholder="Street Address" [(ngModel)]="propertyData.street" />
+
             <div class="grid-2">
-                <input type="text" name="zipCode" placeholder="Zip Code" [(ngModel)]="zipCode" (blur)="lookupZip()" />
-                <input type="text" name="city" [value]="city" placeholder="City" readonly />
+                <input type="text" name="zipCode" placeholder="Zip Code" [(ngModel)]="propertyData.zipCode"
+                    (blur)="lookupZip()" />
+                <input type="text" name="city" placeholder="City" [value]="propertyData.city" readonly />
             </div>
+
             <div class="map-placeholder">
                 <p>Pin accurate location (Map Integration)</p>
             </div>
         </div>
 
+        <!-- Step 3: Property Details -->
         <div *ngIf="currentStep === 3" class="step-content">
             <h2>Property Details</h2>
-            <input type="number" name="price" placeholder="Listing Price ($)" required ngModel />
+
+            <input type="number" name="price" placeholder="Listing Price ($)" required
+                [(ngModel)]="propertyData.price" />
+
             <div class="grid-2">
-                <input type="number" name="bedrooms" placeholder="Bedrooms" ngModel />
-                <input type="number" name="bathrooms" placeholder="Bathrooms" ngModel />
+                <input type="number" name="bedrooms" placeholder="Bedrooms" [(ngModel)]="propertyData.bedrooms" />
+                <input type="number" name="bathrooms" placeholder="Bathrooms" [(ngModel)]="propertyData.bathrooms" />
             </div>
-            <input type="number" name="area" placeholder="Area (sqm)" ngModel />
+
+            <input type="number" name="areaSqm" placeholder="Area (sqm)" [(ngModel)]="propertyData.areaSqm" />
         </div>
 
+        <!-- Step 4: Amenities -->
         <div *ngIf="currentStep === 4" class="step-content">
             <h2 class="step-title">Property Amenities</h2>
+
             <div class="amenities-grid">
+
                 <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="checkDefault">
-                    <label class="form-check-label" for="checkDefault">
-                        Parking
+                     <label class="form-check-label" for="hasParking">
+                        <fa-icon [icon]="faParking"></fa-icon> Parking
                     </label>
+                    <input class="form-check-input" type="checkbox" id="hasParking" name="hasParking"
+                        [(ngModel)]="propertyData.hasParking" />
                 </div>
+
                 <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="checkDefault">
-                    <label class="form-check-label" for="checkDefault">
-                        Parking
+                     <label class="form-check-label" for="hasBalcony">
+                        <fa-icon [icon]="faBalcony"></fa-icon> Balcony
                     </label>
+                    <input class="form-check-input" type="checkbox" id="hasBalcony" name="hasBalcony"
+                        [(ngModel)]="propertyData.hasBalcony" />                   
                 </div>
+
                 <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="checkDefault">
-                    <label class="form-check-label" for="checkDefault">
-                        Parking
+                     <label class="form-check-label" for="hasGarden">
+                        <fa-icon [icon]="faGarden"></fa-icon> Garden
                     </label>
+                    <input class="form-check-input" type="checkbox" id="hasGarden" name="hasGarden"
+                        [(ngModel)]="propertyData.hasGarden" />                   
                 </div>
+
                 <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="checkDefault">
-                    <label class="form-check-label" for="checkDefault">
-                        Parking
+                         <label class="form-check-label" for="hasElevator">
+                        <fa-icon [icon]="faElevator"></fa-icon> Elevator
                     </label>
+                    <input class="form-check-input" type="checkbox" id="hasElevator" name="hasElevator"
+                        [(ngModel)]="propertyData.hasElevator" />               
                 </div>
+
                 <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="checkDefault">
-                    <label class="form-check-label" for="checkDefault">
-                        Parking
+                    <label class="form-check-label" for="hasGarage">
+                        <fa-icon [icon]="faGarage"></fa-icon> Garage
                     </label>
+                    <input class="form-check-input" type="checkbox" id="hasGarage" name="hasGarage"
+                        [(ngModel)]="propertyData.hasGarage" />
                 </div>
-                <!-- <label class="amenity-item">
-                    <div class="item-info">
-                        <span class="label-text">Parking</span>
-                    </div>
-                    <input type="checkbox" name="hasParking" [(ngModel)]="propertyData.hasParking"
-                        class="custom-checkbox" />
-                </label>
 
-                 <label class="amenity-item">
-                    <div class="item-info">
-                        <span class="label-text">Balcony</span>
-                    </div>
-                    <input type="checkbox" name="hasBalcony" [(ngModel)]="propertyData.hasBalcony"
-                        class="custom-checkbox" />
-                </label>
+                <div class="form-check">
+                    <label class="form-check-label" for="isFurnished">
+                        <fa-icon [icon]="faFurnished"></fa-icon> Furnished
+                    </label>
+                    <input class="form-check-input" type="checkbox" id="isFurnished" name="isFurnished"
+                        [(ngModel)]="propertyData.isFurnished" />
+                </div>
 
-                <label class="amenity-item">
-                    <div class="item-info">
-                        <span class="label-text">Garden</span>
-                    </div>
-                    <input type="checkbox" name="hasGarden" [(ngModel)]="propertyData.hasGarden"
-                        class="custom-checkbox" />
-                </label>
-
-                <label class="amenity-item">
-                    <div class="item-info">
-                        <span class="label-text">Elevator</span>
-                    </div>
-                    <input type="checkbox" name="hasElevator" [(ngModel)]="propertyData.hasElevator"
-                        class="custom-checkbox" />
-                </label>
-
-                <label class="amenity-item">
-                    <div class="item-info">
-                        <span class="label-text">Garage</span>
-                    </div>
-                    <input type="checkbox" name="hasGarage" [(ngModel)]="propertyData.hasGarage"
-                        class="custom-checkbox" />
-                </label>
-
-                <label class="amenity-item">
-                    <div class="item-info">
-                        <span class="label-text">Furnished</span>
-                    </div>
-                    <input type="checkbox" name="isFurnished" [(ngModel)]="propertyData.isFurnished"
-                        class="custom-checkbox" />
-                </label>
-
-                <label class="amenity-item full-width">
-                    <div class="item-info">
-                        <span class="label-text">Is Negotiable</span>
-                    </div>
-                    <input type="checkbox" name="isNegotiable" [(ngModel)]="propertyData.isNegotiable"
-                        class="custom-checkbox" />
-                </label> -->
+                <div class="form-check">
+                    <label class="form-check-label" for="isNegotiable">
+                        <fa-icon [icon]="faNegotiable"></fa-icon> Is Negotiable
+                    </label>
+                    <input class="form-check-input" type="checkbox" id="isNegotiable" name="isNegotiable"
+                        [(ngModel)]="propertyData.isNegotiable" />
+                </div>
 
             </div>
+
             <div class="pro-tip">
                 <div class="tip-content">
                     <h4>
@@ -143,23 +136,33 @@
             </div>
         </div>
 
+        <!-- Step 5: Media Upload -->
         <div *ngIf="currentStep === 5" class="step-content">
             <h2>Media Upload</h2>
+
             <div class="upload-zone" (click)="fileInput.click()">
                 <input #fileInput type="file" (change)="onFileSelected($event)" multiple hidden />
                 <p>Drag and drop images here or click to browse</p>
             </div>
+
             <div class="preview-grid">
                 <div *ngFor="let img of previewImages" class="preview-item">
-                    <img [src]="img" />
+                    <img [src]="img" alt="Preview" />
                 </div>
             </div>
         </div>
 
+        <!-- Footer Navigation -->
         <div class="stepper-footer">
-            <button type="button" class="btn-back" (click)="prevStep()" [disabled]="currentStep === 1">Back</button>
-            <button type="button" class="btn-next" (click)="nextStep()" *ngIf="currentStep < 5">Next Step</button>
-            <button type="submit" class="btn-submit" *ngIf="currentStep === 5">Submit Property</button>
+            <button type="button" class="btn-back" (click)="prevStep()" [disabled]="currentStep === 1">
+                Back
+            </button>
+            <button type="button" class="btn-next" (click)="nextStep()" *ngIf="currentStep < totalSteps">
+                Next Step
+            </button>
+            <button type="submit" class="btn-submit" *ngIf="currentStep === totalSteps">
+                Submit Property
+            </button>
         </div>
 
     </form>

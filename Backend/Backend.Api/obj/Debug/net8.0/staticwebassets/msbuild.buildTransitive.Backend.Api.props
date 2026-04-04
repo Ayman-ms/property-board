@@ -1,3 +1,3 @@
 ﻿<Project>
-  <Import Project="..\buildMultiTargeting\Backend.Api.props" />
+  <Import Project="../buildMultiTargeting/Backend.Api.props" />
 </Project>
