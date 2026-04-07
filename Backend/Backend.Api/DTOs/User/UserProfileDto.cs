@@ -17,7 +17,7 @@ namespace Backend.Api.DTOs.User
         
         // Computed Properties
         public string FullName => $"{FirstName} {LastName}";
-        
+        public string UserType { get; set; } = "User"; // Default to "User", can be "Admin", "Agent", etc.
         // Statistics
         public int PropertiesCount { get; set; }
         public int FavoritesCount { get; set; }

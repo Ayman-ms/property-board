@@ -17,6 +17,7 @@ export class NavbarComponent {
   isDarkMode = false;
   isLoggedIn = false;
   private authSub!: Subscription;
+currentUserId: string | null = null;
 
   constructor(
     public translate: TranslateService,
@@ -25,9 +26,19 @@ export class NavbarComponent {
   ) { }
 
   ngOnInit(): void {
-    this.authService.isLoggedIn$.subscribe(status => {
+   this.authSub= this.authService.isLoggedIn$.subscribe(status => {
       this.isLoggedIn = status;
-      console.log('User is logged in:', status);
+      if (status) {
+      // حاول جلب الـ ID
+      this.currentUserId = this.authService.getUserId();
+      
+      // إذا كان لا يزال null، اطبع تحذيراً لنعرف السبب
+      if (!this.currentUserId) {
+        console.warn('User is logged in but ID is missing in localStorage!');
+      }
+    } else {
+      this.currentUserId = null;
+    }
     });
     const savedTheme = localStorage.getItem('theme');
     this.isDarkMode = savedTheme === 'dark';
@@ -35,7 +46,9 @@ export class NavbarComponent {
   }
 
   ngOnDestroy(): void {
-    this.authSub.unsubscribe();
+    if (this.authSub) {
+      this.authSub.unsubscribe();
+    }
   }
 
   toggleTheme() {

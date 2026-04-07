@@ -37,8 +37,10 @@
     "TownhouseDescription": "Charming townhouse with a private garden"
   },
   "PROFILE": {
-    "Title": "User Profile",
-    "Loading": "Loading profile..."
+    "Edit": "Edit Profile",
+    "Logout": "Logout",
+    "Save": "Save",
+    "Cancel": "Cancel"
   },
   "EDITPROFILE": {
     "Title": "Edit Profile",
@@ -84,7 +86,7 @@
     "Title": "Reset Password",
     "Password": "New Password",
     "ConfirmPassword": "Confirm Password",
-    "Save":"Save...",
+    "Save": "Save...",
     "Submit": "Change Password"
   },
   "ERROR": {
@@ -100,14 +102,14 @@
     "Phone": "Phone",
     "Address": "Address",
     "CONTACT_FORM": "Contact Form",
-    "Name": "Your Name", 
+    "Name": "Your Name",
     "Message": "Your Message",
     "SUBJECT": "Subject",
     "MESSAGE": "Message",
     "SUBMIT": "Send Message",
     "FOLLOW_US": "Follow Us"
   },
-  "ABOUTE":{
+  "ABOUTE": {
     "About_Title": "About Domix",
     "About_Description": "At Domix, we're more than just a real estate platform; we're a community of passionate individuals dedicated to helping you find your perfect home. Our mission is to simplify the home-buying process, making it accessible and enjoyable for everyone.",
     "OurMission": "Our Mission",
@@ -124,7 +126,6 @@
     "CommunityDescription": "We foster a supportive and inclusive community for our users and team.",
     "TransparencyDescription": "We believe in open and honest communication throughout the home-buying process."
   },
-  
   "ALL_PROPERTIES": {
     "Filters": "Filters",
     "ResetAll": "Reset All",
@@ -146,7 +147,6 @@
     "Rent": "Rent",
     "Sale": "Sale"
   },
-
   "ADD_PROPERTY": {
     "Title": "Add New Property",
     "PropertyTitle": "Property Title",
@@ -156,7 +156,7 @@
     "ForSale": "For Sale",
     "APARTMENT": "Apartment",
     "VILLA": "Villa",
-    "HOUSE": "House", 
+    "HOUSE": "House",
     "OFFICE": "Office",
     "PropertyType": "Property Type",
     "TitleLabel": "Title",
@@ -175,8 +175,7 @@
     "AddressLabel": "Address",
     "ImagesLabel": "Click to select images",
     "DeleteAll": "Delete All Images",
-    "LISTING":"Preview Listing",
+    "LISTING": "Preview Listing",
     "SubmitButton": "Submit Listing"
   }
-
 }

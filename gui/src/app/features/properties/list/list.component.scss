@@ -1,27 +1,5 @@
 @import '../../../styles/variables.scss';
 
-// --- Mixins ---
-@mixin button-base($bg: $logo-color, $color: white, $is-full: false) {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: if($is-full, 100%, fit-content);
-    background: $bg;
-    color: $color;
-    border: none;
-    font-weight: 600;
-    cursor: pointer;
-    border-radius: $border-radius-custom;
-    transition: all 0.3s ease;
-    padding: 0.6rem 1.2rem;
-    gap: 8px;
-
-    &:hover {
-        filter: brightness(1.1);
-        transform: translateY(-1px);
-    }
-}
-
 // --- Layout ---
 .property-container {
     display: flex;
@@ -367,7 +345,7 @@
     }
 }
 
-// تعديل للوضع الليلي في القائمة
+// dark mode
 :host-context(.dark-mode) .property-list-view .property-card {
     background: $input-bg-dark;
 

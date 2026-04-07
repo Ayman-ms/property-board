@@ -29,22 +29,22 @@ export class AuthService {
   // }
 
   login(credentials: any) {
-  return this.http.post<any>(`${ApiEndpoints.auth.login}`, credentials).pipe(
-    map(response => {
-      if (response && response.isSuccess && response.data.token) {
-        // حفظ التوكن في المتصفح
-        localStorage.setItem('token', response.data.token);
-        this.setSession(response.data);
-        // اختيارياً: حفظ بيانات المستخدم الأخرى
-        localStorage.setItem('user', JSON.stringify(response.data.user));
-        
-        console.log('Token saved successfully!');
-      }
-      this.router.navigate(['/']);
-      return response;
-    })
-  );
-}
+    return this.http.post<any>(`${ApiEndpoints.auth.login}`, credentials).pipe(
+      map(response => {
+        if (response && response.isSuccess && response.data.token) {
+          // حفظ التوكن في المتصفح
+          localStorage.setItem('token', response.data.token);
+          this.setSession(response.data);
+          // اختيارياً: حفظ بيانات المستخدم الأخرى
+          localStorage.setItem('user', JSON.stringify(response.data.user));
+
+          console.log('Token saved successfully!');
+        }
+        this.router.navigate(['/']);
+        return response;
+      })
+    );
+  }
 
   private externalLoginProvider(idToken: string, provider: string) {
     this.http.post<any>(`${ApiEndpoints.auth.login}/external`, { idToken, provider }).subscribe({
@@ -58,6 +58,10 @@ export class AuthService {
 
   private setSession(authResult: any) {
     localStorage.setItem('token', authResult.token);
+    const id = authResult.user?.userId || authResult.userId;
+    if (id) {
+      localStorage.setItem('userId', id.toString());
+    }
     localStorage.setItem('role', authResult.user.role || 'user');
     localStorage.setItem('user', JSON.stringify(authResult.user));
     this.loggedIn.next(true);
@@ -122,12 +126,19 @@ export class AuthService {
     return this.http.post(`${ApiEndpoints.auth.baseUrl}/reset-password`, data);
   }
 
-  getCurrentUser() {
-    return authState(this.auth); // from firebase/auth
-  }
-
   getauthState() {
     return this.auth;
   }
-
+  
+  getUserId(): string | null {
+    let id = localStorage.getItem('userId');
+    if (!id) {
+      const userJson = localStorage.getItem('user');
+      if (userJson) {
+        const user = JSON.parse(userJson);
+        id = user.userId || user.id;
+      }
+    }
+    return id;
+  }
 }

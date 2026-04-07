@@ -2,11 +2,12 @@
 
 .footer {
     background-color: $background-color;
-    color: #c0c5ca;
+    color: $primary-color;
     text-align: center;
     padding: 2rem 1rem;
     font-family: 'Inter', sans-serif;
     border-top: solid 1px $primary-color;
+    margin-top: auto;
 
     .footer-links {
         display: flex;
@@ -53,6 +54,7 @@
         .footer {
             background-color: $background-color-dark;
             border-top: solid 1px $primary-color-dark;
+            color: $primary-color-dark;
 
             .footer-links {
                 .footer-link {

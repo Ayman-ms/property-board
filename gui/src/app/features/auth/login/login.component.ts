@@ -19,35 +19,24 @@ export class LoginComponent {
 
   error: string | null = null;
 
-  constructor(private authService: AuthService, public router: Router, public translate: TranslateService) {}
+  constructor(private authService: AuthService, public router: Router, public translate: TranslateService) { }
 
-onLogin() {
-    console.log('Attempting login with:', this.loginData.email);
-
+  onLogin() {
     this.authService.login(this.loginData).subscribe({
       next: (response: any) => {
-        // فحص هيكلية الرد بناءً على ApiResponse في الباكيند
-        if (response && response.success) {
+        // نستخدم isSuccess كما هو موجود في الـ Service
+        if (response && response.isSuccess) {
           console.log('Login Successful');
-          
-          // حفظ التوكن (تأكد من أن الباكيند يعيد الحقل باسم token داخل data)
-          localStorage.setItem('token', response.data.token);
-          
-          // التوجه للرئيسية
+          // لا تقم بالحفظ يدوياً هنا، الـ Service قام بذلك بالفعل عبر setSession
           this.router.navigate(['/']);
-        } else {
-          alert(response.message || 'Login failed');
         }
       },
       error: (err) => {
-        console.error('Login Error:', err);
-        // عرض رسالة الخطأ القادمة من ASP.NET (مثل Invalid password)
         const errorMessage = err.error?.message || 'Something went wrong';
         alert(errorMessage);
       }
     });
   }
-
   signInWithGoogle() {
     this.authService.loginWithExternalProvider('Google')
       .then(() => this.router.navigate(['/']))

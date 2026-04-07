@@ -37,8 +37,10 @@
     "TownhouseDescription": "Charmantes Reihenhaus mit privatem Garten"
   },
   "PROFILE": {
-    "Title": "Benutzerprofil",
-    "Loading": "Lade Profil..."
+    "Edit": "Profil bearbeiten",
+    "Logout": "Abmelden",
+    "Save": "Speichern",
+    "Cancel": "Abbrechen"
   },
   "EDITPROFILE": {
     "Title": "Profil bearbeiten",

@@ -13,5 +13,6 @@ namespace Backend.Api.DTOs.User
         public bool IsActive { get; set; }
         public bool IsVerified { get; set; }
         public string FullName => $"{FirstName} {LastName}";
+        public string? UserType { get; set; }
     }
 }
