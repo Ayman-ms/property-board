@@ -1,11 +1,14 @@
 @import '../../../styles/variables.scss';
 
-// ─── Reset & Base ───────────────────────────────────────────────
-* {
-  box-sizing: border-box;
-}
+// ─── Breakpoints ─────────────────────────────────────────────────
+// xs: < 480px   (mobile small)
+// sm: < 640px   (mobile)
+// md: < 768px   (tablet)
+// lg: < 1024px  (tablet large)
 
-// ─── Shared Input Styles ────────────────────────────────────────
+* { box-sizing: border-box; }
+
+// ─── Shared Inputs ───────────────────────────────────────────────
 input:not([type='checkbox']),
 textarea {
   display: block;
@@ -20,10 +23,7 @@ textarea {
   margin-bottom: 1rem;
   transition: border-color 0.2s ease, box-shadow 0.2s ease;
 
-  &::placeholder {
-    color: $secondary-color;
-    opacity: 0.7;
-  }
+  &::placeholder { color: $secondary-color; opacity: 0.7; }
 
   &:focus {
     outline: none;
@@ -31,15 +31,22 @@ textarea {
     box-shadow: 0 0 0 3px rgba($logo-color, 0.1);
     background-color: $input-bg;
   }
+
+  @media (max-width: 480px) {
+    padding: 0.75rem 0.9rem;
+    font-size: 0.9rem;
+  }
 }
 
 textarea {
   resize: vertical;
   min-height: 120px;
   line-height: 1.6;
+
+  @media (max-width: 480px) { min-height: 90px; }
 }
 
-// ─── Stepper Container ──────────────────────────────────────────
+// ─── Stepper Container ───────────────────────────────────────────
 .stepper-container {
   width: 100%;
   max-width: 720px;
@@ -52,7 +59,6 @@ textarea {
   display: flex;
   flex-direction: column;
 
-  // Dark mode
   :host-context(.dark-mode) & {
     background-color: $input-bg-dark;
     color: $text-color-dark;
@@ -65,9 +71,15 @@ textarea {
     min-height: unset;
     border-radius: 14px;
   }
+
+  @media (max-width: 480px) {
+    margin: 0.5rem;
+    padding: 1.1rem;
+    border-radius: 10px;
+  }
 }
 
-// ─── Stepper Header ─────────────────────────────────────────────
+// ─── Stepper Header ──────────────────────────────────────────────
 .stepper-header {
   margin-bottom: 0.5rem;
 
@@ -79,6 +91,8 @@ textarea {
     text-transform: uppercase;
     color: $logo-color;
     margin-bottom: 0.6rem;
+
+    @media (max-width: 480px) { font-size: 0.7rem; }
   }
 
   .progress-bar {
@@ -86,7 +100,6 @@ textarea {
     background: #e9edf2;
     border-radius: 99px;
     overflow: hidden;
-    margin-bottom: 0;
 
     .progress-fill {
       height: 100%;
@@ -97,7 +110,7 @@ textarea {
   }
 }
 
-// ─── Form Layout ────────────────────────────────────────────────
+// ─── Form Layout ─────────────────────────────────────────────────
 form {
   flex: 1;
   display: flex;
@@ -105,7 +118,7 @@ form {
   margin-top: 0;
 }
 
-// ─── Step Content ───────────────────────────────────────────────
+// ─── Step Content ────────────────────────────────────────────────
 .step-content {
   flex: 1;
   display: flex;
@@ -116,10 +129,7 @@ form {
 
   &::-webkit-scrollbar { width: 4px; }
   &::-webkit-scrollbar-track { background: transparent; }
-  &::-webkit-scrollbar-thumb {
-    background: #d1d5db;
-    border-radius: 4px;
-  }
+  &::-webkit-scrollbar-thumb { background: #d1d5db; border-radius: 4px; }
 
   h2 {
     font-size: 1.4rem;
@@ -127,22 +137,29 @@ form {
     color: $text-color;
     margin-bottom: 1.5rem;
 
-    :host-context(.dark-mode) & {
-      color: $text-color-dark;
+    @media (max-width: 480px) {
+      font-size: 1.15rem;
+      margin-bottom: 1rem;
     }
+
+    :host-context(.dark-mode) & { color: $text-color-dark; }
   }
+
+  @media (max-width: 480px) { padding: 1rem 0; }
 }
 
-// ─── Listing Toggle ─────────────────────────────────────────────
+// ─── Listing Toggle ──────────────────────────────────────────────
 .listing-toggle {
   display: flex;
-  gap: 0.75rem;
+  flex-wrap: wrap;
+  gap: 0.6rem;
   margin-bottom: 1.5rem;
 
   button {
     flex: 1;
-    padding: 0.85rem 1rem;
-    font-size: 0.9rem;
+    min-width: 80px;
+    padding: 0.75rem 0.5rem;
+    font-size: 0.85rem;
     font-weight: 600;
     border: 1.5px solid #e2e8f0;
     background: #f8fafc;
@@ -150,6 +167,7 @@ form {
     cursor: pointer;
     color: #94a3b8;
     transition: all 0.2s ease;
+    white-space: nowrap;
 
     &:hover {
       border-color: $logo-color;
@@ -162,35 +180,108 @@ form {
       background: $logo-bg-color;
       box-shadow: 0 2px 8px rgba($logo-color, 0.15);
     }
+
+    @media (max-width: 480px) {
+      font-size: 0.78rem;
+      padding: 0.6rem 0.4rem;
+      min-width: 60px;
+    }
   }
+
+  // للنوع (Apartment, House...) — يسمح بالتفاف
+  &.propertyType {
+    button { flex: 1 1 calc(33% - 0.6rem); }
+
+    @media (max-width: 480px) {
+      button { flex: 1 1 calc(50% - 0.6rem); }
+    }
+  }
+
+  @media (max-width: 480px) { gap: 0.5rem; margin-bottom: 1rem; }
 }
 
-// ─── Grid 2 Columns ─────────────────────────────────────────────
+// ─── Grid 2 Columns ──────────────────────────────────────────────
 .grid-2 {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 0.75rem;
 
-  @media (max-width: 480px) {
-    grid-template-columns: 1fr;
+  @media (max-width: 480px) { grid-template-columns: 1fr; gap: 0; }
+}
+
+// ─── Address Search ──────────────────────────────────────────────
+.input-group {
+  position: relative;
+  margin-bottom: 1rem;
+
+  label {
+    display: block;
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: #94a3b8;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 0.4rem;
+  }
+
+  input { margin-bottom: 0; }
+}
+
+.suggestions-list {
+  position: absolute;
+  top: calc(100% + 4px);
+  left: 0;
+  right: 0;
+  z-index: 100;
+  background: #fff;
+  border: 1.5px solid #e2e8f0;
+  border-radius: 10px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+  list-style: none;
+  padding: 0.4rem 0;
+  margin: 0;
+  max-height: 220px;
+  overflow-y: auto;
+
+  li {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.5rem;
+    padding: 0.7rem 1rem;
+    font-size: 0.85rem;
+    color: #334155;
+    cursor: pointer;
+    transition: background 0.15s ease;
+    line-height: 1.4;
+
+    &:hover { background: #f1f5f9; }
+
+    @media (max-width: 480px) { font-size: 0.8rem; padding: 0.6rem 0.8rem; }
+  }
+
+  @media (max-width: 480px) { max-height: 180px; }
+}
+
+// ─── Readonly Fields ─────────────────────────────────────────────
+.input-field {
+  label {
+    display: block;
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: #94a3b8;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 0.3rem;
+  }
+
+  input {
+    background: #f8fafc !important;
+    color: #475569 !important;
+    cursor: default;
   }
 }
 
-// ─── Map Placeholder ────────────────────────────────────────────
-.map-placeholder {
-  height: 160px;
-  border: 1.5px dashed #cbd5e1;
-  border-radius: 12px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #94a3b8;
-  font-size: 0.9rem;
-  background: #f8fafc;
-  margin-top: 0.5rem;
-}
-
-// ─── Amenities Grid ─────────────────────────────────────────────
+// ─── Amenities Grid ──────────────────────────────────────────────
 .amenities-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -199,13 +290,14 @@ form {
 
   @media (max-width: 480px) {
     grid-template-columns: 1fr;
+    gap: 0.5rem;
   }
 
   .form-check {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 1rem 1.2rem;
+    padding: 0.9rem 1.1rem;
     border: 1.5px solid #e2e8f0;
     border-radius: 12px;
     cursor: pointer;
@@ -221,15 +313,14 @@ form {
       display: flex;
       align-items: center;
       gap: 0.6rem;
-      font-size: 0.9rem;
+      font-size: 0.88rem;
       font-weight: 600;
       color: $text-color;
       cursor: pointer;
 
-      fa-icon {
-        color: $logo-color;
-        font-size: 1rem;
-      }
+      fa-icon { color: $logo-color; font-size: 1rem; }
+
+      @media (max-width: 480px) { font-size: 0.82rem; }
     }
 
     .form-check-input {
@@ -240,10 +331,12 @@ form {
       cursor: pointer;
       flex-shrink: 0;
     }
+
+    @media (max-width: 480px) { padding: 0.75rem 0.9rem; }
   }
 }
 
-// ─── Pro Tip ────────────────────────────────────────────────────
+// ─── Pro Tip ─────────────────────────────────────────────────────
 .pro-tip {
   display: flex;
   gap: 0.75rem;
@@ -260,10 +353,8 @@ form {
       font-weight: 700;
       color: $logo-color;
       margin-bottom: 0.25rem;
-
       i { margin-right: 0.4rem; }
     }
-
     p {
       font-size: 0.8rem;
       color: #475569;
@@ -271,9 +362,11 @@ form {
       margin: 0;
     }
   }
+
+  @media (max-width: 480px) { padding: 0.8rem 1rem; }
 }
 
-// ─── Upload Zone ────────────────────────────────────────────────
+// ─── Upload Zone ─────────────────────────────────────────────────
 .upload-zone {
   border: 2px dashed #cbd5e1;
   border-radius: 14px;
@@ -293,13 +386,28 @@ form {
   }
 
   p { margin: 0; }
+
+  @media (max-width: 480px) {
+    padding: 1.5rem 1rem;
+    font-size: 0.85rem;
+    margin-bottom: 1rem;
+  }
 }
 
-// ─── Preview Grid ───────────────────────────────────────────────
+// ─── Preview Grid ────────────────────────────────────────────────
 .preview-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
   gap: 0.75rem;
+
+  @media (max-width: 640px) {
+    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+    gap: 0.5rem;
+  }
+
+  @media (max-width: 480px) {
+    grid-template-columns: repeat(3, 1fr);
+  }
 
   .preview-item {
     aspect-ratio: 1;
@@ -316,7 +424,7 @@ form {
   }
 }
 
-// ─── Stepper Footer ─────────────────────────────────────────────
+// ─── Stepper Footer ──────────────────────────────────────────────
 .stepper-footer {
   display: flex;
   justify-content: space-between;
@@ -352,10 +460,7 @@ form {
       border: 1.5px solid #e2e8f0;
       color: #64748b;
 
-      &:hover {
-        border-color: #94a3b8;
-        color: #475569;
-      }
+      &:hover { border-color: #94a3b8; color: #475569; }
 
       &:disabled {
         opacity: 0.4;
@@ -368,12 +473,16 @@ form {
         border-color: #334155;
       }
     }
-  }
 
-  @media (max-width: 480px) {
-    button {
-      padding: 0.7rem 1.2rem;
-      font-size: 0.85rem;
+    @media (max-width: 480px) {
+      padding: 0.65rem 1.2rem;
+      font-size: 0.82rem;
     }
   }
+
+  @media (max-width: 480px) { padding-top: 1rem; }
 }
+
+// ─── Utility ─────────────────────────────────────────────────────
+.mt-2 { margin-top: 0.75rem; }
+.mt-3 { margin-top: 1rem; }

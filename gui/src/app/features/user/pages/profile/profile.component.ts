@@ -27,17 +27,27 @@ export class ProfileComponent implements OnInit {
     public route: ActivatedRoute
   ) { }
 
+
   ngOnInit(): void {
-    const userId = this.route.snapshot.paramMap.get('id');
-    if (userId) {
-      this.userService.getUserById(userId).subscribe({
-        next: (res) => {
-          this.user = res.data;
-          // نأخذ نسخة من البيانات لوضع التعديل حتى لا نعدل الأصل فوراً
-          this.editForm = { ...this.user }; 
-        },
-        error: (err) => console.error("Error loading profile", err)
-      });
+    // ✅ جلب المستخدم من localStorage
+    const storedUser = localStorage.getItem('user');
+
+    if (storedUser) {
+      // البيانات موجودة محلياً من وقت تسجيل الدخول
+      this.user = JSON.parse(storedUser);
+      this.editForm = { ...this.user };
+    } else {
+      // إذا لم توجد محلياً، اجلبها من الـ API بالـ token
+      const userId = this.authService.getCurrentUserId(); // أو من الـ JWT
+      if (userId) {
+        this.userService.getUserById(userId).subscribe({
+          next: (res) => {
+            this.user = res.data;
+            this.editForm = { ...this.user };
+          },
+          error: (err) => console.error("Error loading profile", err)
+        });
+      }
     }
   }
 

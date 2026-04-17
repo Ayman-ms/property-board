@@ -17,6 +17,18 @@
       "PackagePath": "staticwebassets/uploads/profiles/820ed0ac-6f0e-4567-b89c-b77f8286f932.jpg"
     },
     {
+      "Id": "/Volumes/Mac Mini Disk/project/property-board/Backend/Backend.Api/wwwroot/uploads/properties/9bb6dc2f-e01e-4bc6-a15b-032b0a1be0ef.png",
+      "PackagePath": "staticwebassets/uploads/properties/9bb6dc2f-e01e-4bc6-a15b-032b0a1be0ef.png"
+    },
+    {
+      "Id": "/Volumes/Mac Mini Disk/project/property-board/Backend/Backend.Api/wwwroot/uploads/properties/a27b7ac9-ad7a-460c-a274-194907fd6d71.jpg",
+      "PackagePath": "staticwebassets/uploads/properties/a27b7ac9-ad7a-460c-a274-194907fd6d71.jpg"
+    },
+    {
+      "Id": "/Volumes/Mac Mini Disk/project/property-board/Backend/Backend.Api/wwwroot/uploads/properties/f215da9c-5624-4a34-a797-59ccf4310a16.jpg",
+      "PackagePath": "staticwebassets/uploads/properties/f215da9c-5624-4a34-a797-59ccf4310a16.jpg"
+    },
+    {
       "Id": "obj/Debug/net8.0/staticwebassets/msbuild.Backend.Api.Microsoft.AspNetCore.StaticWebAssets.props",
       "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
     },

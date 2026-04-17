@@ -1,14 +1,16 @@
 import { Component } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { FormsModule, NgForm } from '@angular/forms';
-import { Firestore, collection, addDoc, serverTimestamp } from '@angular/fire/firestore';
-import { getStorage, ref, uploadBytes, getDownloadURL } from '@angular/fire/storage';
 import { CommonModule } from '@angular/common';
 import { TranslateModule } from '@ngx-translate/core';
-import { v4 as uuidv4 } from 'uuid';
 import { AppMessageService } from '../../../core/services/message/message.service';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { faP, faTree, faPersonShelter, faCouch, faMoneyBills, faArrowsUpDown, faWarehouse } from '@fortawesome/free-solid-svg-icons';
+import { ApiEndpoints } from '../../../core/constants/api_endpoints';
+import {
+  faP, faTree, faPersonShelter, faCouch,
+  faMoneyBills, faArrowsUpDown, faWarehouse
+} from '@fortawesome/free-solid-svg-icons';
+import { Subject, debounceTime, distinctUntilChanged, switchMap, of } from 'rxjs';
 
 @Component({
   selector: 'app-add',
@@ -19,120 +21,207 @@ import { faP, faTree, faPersonShelter, faCouch, faMoneyBills, faArrowsUpDown, fa
 })
 export class AddComponent {
 
-  // Font Awesome Icons
-  faParking = faP;
-  faGarden = faTree;
-  faElevator = faArrowsUpDown;
-  faGarage = faWarehouse;
-  faFurnished = faCouch;
+  // ─── Icons ───────────────────────────────────────────
+  faParking    = faP;
+  faGarden     = faTree;
+  faElevator   = faArrowsUpDown;
+  faGarage     = faWarehouse;
+  faFurnished  = faCouch;
   faNegotiable = faMoneyBills;
-  faBalcony = faPersonShelter;
+  faBalcony    = faPersonShelter;
 
-  // Stepper
+  // ─── Stepper ─────────────────────────────────────────
   currentStep = 1;
-  totalSteps = 5;
+  totalSteps  = 6;
+  isLoading   = false;
 
-  // All property data in one object (no duplicates)
-  propertyData = {
-    title: '',
-    description: '',
-    shortDescription: '',
-    propertyTypeId: null,
-    listingType: 'rent',
-    price: null,
-    areaSqm: null,
-    bedrooms: null,
-    bathrooms: null,
-    floorNumber: null,
-    totalFloors: null,
-    yearBuilt: new Date().getFullYear(),
-    hasParking: false,
-    hasBalcony: false,
-    hasGarden: false,
-    hasElevator: false,
-    hasGarage: false,
-    isFurnished: false,
-    isNegotiable: false,
-    street: '',
-    zipCode: '',
-    city: '',
-    state: '',
-    country: 'de'
+  // ─── Address Search ──────────────────────────────────
+  suggestions  : any[] = [];
+  isSearching          = false;
+  searchQuery          = '';
+  private searchInput$ = new Subject<string>();
+
+  // خريطة تحويل كود الدولة ← اسمها الكامل (للـ Nominatim)
+  private countryCodeMap: { [key: string]: string } = {
+    'Germany'       : 'de',
+    'United States' : 'us'
   };
 
-  // Media
+  // ─── Property Data ───────────────────────────────────
+  propertyData = {
+    title           : '',
+    description     : '',
+    shortDescription: '',
+    propertyTypeId  : 0,
+    listingType     : 'rent',
+    price           : null as number | null,
+    areaSqm         : null as number | null,
+    bedrooms        : null as number | null,
+    bathrooms       : null as number | null,
+    floorNumber     : null as number | null,
+    totalFloors     : null as number | null,
+    yearBuilt       : new Date().getFullYear(),
+    hasParking      : false,
+    hasBalcony      : false,
+    hasGarden       : false,
+    hasElevator     : false,
+    hasGarage       : false,
+    isFurnished     : false,
+    isNegotiable    : false,
+    street          : '',
+    postCode        : '',
+    city            : '',
+    state           : '',
+    country         : 'Germany',   // ✅ القيمة الكاملة كما تتوقعها قاعدة البيانات
+    currency        : 'EUR',
+    latitude        : null as number | null,
+    longitude       : null as number | null,
+  };
+
+  // ─── Media ───────────────────────────────────────────
   previewImages: string[] = [];
-  selectedFiles: File[] = [];
+  selectedFiles: File[]   = [];
 
   constructor(
     private http: HttpClient,
-    private firestore: Firestore,
-    private msg: AppMessageService
-  ) {}
+    private msg : AppMessageService
+  ) {
+    // Debounce البحث عن العناوين - ينتظر 500ms بعد آخر حرف
+    this.searchInput$.pipe(
+      debounceTime(500),
+      distinctUntilChanged(),
+      switchMap(query => {
+        if (query.length < 3) {
+          this.suggestions = [];
+          return of([]);
+        }
+        this.isSearching = true;
 
-  // Stepper Navigation
-  nextStep() { if (this.currentStep < this.totalSteps) this.currentStep++; }
-  prevStep() { if (this.currentStep > 1) this.currentStep--; }
+        // تحويل اسم الدولة الكامل إلى كود للـ Nominatim
+        const countryCode = this.countryCodeMap[this.propertyData.country] || 'de';
+        const url = `https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(query)}&countrycodes=${countryCode}&limit=5&addressdetails=1`;
 
-  // Zip Code Lookup
-  lookupZip() {
-    if (!this.propertyData.zipCode || this.propertyData.zipCode.length < 4) return;
-    const url = `https://api.zippopotam.us/${this.propertyData.country}/${this.propertyData.zipCode}`;
-    this.http.get<any>(url).subscribe({
-      next: (res) => {
-        const place = res.places[0];
-        this.propertyData.city = place['place name'];
-        this.propertyData.state = place['state'];
-      },
-      error: () => {
-        this.propertyData.city = '';
-        this.propertyData.state = '';
-      }
+        return this.http.get<any[]>(url);
+      })
+    ).subscribe({
+      next: (data) => { this.suggestions = data; this.isSearching = false; },
+      error: ()     => { this.isSearching = false; }
     });
   }
 
-  // File Selection
+  // ─── Address Methods ─────────────────────────────────
+  onSearchAddress(event: any) {
+    this.searchQuery = event.target.value;
+    this.searchInput$.next(this.searchQuery);
+  }
+
+  selectAddress(item: any) {
+    const addr = item.address;
+
+    // تحويل كود الدولة القادم من Nominatim إلى الاسم الكامل
+    const countryFullNameMap: { [key: string]: string } = {
+      'de': 'Germany',
+      'us': 'United States'
+    };
+
+    this.propertyData.postCode  = addr.postcode || '';
+    this.propertyData.city      = addr.city || addr.town || addr.village || addr.suburb || '';
+    this.propertyData.state     = addr.state || '';
+    this.propertyData.street    = addr.road ? `${addr.road} ${addr.house_number || ''}`.trim() : '';
+    this.propertyData.country   = countryFullNameMap[addr.country_code] || this.propertyData.country;
+    this.propertyData.latitude  = parseFloat(item.lat) || null;
+    this.propertyData.longitude = parseFloat(item.lon) || null;
+    this.searchQuery             = item.display_name;
+    this.suggestions             = [];
+  }
+
+  closeSuggestions() {
+    setTimeout(() => this.suggestions = [], 200);
+  }
+
+  // ─── Stepper Navigation ───────────────────────────────
+  nextStep() { if (this.currentStep < this.totalSteps) this.currentStep++; }
+  prevStep()  { if (this.currentStep > 1) this.currentStep--; }
+
+  // ─── File Upload ──────────────────────────────────────
   onFileSelected(event: Event): void {
     const input = event.target as HTMLInputElement;
-    if (input.files) {
-      const newFiles = Array.from(input.files);
-      newFiles.forEach(file => {
-        this.selectedFiles.push(file);
-        const reader = new FileReader();
-        reader.onload = (e: any) => this.previewImages.push(e.target.result);
-        reader.readAsDataURL(file);
+    if (!input.files) return;
+    Array.from(input.files).forEach(file => {
+      this.selectedFiles.push(file);
+      const reader = new FileReader();
+      reader.onload = (e: any) => this.previewImages.push(e.target.result);
+      reader.readAsDataURL(file);
+    });
+  }
+
+  removeImage(index: number) {
+    this.previewImages.splice(index, 1);
+    this.selectedFiles.splice(index, 1);
+  }
+
+  // ─── Submit ───────────────────────────────────────────
+  async onSubmit(form: NgForm): Promise<void> {
+    if (!form.valid) {
+      this.msg.error('Error', 'Please fill all required fields');
+      return;
+    }
+
+    this.isLoading = true;
+
+    try {
+      const token = localStorage.getItem('token');
+      const headers = new HttpHeaders({
+        'Authorization': `Bearer ${token}`,
+        'Content-Type' : 'application/json'
       });
+
+      // الخطوة 1: إنشاء العقار في قاعدة البيانات
+      const propertyResponse = await this.http
+        .post<any>(`${ApiEndpoints.properties.base}`, this.propertyData, { headers })
+        .toPromise();
+
+      const propertyId = propertyResponse?.id;
+
+      // الخطوة 2: رفع الصور إذا وجدت
+      if (this.selectedFiles.length > 0 && propertyId) {
+        const formData = new FormData();
+        this.selectedFiles.forEach(file => formData.append('files', file));
+
+        const uploadHeaders = new HttpHeaders({
+          'Authorization': `Bearer ${token}`
+          // لا تضع Content-Type هنا، المتصفح يضيفه تلقائياً مع boundary
+        });
+
+        await this.http
+          .post(
+            `${ApiEndpoints.properties.base}/${propertyId}/media`,
+            formData,
+            { headers: uploadHeaders }
+          )
+          .toPromise();
+      }
+
+      this.msg.success('Success', 'Property Added Successfully');
+      this.resetAll(form);
+
+    } catch (error: any) {
+      console.error(error);
+      this.msg.error('Error', error?.error?.message || 'Failed to save property');
+    } finally {
+      this.isLoading = false;
     }
   }
 
-  // Submit
-  async onSubmit(form: NgForm): Promise<void> {
-    if (!form.valid) return;
-    try {
-      const imageUrls: string[] = [];
-      for (const file of this.selectedFiles) {
-        const storage = getStorage();
-        const fileRef = ref(storage, `property-images/${uuidv4()}_${file.name}`);
-        const snapshot = await uploadBytes(fileRef, file);
-        const url = await getDownloadURL(snapshot.ref);
-        imageUrls.push(url);
-      }
-
-      const dataToSubmit = {
-        ...this.propertyData,
-        images: imageUrls,
-        createdAt: serverTimestamp()
-      };
-
-      await addDoc(collection(this.firestore, 'properties'), dataToSubmit);
-      this.msg.success('Success', 'Property Added Successfully');
-      this.currentStep = 1;
-      form.resetForm();
-      this.propertyData.listingType = 'rent';
-      this.previewImages = [];
-      this.selectedFiles = [];
-    } catch (error) {
-      this.msg.error('Error', String(error));
-    }
+  // ─── Reset ────────────────────────────────────────────
+  resetAll(form: NgForm) {
+    this.currentStep              = 1;
+    this.searchQuery              = '';
+    this.suggestions              = [];
+    this.previewImages            = [];
+    this.selectedFiles            = [];
+    this.propertyData.listingType = 'rent';
+    this.propertyData.country     = 'Germany';
+    form.resetForm();
   }
 }

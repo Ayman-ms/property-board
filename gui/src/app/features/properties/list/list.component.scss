@@ -1,425 +1,227 @@
 @import '../../../styles/variables.scss';
 
-// --- Layout ---
+// ─── Layout ──────────────────────────────────────────────────────
 .property-container {
-    display: flex;
-    gap: 2rem;
-    background-color: $background-color;
-    min-height: 100vh;
-    padding: 2rem;
-    font-family: 'Inter', sans-serif;
+  display: flex;
+  gap: 2rem;
+  background-color: $background-color;
+  min-height: 100vh;
+  padding: 2rem;
+  font-family: 'Inter', sans-serif;
 
-    .filters-sidebar {
-        width: 280px;
-        flex-shrink: 0;
-        background: white;
-        padding: 1.5rem;
-        border-radius: $border-radius-custom;
-        border: 1px solid rgba($secondary-color, 0.1);
-        height: fit-content;
-
-        .filter-header {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 1.5rem;
-
-            h3 {
-                color: $primary-color;
-                font-size: 1.2rem;
-                margin: 0;
-            }
-
-            .btn-reset {
-                background: none;
-                border: none;
-                color: $logo-color;
-                cursor: pointer;
-                font-size: 0.8rem;
-            }
-        }
-
-        .filter-group {
-            margin-bottom: 1.2rem;
-
-            label {
-                display: block;
-                color: $primary-color;
-                font-weight: 600;
-                margin-bottom: 0.5rem;
-            }
-
-            input[type="number"] {
-                width: 100%;
-                background: $input-bg;
-                border: none;
-                padding: 0.6rem;
-                border-radius: 8px;
-                color: $text-color;
-            }
-
-            .price-inputs {
-                display: flex;
-                align-items: center;
-                gap: 5px;
-            }
-
-            .checkbox-list {
-                display: grid
-            }
-
-            .chips-container {
-                display: flex;
-                flex-wrap: wrap;
-                gap: 0.4rem;
-                margin-top: 0.8rem;
-
-                .chip {
-                    background: $logo-bg-color;
-                    color: $logo-color;
-                    padding: 0.4rem 1rem;
-                    border-radius: 2rem;
-                    font-size: 0.8rem;
-                    cursor: pointer;
-                    transition: 0.3s;
-
-                    &.active {
-                        background: $logo-color;
-                        color: white;
-                    }
-                }
-            }
-        }
-
-        .btn-apply {
-            @include button-base($is-full: true);
-            margin-top: 1rem;
-        }
-    }
-
-    .property-content {
-        flex-grow: 1;
-
-        .content-header {
-            display: flex;
-            justify-content: flex-end;
-            align-items: center;
-            gap: 1rem;
-            margin-bottom: 2rem;
-
-            .sort-wrapper {
-                display: flex;
-                align-items: center;
-                background: rgba($logo-color, 0.05);
-                border: 1px solid rgba($secondary-color, 0.1);
-                border-radius: 10px;
-                padding: 0 12px;
-                height: 42px;
-
-                .sort-icon {
-                    color: $logo-color;
-                    margin-right: 8px;
-                }
-
-                .custom-sort {
-                    background: transparent;
-                    border: none;
-                    color: $primary-color;
-                    font-weight: 600;
-                    outline: none;
-                    appearance: none;
-                    cursor: pointer;
-                }
-            }
-
-            .view-options-btns, .property-type {
-                display: flex;
-                gap: 0.5rem;
-
-                button {
-                    @include button-base($bg: white, $color: $secondary-color);
-                    padding: 10px;
-                    border: 1px solid rgba($secondary-color, 0.1);
-
-                    &.active {
-                        color: $logo-color;
-                        border-color: $logo-color;
-                        background: rgba($logo-color, 0.05);
-                    }
-                }
-            }
-        }
-    }
+  @media (max-width: 768px) {
+    flex-direction: column;
+    padding: 1rem;
+    gap: 1rem;
+  }
 }
 
-// --- Grid & Cards ---
-.property-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 1.5rem;
+// ─── Filters Sidebar ─────────────────────────────────────────────
+.filters-sidebar {
+  width: 280px;
+  flex-shrink: 0;
+  background: white;
+  padding: 1.5rem;
+  border-radius: $border-radius-custom;
+  border: 1px solid rgba($secondary-color, 0.1);
+  height: fit-content;
 
-    .property-card {
-        background: white;
-        border-radius: $border-radius-custom;
-        overflow: hidden;
-        border: 1px solid rgba($secondary-color, 0.1);
+  @media (max-width: 768px) { width: 100%; }
+
+  .filter-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1.5rem;
+
+    h3 { color: $primary-color; font-size: 1.2rem; margin: 0; }
+
+    .btn-reset {
+      background: none;
+      border: none;
+      color: $logo-color;
+      cursor: pointer;
+      font-size: 0.8rem;
+    }
+  }
+
+  .filter-group {
+    margin-bottom: 1.2rem;
+
+    label {
+      display: block;
+      color: $primary-color;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+    }
+
+    input[type="number"] {
+      width: 100%;
+      background: $input-bg;
+      border: none;
+      padding: 0.6rem;
+      border-radius: 8px;
+      color: $text-color;
+    }
+
+    .price-inputs {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .checkbox-list {
+      display: grid;
+      gap: 0.4rem;
+
+      label {
+        font-weight: 400;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        cursor: pointer;
+      }
+    }
+
+    .chips-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      margin-top: 0.8rem;
+
+      .chip {
+        background: $logo-bg-color;
+        color: $logo-color;
+        padding: 0.4rem 1rem;
+        border-radius: 2rem;
+        font-size: 0.8rem;
+        cursor: pointer;
         transition: 0.3s;
 
-        &:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
-        }
-
-        .card-image {
-            position: relative;
-            height: 200px;
-
-            img {
-                width: 100%;
-                height: 100%;
-                object-fit: cover;
-            }
-
-            .badge {
-                position: absolute;
-                top: 12px;
-                left: 12px;
-                background: $logo-color;
-                color: white;
-                padding: 4px 10px;
-                border-radius: 6px;
-                font-size: 0.7rem;
-                font-weight: bold;
-            }
-
-            .price-tag {
-                position: absolute;
-                bottom: 12px;
-                left: 12px;
-                background: white;
-                padding: 6px 12px;
-                border-radius: 8px;
-                font-weight: 700;
-                color: $primary-color;
-            }
-        }
-
-        .card-body {
-            padding: 1.2rem;
-
-            h3 {
-                color: $primary-color;
-                margin: 0 0 8px 0;
-                font-size: 1.1rem;
-            }
-
-            .location {
-                color: $secondary-color;
-                font-size: 0.85rem;
-                margin-bottom: 12px;
-
-                i {
-                    color: $logo-color;
-                }
-            }
-
-            .specs {
-                display: flex;
-                justify-content: space-between;
-                border-top: 1px solid #eee;
-                padding-top: 12px;
-
-                span {
-                    color: $secondary-color;
-                    font-size: 0.8rem;
-
-                    i {
-                        color: $logo-color;
-                        margin-right: 4px;
-                    }
-                }
-            }
-
-            .btn-details {
-                @include button-base($bg: transparent, $color: $logo-color, $is-full: true);
-                border: 1px solid $logo-color;
-                margin-top: 1rem;
-
-                &:hover {
-                    background: rgba($logo-color, 0.05);
-                }
-            }
-        }
+        &.active { background: $logo-color; color: white; }
+      }
     }
+  }
+
+  .btn-apply {
+    @include button-base($is-full: true);
+    margin-top: 1rem;
+  }
 }
 
-// كلاس خاص عند تحويل الشبكة إلى قائمة
-.property-list-view {
+// ─── Main Content ────────────────────────────────────────────────
+.property-content {
+  flex-grow: 1;
+
+  .content-header {
     display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
-    width: 100%;
-    animation: fadeIn 0.4s ease-in-out;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
 
-    .property-card {
-        display: flex;
-        flex-direction: row;
-        height: 240px;
-        position: relative;
-        overflow: hidden;
-        background: white;
-        text-align: left;
+    .sort-wrapper {
+      display: flex;
+      align-items: center;
+      background: rgba($logo-color, 0.05);
+      border: 1px solid rgba($secondary-color, 0.1);
+      border-radius: 10px;
+      padding: 0 12px;
+      height: 42px;
 
-        .card-image img {
-            width: 300px;
-            height: 100%;
-            flex-shrink: 0;
-            position: relative;
-            object-fit: cover;
-            // img {
-            //     border-radius: $border-radius-custom 0 0 $border-radius-custom;
-            // }
-        }
+      .sort-icon { color: $logo-color; margin-right: 8px; }
 
-        .price-tag {
-            position: absolute;
-            bottom: 10px;
-            left: 10px;
-            z-index: 2; // لضمان ظهوره فوق الصورة دائماً
-            background: rgba(white, 0.9); // خلفية شبه شفافة لتناسب الصورة
-            padding: 5px 12px;
-            border-radius: 6px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        }
-
-        .card-body {
-            flex: 1;
-            padding: 1.5rem;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-
-            h3 {
-                font-size: 1.4rem;
-                margin-bottom: 5px;
-            }
-
-            .location {
-                margin-bottom: 10px;
-                font-size: 0.95rem;
-            }
-
-            .specs {
-                border: none;
-                padding: 0;
-                justify-content: flex-start;
-                gap: 25px;
-                background: rgba($logo-color, 0.03);
-                padding: 10px;
-                border-radius: 8px;
-
-                span {
-                    font-weight: 500;
-                    font-size: 0.9rem;
-                }
-            }
-
-            .btn-details {
-                align-self: flex-end; // وضع الزر في الزاوية السفلى
-                width: fit-content;
-                min-width: 150px;
-                margin-top: 0;
-            }
-        }
+      .custom-sort {
+        background: transparent;
+        border: none;
+        color: $primary-color;
+        font-weight: 600;
+        outline: none;
+        appearance: none;
+        cursor: pointer;
+      }
     }
+
+    .view-options-btns,
+    .property-type {
+      display: flex;
+      gap: 0.5rem;
+
+      button {
+        @include button-base($bg: white, $color: $secondary-color);
+        padding: 10px;
+        border: 1px solid rgba($secondary-color, 0.1);
+
+        &.active {
+          color: $logo-color;
+          border-color: $logo-color;
+          background: rgba($logo-color, 0.05);
+        }
+      }
+    }
+  }
+}
+
+// ─── Grid View ───────────────────────────────────────────────────
+.property-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.5rem;
+}
+
+// ─── List View ───────────────────────────────────────────────────
+.property-list-view {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  animation: fadeIn 0.4s ease-in-out;
 }
 
 @keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(10px);
-    }
-
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
 }
 
-// dark mode
-:host-context(.dark-mode) .property-list-view .property-card {
-    background: $input-bg-dark;
-
-    .specs {
-        background: rgba(255, 255, 255, 0.05);
-    }
-}
-
-// تعديل بسيط للوضع المتجاوب (Mobile)
-@media (max-width: 768px) {
-    .property-list-view .property-card {
-        flex-direction: column;
-        height: auto;
-
-        .card-image {
-            width: 100%;
-        }
-    }
-}
-
-// --- Pagination ---
+// ─── Pagination ──────────────────────────────────────────────────
 .pagination {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 8px;
-    margin-top: 3rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  margin-top: 3rem;
 
-    .page-arrow,
-    .page-num {
-        @include button-base($bg: white, $color: $secondary-color);
-        width: 40px;
-        height: 40px;
-        padding: 0;
-        border: 1px solid rgba($secondary-color, 0.1);
+  .page-arrow,
+  .page-num {
+    @include button-base($bg: white, $color: $secondary-color);
+    width: 40px;
+    height: 40px;
+    padding: 0;
+    border: 1px solid rgba($secondary-color, 0.1);
 
-        &.active,
-        &:hover {
-            background: $logo-color;
-            color: white;
-            border-color: $logo-color;
-        }
-
-        i {
-            font-size: 1.2rem;
-        }
+    &.active,
+    &:hover {
+      background: $logo-color;
+      color: white;
+      border-color: $logo-color;
     }
+
+    i { font-size: 1.2rem; }
+  }
 }
 
-// --- Dark Mode ---
+// ─── Dark Mode ───────────────────────────────────────────────────
 :host-context(.dark-mode) {
-    .property-container {
-        background-color: $background-color-dark;
+  .property-container { background-color: $background-color-dark; }
 
-        .filters-sidebar,
-        .property-card {
-            background: $input-bg-dark;
-            border-color: rgba(255, 255, 255, 0.05);
-        }
+  .filters-sidebar {
+    background: $input-bg-dark;
+    border-color: rgba(255, 255, 255, 0.05);
 
-        h3,
-        label,
-        .custom-sort {
-            color: white !important;
+    h3, label { color: $text-color-dark !important; }
+  }
 
-            option {
-                background-color: $background-color-dark;
-
-            }
-        }
-
-        .price-tag {
-            background: $input-bg-dark;
-            color: white;
-        }
-    }
+  .custom-sort {
+    color: $text-color-dark !important;
+    option { background-color: $background-color-dark; }
+  }
 }

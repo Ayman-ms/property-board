@@ -1,4 +1,6 @@
 <div class="property-container">
+
+  <!-- ── Filters Sidebar ────────────────────────────── -->
   <aside class="filters-sidebar">
     <div class="filter-header">
       <h3>{{ 'NAV.BUY' | translate }}</h3>
@@ -18,7 +20,7 @@
       <label>{{ 'ALL_PROPERTIES.PropertyType' | translate }}</label>
       <div class="checkbox-list">
         <label *ngFor="let type of propertyTypes">
-          <input type="checkbox" (change)="onTypeChange(type.propertyTypeId)" />
+          <input type="checkbox" (change)="onTypeChange(type.typeId)" />
           {{ type.typeName }}
         </label>
       </div>
@@ -33,23 +35,29 @@
       </div>
     </div>
 
-    <button class="btn-apply">{{ 'ALL_PROPERTIES.ApplyFilters' | translate }}</button>
+    <button class="btn-apply" (click)="applyFilters()">
+      {{ 'ALL_PROPERTIES.ApplyFilters' | translate }}
+    </button>
   </aside>
 
+  <!-- ── Main Content ───────────────────────────────── -->
   <main class="property-content">
+
     <header class="content-header">
+      <!-- Listing Type -->
       <div class="property-type">
         <button [class.active]="filterModel.listingType === 'Rent'" (click)="setListingType('Rent')">
-          {{ 'ALL_PROPERTIES.Rent' | translate }} </button>
-
+          {{ 'ALL_PROPERTIES.Rent' | translate }}
+        </button>
         <button [class.active]="filterModel.listingType === 'Sale'" (click)="setListingType('Sale')">
           {{ 'ALL_PROPERTIES.Sale' | translate }}
         </button>
-
         <button [class.active]="filterModel.listingType === ''" (click)="setListingType('')">
           All
         </button>
       </div>
+
+      <!-- Sort -->
       <div class="sort-wrapper">
         <i class="pi pi-sort-alt sort-icon"></i>
         <select class="custom-sort" (change)="onSortChange($event)">
@@ -59,36 +67,28 @@
         </select>
       </div>
 
+      <!-- View Mode -->
       <div class="view-options-btns">
-        <button [class.active]="viewMode === 'grid'" (click)="setViewMode('grid')"><i
-            class="pi pi-th-large"></i></button>
-        <button [class.active]="viewMode === 'list'" (click)="setViewMode('list')"><i class="pi pi-list"></i></button>
+        <button [class.active]="viewMode === 'grid'" (click)="setViewMode('grid')">
+          <i class="pi pi-th-large"></i>
+        </button>
+        <button [class.active]="viewMode === 'list'" (click)="setViewMode('list')">
+          <i class="pi pi-list"></i>
+        </button>
       </div>
     </header>
 
+    <!-- ── Cards ──────────────────────────────────────── -->
     <div [class]="viewMode === 'list' ? 'property-list-view' : 'property-grid'">
-      <article class="property-card" *ngFor="let p of properties">
-        <div class="card-image">
-          <img [src]="p.mainImageUrl || 'assets/images/default.jpg'" [alt]="p.title"
-            [routerLink]="['/properties/detail']" [queryParams]="{ id: p.propertyId }" /> <span class="badge"
-            *ngIf="p.status === 'Active'">{{ p.listingType }}</span>
-          <div class="price-tag">{{ p.price | currency: p.currency : 'symbol' : '1.0-0' }}</div>
-        </div>
-
-        <div class="card-body">
-          <h3>{{ p.title }}</h3>
-          <p class="location"><i class="pi pi-map-marker"></i> {{ p.city }}, {{ p.country }}</p>
-          <div class="specs">
-            <span><i class="pi pi-home"></i> {{ p.bedrooms }} {{ 'ALL_PROPERTIES.Bedrooms' | translate }}</span>
-            <span><i class="pi pi-info-circle"></i> {{ p.bathrooms }} {{ 'ALL_PROPERTIES.Bathrooms' | translate
-              }}</span>
-            <span><i class="pi pi-expand"></i> {{ p.areaSqm }} sqm</span>
-          </div>
-          <button class="btn-details">{{ 'ALL_PROPERTIES.ViewDetails' | translate }}</button>
-        </div>
-      </article>
+    <app-property-card
+  *ngFor="let p of properties"
+  [property]="p"
+  [class.list-mode]="viewMode === 'list'"
+  context="visitor">
+</app-property-card>
     </div>
 
+    <!-- ── Pagination ─────────────────────────────────── -->
     <nav class="pagination">
       <button class="page-arrow"><i class="pi pi-angle-left"></i></button>
       <button class="page-num active">1</button>
@@ -96,5 +96,6 @@
       <button class="page-num">3</button>
       <button class="page-arrow"><i class="pi pi-angle-right"></i></button>
     </nav>
+
   </main>
 </div>

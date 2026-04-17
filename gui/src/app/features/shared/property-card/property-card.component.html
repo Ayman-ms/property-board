@@ -1,0 +1,62 @@
+<article class="property-card">
+
+  <!-- ── Image ─────────────────────────────────────── -->
+  <div class="card-image">
+    <img
+      [src]="property?.mainImageUrl || 'assets/images/default.jpg'"
+      [alt]="property?.title"
+      [routerLink]="['/properties/detail']"
+      [queryParams]="{ id: property?.propertyId }"
+      style="cursor:pointer" />
+
+    <span class="badge" *ngIf="property?.status === 'Active'">
+      {{ property?.listingType }}
+    </span>
+
+    <div class="price-tag">
+      {{ property?.price | currency: property?.currency : 'symbol' : '1.0-0' }}
+    </div>
+  </div>
+
+  <!-- ── Body ──────────────────────────────────────── -->
+  <div class="card-body">
+    <h3>{{ property?.title }}</h3>
+
+    <p class="location">
+      <i class="pi pi-map-marker"></i>
+      {{ property?.city }}, {{ property?.country }}
+    </p>
+
+    <div class="specs">
+      <span><i class="pi pi-home"></i> {{ property?.bedrooms }} Beds</span>
+      <span><i class="pi pi-info-circle"></i> {{ property?.bathrooms }} Baths</span>
+      <span><i class="pi pi-expand"></i> {{ property?.areaSqm }} sqm</span>
+    </div>
+
+    <!-- Actions -->
+    <div class="card-actions">
+      <button *ngIf="context === 'visitor'"
+        class="btn-details"
+        [routerLink]="['/properties/detail']"
+        [queryParams]="{ id: property?.propertyId }">
+        View Details
+      </button>
+
+      <div *ngIf="context === 'owner'" class="owner-btns">
+        <button class="btn-edit" (click)="edit.emit()">
+          <i class="pi pi-pencil"></i> Edit
+        </button>
+        <button class="btn-delete" (click)="delete.emit()">
+          <i class="pi pi-trash"></i> Delete
+        </button>
+      </div>
+
+      <div *ngIf="context === 'admin'" class="admin-btns">
+        <button class="btn-delete" (click)="delete.emit()">
+          <i class="pi pi-times-circle"></i> Remove
+        </button>
+      </div>
+    </div>
+  </div>
+
+</article>

@@ -8,160 +8,239 @@
 
     <form #propertyForm="ngForm" (ngSubmit)="onSubmit(propertyForm)">
 
-        <!-- Step 1: Basic Information -->
+        <!-- ── Step 1: Type & Listing ─────────────────────────── -->
         <div *ngIf="currentStep === 1" class="step-content">
-            <h2>Basic Information</h2>
+            <h2>{{ 'ADD_PROPERTY.Step1' | translate }}</h2>
 
+            <!-- Property Type -->
+            <div class="listing-toggle propertyType">
+                <button type="button" [class.active]="propertyData.propertyTypeId === 1"
+                    (click)="propertyData.propertyTypeId = 1">
+                    {{ 'ADD_PROPERTY.Apartment' | translate }}
+                </button>
+                <button type="button" [class.active]="propertyData.propertyTypeId === 2"
+                    (click)="propertyData.propertyTypeId = 2">
+                    {{ 'ADD_PROPERTY.House' | translate }}
+                </button>
+                <button type="button" [class.active]="propertyData.propertyTypeId === 3"
+                    (click)="propertyData.propertyTypeId = 3">
+                    {{ 'ADD_PROPERTY.Office' | translate }}
+                </button>
+                <button type="button" [class.active]="propertyData.propertyTypeId === 4"
+                    (click)="propertyData.propertyTypeId = 4">
+                    {{ 'ADD_PROPERTY.Shop' | translate }}
+                </button>
+                <button type="button" [class.active]="propertyData.propertyTypeId === 5"
+                    (click)="propertyData.propertyTypeId = 5">
+                    {{ 'ADD_PROPERTY.Warehouse' | translate }}
+                </button>
+                <button type="button" [class.active]="propertyData.propertyTypeId === 6"
+                    (click)="propertyData.propertyTypeId = 6">
+                    {{ 'ADD_PROPERTY.Land' | translate }}
+                </button>
+            </div>
+
+            <!-- Listing Type -->
             <div class="listing-toggle">
                 <button type="button" [class.active]="propertyData.listingType === 'rent'"
                     (click)="propertyData.listingType = 'rent'">
-                    For Rent
+                    {{ 'ADD_PROPERTY.ForRent' | translate }}
                 </button>
                 <button type="button" [class.active]="propertyData.listingType === 'sale'"
                     (click)="propertyData.listingType = 'sale'">
-                    For Sale
+                    {{ 'ADD_PROPERTY.ForSale' | translate }}
+                </button>
+            </div>
+        </div>
+
+        <!-- ── Step 2: Title & Description ───────────────────── -->
+        <div *ngIf="currentStep === 2" class="step-content">
+            <h2>{{ 'ADD_PROPERTY.Step2' | translate }}</h2>
+
+            <input type="text" name="title"
+                placeholder="{{ 'ADD_PROPERTY.PropertyTitle' | translate }}"
+                required [(ngModel)]="propertyData.title" />
+
+            <textarea name="description"
+                placeholder="{{ 'ADD_PROPERTY.PropertyDescriptionLabel' | translate }}"
+                required [(ngModel)]="propertyData.description">
+            </textarea>
+        </div>
+
+        <!-- ── Step 3: Location ───────────────────────────────── -->
+        <div *ngIf="currentStep === 3" class="step-content">
+            <h2>{{ 'ADD_PROPERTY.Step3' | translate }}</h2>
+
+            <!-- Country Selection -->
+            <div class="listing-toggle">
+                <button type="button" [class.active]="propertyData.country === 'Germany'"
+                    (click)="propertyData.country = 'Germany'">
+                    🇩🇪 Germany
+                </button>
+                <button type="button" [class.active]="propertyData.country === 'United States'"
+                    (click)="propertyData.country = 'United States'">
+                    🇺🇸 United States
                 </button>
             </div>
 
-            <input type="text" name="title" placeholder="Property Title" required [(ngModel)]="propertyData.title" />
+            <!-- Address Search -->
+            <div class="input-group" style="position: relative;">
+                <label>{{ 'ADD_PROPERTY.AddressSearch' | translate }}</label>
+                <input type="text"
+                    [value]="searchQuery"
+                    (input)="onSearchAddress($event)"
+                    (blur)="closeSuggestions()"
+                    placeholder="Type address (Street, City...)"
+                    autocomplete="off" />
 
-            <textarea name="description" placeholder="Description" required [(ngModel)]="propertyData.description">
-      </textarea>
-        </div>
+                <span *ngIf="isSearching" style="position:absolute; right:1rem; top:2.8rem; font-size:0.85rem; color:#94a3b8;">
+                    ⏳
+                </span>
 
-        <!-- Step 2: Location -->
-        <div *ngIf="currentStep === 2" class="step-content">
-            <h2>Where is your property located?</h2>
-
-            <input type="text" name="street" placeholder="Street Address" [(ngModel)]="propertyData.street" />
-
-            <div class="grid-2">
-                <input type="text" name="zipCode" placeholder="Zip Code" [(ngModel)]="propertyData.zipCode"
-                    (blur)="lookupZip()" />
-                <input type="text" name="city" placeholder="City" [value]="propertyData.city" readonly />
+                <ul class="suggestions-list" *ngIf="suggestions.length > 0">
+                    <li *ngFor="let s of suggestions" (mousedown)="selectAddress(s)">
+                        📍 {{ s.display_name }}
+                    </li>
+                </ul>
             </div>
 
-            <div class="map-placeholder">
-                <p>Pin accurate location (Map Integration)</p>
+            <!-- Auto-filled Fields -->
+            <div class="grid-2 mt-3" *ngIf="propertyData.city || propertyData.postCode">
+                <div class="input-field">
+                    <label>Post Code</label>
+                    <input type="text" name="postCode" [(ngModel)]="propertyData.postCode" readonly />
+                </div>
+                <div class="input-field">
+                    <label>City</label>
+                    <input type="text" name="city" [(ngModel)]="propertyData.city" readonly />
+                </div>
             </div>
         </div>
 
-        <!-- Step 3: Property Details -->
-        <div *ngIf="currentStep === 3" class="step-content">
-            <h2>Property Details</h2>
-
-            <input type="number" name="price" placeholder="Listing Price ($)" required
-                [(ngModel)]="propertyData.price" />
-
-            <div class="grid-2">
-                <input type="number" name="bedrooms" placeholder="Bedrooms" [(ngModel)]="propertyData.bedrooms" />
-                <input type="number" name="bathrooms" placeholder="Bathrooms" [(ngModel)]="propertyData.bathrooms" />
-            </div>
-
-            <input type="number" name="areaSqm" placeholder="Area (sqm)" [(ngModel)]="propertyData.areaSqm" />
-        </div>
-
-        <!-- Step 4: Amenities -->
+        <!-- ── Step 4: Property Details ───────────────────────── -->
         <div *ngIf="currentStep === 4" class="step-content">
-            <h2 class="step-title">Property Amenities</h2>
+            <h2>{{ 'ADD_PROPERTY.Step4' | translate }}</h2>
+
+            <input type="number" name="price"
+                placeholder="{{ 'ADD_PROPERTY.PriceLabel' | translate }}"
+                required [(ngModel)]="propertyData.price" />
+
+            <div class="grid-2">
+                <input type="number" name="bedrooms"
+                    placeholder="{{ 'ADD_PROPERTY.BedroomsLabel' | translate }}"
+                    [(ngModel)]="propertyData.bedrooms" />
+                <input type="number" name="bathrooms"
+                    placeholder="{{ 'ADD_PROPERTY.BathroomsLabel' | translate }}"
+                    [(ngModel)]="propertyData.bathrooms" />
+            </div>
+
+            <input type="number" name="areaSqm"
+                placeholder="{{ 'ADD_PROPERTY.AreaLabel' | translate }}"
+                [(ngModel)]="propertyData.areaSqm" />
+        </div>
+
+        <!-- ── Step 5: Amenities ──────────────────────────────── -->
+        <div *ngIf="currentStep === 5" class="step-content">
+            <h2>{{ 'ADD_PROPERTY.Step5' | translate }}</h2>
 
             <div class="amenities-grid">
-
                 <div class="form-check">
-                     <label class="form-check-label" for="hasParking">
-                        <fa-icon [icon]="faParking"></fa-icon> Parking
+                    <label class="form-check-label" for="hasParking">
+                        <fa-icon [icon]="faParking"></fa-icon> {{ 'ADD_PROPERTY.Parking' | translate }}
                     </label>
-                    <input class="form-check-input" type="checkbox" id="hasParking" name="hasParking"
-                        [(ngModel)]="propertyData.hasParking" />
+                    <input class="form-check-input" type="checkbox" id="hasParking"
+                        name="hasParking" [(ngModel)]="propertyData.hasParking" />
                 </div>
 
                 <div class="form-check">
-                     <label class="form-check-label" for="hasBalcony">
-                        <fa-icon [icon]="faBalcony"></fa-icon> Balcony
+                    <label class="form-check-label" for="hasBalcony">
+                        <fa-icon [icon]="faBalcony"></fa-icon> {{ 'ADD_PROPERTY.Balcony' | translate }}
                     </label>
-                    <input class="form-check-input" type="checkbox" id="hasBalcony" name="hasBalcony"
-                        [(ngModel)]="propertyData.hasBalcony" />                   
+                    <input class="form-check-input" type="checkbox" id="hasBalcony"
+                        name="hasBalcony" [(ngModel)]="propertyData.hasBalcony" />
                 </div>
 
                 <div class="form-check">
-                     <label class="form-check-label" for="hasGarden">
-                        <fa-icon [icon]="faGarden"></fa-icon> Garden
+                    <label class="form-check-label" for="hasGarden">
+                        <fa-icon [icon]="faGarden"></fa-icon> {{ 'ADD_PROPERTY.Garden' | translate }}
                     </label>
-                    <input class="form-check-input" type="checkbox" id="hasGarden" name="hasGarden"
-                        [(ngModel)]="propertyData.hasGarden" />                   
+                    <input class="form-check-input" type="checkbox" id="hasGarden"
+                        name="hasGarden" [(ngModel)]="propertyData.hasGarden" />
                 </div>
 
                 <div class="form-check">
-                         <label class="form-check-label" for="hasElevator">
-                        <fa-icon [icon]="faElevator"></fa-icon> Elevator
+                    <label class="form-check-label" for="hasElevator">
+                        <fa-icon [icon]="faElevator"></fa-icon> {{ 'ADD_PROPERTY.Elevator' | translate }}
                     </label>
-                    <input class="form-check-input" type="checkbox" id="hasElevator" name="hasElevator"
-                        [(ngModel)]="propertyData.hasElevator" />               
+                    <input class="form-check-input" type="checkbox" id="hasElevator"
+                        name="hasElevator" [(ngModel)]="propertyData.hasElevator" />
                 </div>
 
                 <div class="form-check">
                     <label class="form-check-label" for="hasGarage">
-                        <fa-icon [icon]="faGarage"></fa-icon> Garage
+                        <fa-icon [icon]="faGarage"></fa-icon> {{ 'ADD_PROPERTY.Garage' | translate }}
                     </label>
-                    <input class="form-check-input" type="checkbox" id="hasGarage" name="hasGarage"
-                        [(ngModel)]="propertyData.hasGarage" />
+                    <input class="form-check-input" type="checkbox" id="hasGarage"
+                        name="hasGarage" [(ngModel)]="propertyData.hasGarage" />
                 </div>
 
                 <div class="form-check">
                     <label class="form-check-label" for="isFurnished">
-                        <fa-icon [icon]="faFurnished"></fa-icon> Furnished
+                        <fa-icon [icon]="faFurnished"></fa-icon> {{ 'ADD_PROPERTY.Furnished' | translate }}
                     </label>
-                    <input class="form-check-input" type="checkbox" id="isFurnished" name="isFurnished"
-                        [(ngModel)]="propertyData.isFurnished" />
+                    <input class="form-check-input" type="checkbox" id="isFurnished"
+                        name="isFurnished" [(ngModel)]="propertyData.isFurnished" />
                 </div>
 
                 <div class="form-check">
                     <label class="form-check-label" for="isNegotiable">
-                        <fa-icon [icon]="faNegotiable"></fa-icon> Is Negotiable
+                        <fa-icon [icon]="faNegotiable"></fa-icon> {{ 'ADD_PROPERTY.Negotiable' | translate }}
                     </label>
-                    <input class="form-check-input" type="checkbox" id="isNegotiable" name="isNegotiable"
-                        [(ngModel)]="propertyData.isNegotiable" />
+                    <input class="form-check-input" type="checkbox" id="isNegotiable"
+                        name="isNegotiable" [(ngModel)]="propertyData.isNegotiable" />
                 </div>
-
             </div>
 
             <div class="pro-tip">
                 <div class="tip-content">
                     <h4>
                         <i class="bi bi-lightbulb-fill"></i>
-                        Pro Tip
+                        {{ 'ADD_PROPERTY.Tip' | translate }}
                     </h4>
-                    <p>Properties with more than 4 amenities tend to get 30% more inquiries on our platform.</p>
+                    <p>{{ 'ADD_PROPERTY.TipDescription' | translate }}</p>
                 </div>
             </div>
         </div>
 
-        <!-- Step 5: Media Upload -->
-        <div *ngIf="currentStep === 5" class="step-content">
-            <h2>Media Upload</h2>
+        <!-- ── Step 6: Media Upload ───────────────────────────── -->
+        <div *ngIf="currentStep === 6" class="step-content">
+            <h2>{{ 'ADD_PROPERTY.Step6' | translate }}</h2>
 
             <div class="upload-zone" (click)="fileInput.click()">
                 <input #fileInput type="file" (change)="onFileSelected($event)" multiple hidden />
-                <p>Drag and drop images here or click to browse</p>
+                <p>{{ 'ADD_PROPERTY.DragAndDrop' | translate }}</p>
             </div>
 
             <div class="preview-grid">
-                <div *ngFor="let img of previewImages" class="preview-item">
+                <div *ngFor="let img of previewImages; let i = index" class="preview-item">
                     <img [src]="img" alt="Preview" />
                 </div>
             </div>
         </div>
 
-        <!-- Footer Navigation -->
+        <!-- ── Footer Navigation ──────────────────────────────── -->
         <div class="stepper-footer">
-            <button type="button" class="btn-back" (click)="prevStep()" [disabled]="currentStep === 1">
-                Back
+            <button type="button" class="btn-back"
+                (click)="prevStep()" [disabled]="currentStep === 1">
+                {{ 'ADD_PROPERTY.BackButton' | translate }}
             </button>
-            <button type="button" class="btn-next" (click)="nextStep()" *ngIf="currentStep < totalSteps">
-                Next Step
+            <button type="button" class="btn-next"
+                (click)="nextStep()" *ngIf="currentStep < totalSteps">
+                {{ 'ADD_PROPERTY.NextButton' | translate }}
             </button>
-            <button type="submit" class="btn-submit" *ngIf="currentStep === totalSteps">
-                Submit Property
+            <button type="submit" class="btn-submit"
+                *ngIf="currentStep === totalSteps" [disabled]="isLoading">
+                {{ isLoading ? '...' : ('ADD_PROPERTY.SubmitButton' | translate) }}
             </button>
         </div>
 

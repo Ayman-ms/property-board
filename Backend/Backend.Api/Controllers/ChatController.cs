@@ -9,7 +9,7 @@ namespace Backend.Api.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
-    [Authorize] // يجب أن يكون المستخدم مسجلاً للدخول لرؤية رسائله
+   // [Authorize] // يجب أن يكون المستخدم مسجلاً للدخول لرؤية رسائله
     public class ChatController : ControllerBase
     {
         private readonly ApplicationDbContext _context;

@@ -5,10 +5,11 @@ import { CommonModule, CurrencyPipe } from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
+import { PropertyCardComponent } from '../../shared/property-card/property-card.component';
 @Component({
   selector: 'app-list',
   standalone: true,
-  imports: [CommonModule, TranslateModule, FormsModule, RouterModule],
+  imports: [CommonModule, TranslateModule, FormsModule, RouterModule, PropertyCardComponent],
   templateUrl: './list.component.html',
   styleUrl: './list.component.scss'
 })

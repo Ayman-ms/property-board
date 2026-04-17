@@ -6,7 +6,7 @@ using System.Security.Claims;
 
 namespace Backend.Api.Controllers
 {
-    [Authorize] // حماية المسار: يتطلب Token
+    //[Authorize] // حماية المسار: يتطلب Token
     [ApiController]
     [Route("api/[controller]")]
     public class FavoritesController : ControllerBase

@@ -159,7 +159,7 @@ namespace Backend.Api.Controllers
         // 3. POST (إنشاء)
         // ==========================================
         [HttpPost]
-        [Authorize]
+       // [Authorize]
         public async Task<IActionResult> Create([FromBody] CreatePropertyDto dto)
         {
             if (!ModelState.IsValid)
@@ -207,34 +207,46 @@ namespace Backend.Api.Controllers
         }
 
         [HttpPost("{propertyId}/media")]
-        [Authorize]
-        public async Task<IActionResult> AddMedia(int propertyId, [FromBody] List<string> imageUrls)
+     //   [Authorize]
+        public async Task<IActionResult> UploadMedia(int propertyId, [FromForm] List<IFormFile> files)
+{
+    var property = await _context.Properties.AnyAsync(p => p.PropertyId == propertyId);
+    if (!property) return NotFound("the property not found");
+
+    var uploadFolder = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "uploads", "properties");
+    if (!Directory.Exists(uploadFolder))
+        Directory.CreateDirectory(uploadFolder);
+
+    foreach (var file in files)
+    {
+        if (file.Length == 0) continue;
+
+        var fileName = Guid.NewGuid().ToString() + Path.GetExtension(file.FileName);
+        var filePath = Path.Combine(uploadFolder, fileName);
+
+        using (var stream = new FileStream(filePath, FileMode.Create))
         {
-            // 1. التأكد من وجود العقار
-            var property = await _context.Properties.AnyAsync(p => p.PropertyId == propertyId);
-            if (!property) return NotFound("العقار غير موجود");
-
-            // 2. إضافة الروابط إلى جدول property_media
-            foreach (var url in imageUrls)
-            {
-                var media = new PropertyMedia
-                {
-                    PropertyId = propertyId,
-                    FileUrl = url,
-                    IsPrimary = (imageUrls.IndexOf(url) == 0) // أول صورة في القائمة ستكون هي الأساسية
-                };
-                _context.PropertyMedia.Add(media);
-            }
-
-            await _context.SaveChangesAsync();
-            return Ok(new { message = "تم ربط الصور بالعقار بنجاح" });
+            await file.CopyToAsync(stream);
         }
 
+        var media = new PropertyMedia
+        {
+            PropertyId = propertyId,
+            FileUrl    = $"http://localhost:5125/uploads/properties/{fileName}",
+            IsPrimary  = false
+        };
+        _context.PropertyMedia.Add(media);
+    }
+
+    await _context.SaveChangesAsync();
+    return Ok(new { message = "Success" });
+}
+
         // ==========================================
-        // 4. PUT (تحديث)
+        // 4. PUT
         // ==========================================
         [HttpPut("{id}")]
-        [Authorize]
+     //   [Authorize]
         public async Task<IActionResult> Update(int id, [FromBody] UpdatePropertyDto dto)
         {
             var property = await _context.Properties.FindAsync(id);
@@ -280,10 +292,10 @@ namespace Backend.Api.Controllers
         }
 
         // ==========================================
-        // 5. DELETE (حذف)
+        // 5. DELETE
         // ==========================================
         [HttpDelete("{id}")]
-        [Authorize]
+       // [Authorize]
         public async Task<IActionResult> Delete(int id)
         {
             var property = await _context.Properties.FindAsync(id);

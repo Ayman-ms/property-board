@@ -9,7 +9,7 @@ namespace Backend.Api.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
-    [Authorize] // يجب أن يكون المستخدم مسجلاً للدخول لرؤية تنبيهاته
+   // [Authorize] // يجب أن يكون المستخدم مسجلاً للدخول لرؤية تنبيهاته
     public class NotificationController : ControllerBase
     {
         private readonly ApplicationDbContext _context;

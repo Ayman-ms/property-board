@@ -1,0 +1,9 @@
+<div class="user-properties-list">
+  <app-property-card 
+    *ngFor="let p of myProperties" 
+    [property]="p" 
+    context="owner"
+    (edit)="onEdit(p)"
+    (delete)="onDelete(p)">
+  </app-property-card>
+</div>

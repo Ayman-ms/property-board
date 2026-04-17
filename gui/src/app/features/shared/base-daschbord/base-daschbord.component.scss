@@ -1,0 +1,226 @@
+@import '../../../styles/variables.scss';
+
+// ─── Wrapper ─────────────────────────────────────────────────────
+.dashboard-wrapper {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+// ─── Mobile Header ───────────────────────────────────────────────
+.mobile-header {
+  display: none;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem 1.2rem;
+  background: #fff;
+  border-bottom: 1px solid #e2e8f0;
+  position: sticky;
+  top: 0;
+  z-index: 50;
+
+  :host-context(.dark-mode) & {
+    background: $input-bg-dark;
+    border-color: #334155;
+  }
+
+  .hamburger-btn {
+    background: none;
+    border: none;
+    font-size: 1.3rem;
+    cursor: pointer;
+    color: $text-color;
+    padding: 0.3rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 6px;
+    transition: background 0.2s;
+
+    &:hover { background: #f1f5f9; }
+  }
+
+  .mobile-title {
+    font-weight: 700;
+    font-size: 1rem;
+    color: $text-color;
+  }
+
+  @media (max-width: 768px) { display: flex; }
+}
+
+// ─── Overlay ─────────────────────────────────────────────────────
+.overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4);
+  z-index: 99;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+
+  &.active {
+    opacity: 1;
+  }
+
+  @media (max-width: 768px) { display: block; pointer-events: none; }
+  @media (max-width: 768px) { &.active { pointer-events: all; } }
+}
+
+// ─── Layout ──────────────────────────────────────────────────────
+.dashboard-layout {
+  display: grid;
+  grid-template-columns: 3fr 9fr; // 3 + 9 = 12 cols
+  flex: 1;
+  max-width: 1200px;
+  width: 100%;
+  margin: 2rem auto;
+  padding: 0 1.5rem;
+  gap: 1.5rem;
+  align-items: start;
+
+  @media (max-width: 1024px) {
+    grid-template-columns: 260px 1fr;
+    padding: 0 1rem;
+    margin: 1.5rem auto;
+  }
+
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr; // عمود واحد
+    padding: 1rem;
+    margin: 0;
+    gap: 0;
+  }
+}
+
+// ─── Sidebar ─────────────────────────────────────────────────────
+.sidebar {
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+  padding: 1.5rem 1rem;
+  position: sticky;
+  top: 1.5rem;
+
+  :host-context(.dark-mode) & {
+    background: $input-bg-dark;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  }
+
+  // ─── Mobile: Slide in from left ──────────────────────
+  @media (max-width: 768px) {
+    position: fixed;
+    top: 0;
+    left: -280px;
+    width: 260px;
+    height: 100vh;
+    z-index: 100;
+    border-radius: 0 16px 16px 0;
+    transition: left 0.3s ease;
+    overflow-y: auto;
+
+    &.open {
+      left: 0;
+      box-shadow: 4px 0 24px rgba(0, 0, 0, 0.15);
+    }
+  }
+}
+
+// ─── Sidebar User ────────────────────────────────────────────────
+.sidebar-user {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.75rem 0.5rem 1.25rem;
+  border-bottom: 1px solid #f1f5f9;
+  margin-bottom: 0.75rem;
+
+  .avatar {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: $logo-bg-color;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: $logo-color;
+    font-size: 1.1rem;
+    flex-shrink: 0;
+  }
+
+  .user-name {
+    font-weight: 700;
+    font-size: 0.95rem;
+    color: $text-color;
+
+    :host-context(.dark-mode) & { color: $text-color-dark; }
+  }
+}
+
+// ─── Sidebar Nav ─────────────────────────────────────────────────
+.sidebar-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.nav-item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.8rem 1rem;
+  border-radius: 10px;
+  font-size: 0.92rem;
+  font-weight: 500;
+  color: #64748b;
+  text-decoration: none;
+  transition: all 0.2s ease;
+  cursor: pointer;
+
+  fa-icon {
+    width: 18px;
+    text-align: center;
+    font-size: 1rem;
+    flex-shrink: 0;
+  }
+
+  &:hover {
+    background: #f8fafc;
+    color: $logo-color;
+
+    :host-context(.dark-mode) & { background: rgba(255,255,255,0.05); }
+  }
+
+  &.active {
+    background: $logo-bg-color;
+    color: $logo-color;
+    font-weight: 700;
+  }
+
+  :host-context(.dark-mode) & { color: #94a3b8; }
+}
+
+// ─── Content ─────────────────────────────────────────────────────
+.dashboard-content {
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+  padding: 2rem;
+  min-height: 500px;
+
+  :host-context(.dark-mode) & {
+    background: $input-bg-dark;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  }
+
+  @media (max-width: 768px) {
+    border-radius: 0;
+    box-shadow: none;
+    padding: 1.2rem;
+    min-height: unset;
+  }
+
+  @media (max-width: 480px) {
+    padding: 1rem;
+  }
+}

@@ -47,7 +47,7 @@ namespace Backend.Api.Models
         [Column("bathrooms")]
         public int? Bathrooms { get; set; }
 
-        [Column("area_sqm")] // الحقل الذي كان ينقصك باسم AreaSqm
+        [Column("area_sqm")]
         public decimal? AreaSqm { get; set; }
 
         [Column("floor_number")]
@@ -83,10 +83,10 @@ namespace Backend.Api.Models
         [Column("post_code")]
         public string? PostCode { get; set; }
 
-        [Column("latitude")] // حل خطأ Latitude
+        [Column("latitude")]
         public decimal? Latitude { get; set; }
 
-        [Column("longitude")] // حل خطأ Longitude
+        [Column("longitude")]
         public decimal? Longitude { get; set; }
 
         [Column("views_count")]
@@ -101,7 +101,7 @@ namespace Backend.Api.Models
         [Column("created_at")]
         public DateTime? CreatedAt { get; set; } = DateTime.UtcNow;
 
-        [Column("updated_at")] // حل خطأ UpdatedAt
+        [Column("updated_at")]
         public DateTime? UpdatedAt { get; set; }
 
         [Column("published_at")]
