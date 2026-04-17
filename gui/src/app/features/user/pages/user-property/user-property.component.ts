@@ -3,6 +3,7 @@ import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { PropertyCardComponent } from '../../../shared/property-card/property-card.component';
+import { PropertyService } from '../../../../core/services/property/property.service';
 @Component({
   selector: 'app-user-property',
   standalone: true,
@@ -11,16 +12,24 @@ import { PropertyCardComponent } from '../../../shared/property-card/property-ca
   styleUrl: './user-property.component.scss'
 })
 export class UserPropertyComponent {
-myProperties: any[] = []; // المصفوفة التي تعرض عقارات المستخدم
+  myProperties: any[] = [];
 
-  constructor() {}
+  constructor(private propertyService: PropertyService) { }
 
   ngOnInit(): void {
-    // هنا استدعِ الخدمة لجلب عقارات المستخدم
-    // this.loadUserProperties();
+    this.loadUserProperties();
   }
 
-  // --- إصلاح الخطأ: تعريف الدوال المفقودة ---
+  
+loadUserProperties() {
+  this.propertyService.getMyProperties().subscribe({
+    next: (res: any[]) => {
+      this.myProperties = res; // ✅ مباشرة بدون .data
+      console.log('عقارات المستخدم:', this.myProperties);
+    },
+    error: (err) => console.error(err)
+  });
+}
 
   onEdit(property: any) {
     console.log('سيتم فتح صفحة التعديل للعقار:', property.title);

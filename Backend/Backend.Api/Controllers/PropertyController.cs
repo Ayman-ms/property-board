@@ -156,6 +156,48 @@ namespace Backend.Api.Controllers
         }
 
         // ==========================================
+// GET MY PROPERTIES (للمستخدم الحالي)
+// ==========================================
+[HttpGet("my")]
+[Authorize]
+public async Task<IActionResult> GetMyProperties()
+{
+    var userIdClaim = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+    if (string.IsNullOrEmpty(userIdClaim))
+        return Unauthorized();
+
+    int userId = int.Parse(userIdClaim);
+
+    var data = await _context.Properties
+        .Include(p => p.PropertyMedia)
+        .AsNoTracking()
+        .Where(p => p.UserId == userId)
+        .OrderByDescending(p => p.CreatedAt)
+        .Select(p => new PropertyListDto
+        {
+            PropertyId    = p.PropertyId,
+            UserId        = p.UserId,
+            Title         = p.Title,
+            ListingType   = p.ListingType,
+            Status        = p.Status,
+            Price         = p.Price,
+            Currency      = p.Currency,
+            City          = p.City,
+            Bedrooms      = p.Bedrooms ?? 0,
+            Bathrooms     = p.Bathrooms ?? 0,
+            AreaSqm       = p.AreaSqm,
+            CreatedAt     = p.CreatedAt.GetValueOrDefault(),
+            MainImageUrl  = p.PropertyMedia
+                .OrderBy(m => m.MediaId)
+                .Select(m => m.FileUrl)
+                .FirstOrDefault()
+        })
+        .ToListAsync();
+
+    return Ok(data);
+}
+
+        // ==========================================
         // 3. POST (إنشاء)
         // ==========================================
         [HttpPost]
@@ -314,7 +356,5 @@ namespace Backend.Api.Controllers
 
             return Ok(new { message = "Property deleted successfully" });
         }
-
-
     }
 }
