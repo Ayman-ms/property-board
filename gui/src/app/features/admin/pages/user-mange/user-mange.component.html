@@ -1,0 +1,119 @@
+<div class="admin-container">
+  <header class="admin-header">
+    <div class="user-info-main">
+      <div class="user-avatar">
+        <fa-icon [icon]="userAvatarIcon"></fa-icon>
+      </div>
+      <div class="user-titles">
+        <h1>{{ user.fullName }} <span class="badge-admin">Admin</span></h1>
+        <p>User ID: #{{ user.userId }} • Created on {{ user.createdAt | date }}</p>
+      </div>
+    </div>
+    <div class="header-actions">
+      <button class="btn" [routerLink]="['/admin/dashboard/manage-users']">
+        <i class="icon-reset"></i> {{ 'USER_MANAGE.GoBack' | translate }}
+      </button>
+      <button class="btn" (click)="updateUser()">
+        <i class="icon-save"></i> {{ 'USER_MANAGE.SaveChanges' | translate }}
+      </button>
+    </div>
+  </header>
+
+  <div class="admin-content-grid">
+    <div class="content-left">
+      <section class="card profile-info">
+        <h2 class="card-title"><i class="icon-user"></i>
+          {{ 'USER_MANAGE.ProfileInformation' | translate }}</h2>
+        <div class="info-grid">
+          <div class="info-group">
+            <label>{{ 'USER_MANAGE.FirstName' | translate }}</label>
+            <p>{{ user.firstName }}</p>
+          </div>
+          <div class="info-group">
+            <label>{{ 'USER_MANAGE.LastName' | translate }}</label>
+            <p>{{ user.lastName }}</p>
+          </div>
+          <div class="info-group">
+            <label>{{ 'USER_MANAGE.EmailAddress' | translate }}</label>
+            <p>{{ user.email }}</p>
+          </div>
+          <div class="info-group">
+            <label>{{ 'USER_MANAGE.PhoneNumber' | translate }}</label>
+            <p>{{ user.phone }}</p>
+          </div>
+          <div class="info-group">
+            <label>{{ 'USER_MANAGE.PreferredLanguage' | translate }}</label>
+            <p><i class="icon-globe"></i>{{ user.language }}</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="card recent-activity">
+        <h2 class="card-title"><i class="icon-history"></i> Recent Activity</h2>
+        <ul class="activity-list">
+          <li class="activity-item">
+            <div class="activity-icon blue"><i class="icon-edit"></i></div>
+            <div class="activity-text">
+              <strong>Updated Property Listing #992</strong>
+              <span>2 hours ago</span>
+            </div>
+            <i class="icon-arrow-right"></i>
+          </li>
+          <li class="activity-item">
+            <div class="activity-icon orange"><i class="icon-login"></i></div>
+            <div class="activity-text">
+              <strong>System Login</strong>
+              <span>Today at 09:15 AM</span>
+            </div>
+            <i class="icon-arrow-right"></i>
+          </li>
+        </ul>
+      </section>
+    </div>
+
+    <div class="content-right">
+      <section class="card admin-controls">
+        <h2 class="card-title"><i class="icon-lock"></i>{{ 'USER_MANAGE.AdminControls' | translate }}</h2>
+
+        <div class="control-item">
+          <div class="control-label">
+            <strong>{{ 'USER_MANAGE.AccountActive' | translate }}</strong>
+            <span>{{ 'USER_MANAGE.EnableOrDisableUserAccess' | translate }}</span>
+          </div>
+          <label class="switch">
+            <input type="checkbox" [checked]="user.isActive" (change)="toggleUserStatus($event)">
+            <span class="slider round"></span>
+          </label>
+        </div>
+
+        <div class="control-item">
+          <div class="control-label">
+            <strong>{{ 'USER_MANAGE.EmailVerified' | translate }}</strong>
+            <span>{{ 'USER_MANAGE.ManualVerificationOverride' | translate }}</span>
+          </div>
+          <label class="switch">
+            <input type="checkbox" [checked]="user.isVerified" (change)="toggleEmailStatus($event)">
+            <span class="slider round"></span>
+          </label>
+        </div>
+
+        <div class="role-selector">
+          <label>{{ 'USER_MANAGE.AssignedUserRole' | translate }}</label>
+
+          <select class="form-select" [(ngModel)]="user.userType" name="userType">
+            <option>{{ 'USER_MANAGE.Admin' | translate }}</option>
+            <option>{{ 'USER_MANAGE.User' | translate }}</option>
+          </select>
+          <p class="warning-text">{{ 'USER_MANAGE.WarningAdminAccess' | translate }}</p>
+        </div>
+
+        <div class="danger-zone">
+          <label>{{ 'USER_MANAGE.DangerZone' | translate }}</label>
+          <button class="btn btn-outline-danger" (click)="deleteUser()">
+            <i class="icon-trash"></i> {{ 'USER_MANAGE.DeleteAccount' | translate }}
+          </button>
+        </div>
+      </section>
+    </div>
+  </div>
+</div>

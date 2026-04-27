@@ -16,29 +16,15 @@ export class AuthService {
     private router: Router
   ) { }
 
-
-  // login(credentials: any): Observable<any> {
-  //   return this.http.post<any>(ApiEndpoints.auth.login, credentials).pipe(
-  //     map(response => {
-  //       if (response.success) {
-  //         this.setSession(response.data);
-  //       }
-  //       return response;
-  //     })
-  //   );
-  // }
-
   login(credentials: any) {
     return this.http.post<any>(`${ApiEndpoints.auth.login}`, credentials).pipe(
       map(response => {
         if (response && response.isSuccess && response.data.token) {
-          // حفظ التوكن في المتصفح
+          // save token to localStorage
           localStorage.setItem('token', response.data.token);
           this.setSession(response.data);
-          // اختيارياً: حفظ بيانات المستخدم الأخرى
-          localStorage.setItem('user', JSON.stringify(response.data.user));
 
-          console.log('Token saved successfully!');
+          localStorage.setItem('user', JSON.stringify(response.data.user));
         }
         this.router.navigate(['/']);
         return response;
@@ -94,7 +80,7 @@ export class AuthService {
 
       const result = await signInWithPopup(this.auth, provider);
       const idToken = await result.user.getIdToken();
-
+      console.log(result);
       const payload = {
         idToken: idToken,
         provider: providerType,
@@ -148,7 +134,6 @@ export class AuthService {
 
     try {
       const payload = JSON.parse(atob(token.split('.')[1]));
-      // اسم الـ claim حسب ما وضعته في الـ backend
       return payload['http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier'];
     } catch {
       return null;

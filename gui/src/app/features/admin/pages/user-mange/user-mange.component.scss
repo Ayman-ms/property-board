@@ -1,0 +1,237 @@
+@import '../../../../styles/variables.scss';
+
+.admin-container {
+  padding: 2rem;
+  background-color: $background-color;
+  font-family: 'Inter', sans-serif;
+
+  .admin-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+
+    .user-info-main {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+
+      .user-avatar {
+        width: 60px;
+        height: 60px;
+        background: $logo-color;
+        color: $white-color;
+        border-radius: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: bold;
+        font-size: 1.5rem;
+      }
+
+      .user-titles {
+        h1 {
+          font-size: 1.8rem;
+          margin: 0;
+          display: flex;
+          align-items: center;
+          gap: 10px;
+        }
+
+        p {
+          color: $text-color;
+          margin: 5px 0 0;
+        }
+      }
+    }
+  }
+}
+
+.badge-admin {
+  background: $logo-color;
+  color: $white-color;
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 0.8rem;
+}
+
+.admin-content-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 2rem;
+}
+
+.card {
+  background: $background-color;
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+  margin-bottom: 1.5rem;
+
+  .card-title {
+    font-size: 1.1rem;
+    border-bottom: 1px solid $logo-color;
+    padding-bottom: 1rem;
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+}
+
+.info-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+
+  label {
+    display: block;
+    color: $text-color;
+    font-size: 0.9rem;
+    margin-bottom: 5px;
+  }
+
+  p {
+    font-weight: 600;
+    margin: 0;
+  }
+}
+
+.admin-controls {
+  .control-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+
+    .control-label {
+      strong {
+        display: block;
+      }
+
+      span {
+        font-size: 0.8rem;
+        color: $text-color;
+      }
+    }
+  }
+
+  .role-selector {
+    select {
+      border-radius: 8px;
+      margin: 10px 0;
+    }
+  }
+}
+
+.security-card.blue-bg {
+  background: linear-gradient(135deg, $logo-color 0%, $secondary-color 100%);
+  color: $white-color;
+  position: relative;
+  overflow: hidden;
+
+  h3 {
+    font-size: 2rem;
+    margin: 10px 0;
+  }
+
+  .security-link {
+    color: $white-color;
+    text-decoration: underline;
+    font-size: 0.9rem;
+  }
+}
+
+/* Toggle Switch Styling */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 44px;
+  height: 24px;
+
+  input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+
+  .slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    transition: .4s;
+    border-radius: 34px;
+
+    &:before {
+      position: absolute;
+      content: "";
+      height: 18px;
+      width: 18px;
+      left: 3px;
+      bottom: 3px;
+      background-color: $white-color;
+      transition: .4s;
+      border-radius: 50%;
+    }
+  }
+
+  input:checked+.slider {
+    background-color: $logo-color;
+  }
+
+  input:checked+.slider:before {
+    transform: translateX(20px);
+  }
+}
+
+.btn {
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  border: none;
+  background-color: $logo-color;
+  color: $white-color;
+  border: 1px solid $white-color;
+  margin-right: 10px;
+
+  &-outline-danger {
+    color: $white-color;
+    border: 1px solid $white-color;
+    background-color: $red-color;
+    width: 100%;
+  }
+}
+
+:host-context(.dark-mode) {
+  .admin-container {
+    background-color: $background-color-dark;
+    color: $text-color-dark;
+  }
+
+  h3,
+  label,
+  p {
+    color: $text-color-dark !important;
+  }
+
+  .card {
+    background: $input-bg-dark;
+    border-color: $white-color;
+    color: $text-color-dark !important;
+
+
+  }
+
+  .custom-sort {
+    color: $text-color-dark !important;
+
+    option {
+      background-color: $background-color-dark;
+    }
+  }
+}

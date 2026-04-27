@@ -1,0 +1,19 @@
+<div class="users-grid">
+     <div class="user-card" *ngFor="let user of allUsers" 
+     [routerLink]="['/admin/dashboard/user', user.userId]">
+
+    <div class="user-avatar">
+      <img [src]="user.photoURL || defaultAvatar" alt="Profile" class="avatar" />
+    </div>
+
+    <div class="user-info">
+      <h3>{{ user.firstName }} {{ user.lastName }}</h3>
+      <span class="user-type">{{ user.userType }}</span>
+      <p class="user-email"><i class="pi pi-envelope"></i> {{ user.email }}</p>
+      <p class="user-phone" *ngIf="user.phone">
+        <i class="pi pi-phone"></i> {{ user.phone }}
+      </p>
+    </div>
+
+  </div>
+</div>

@@ -3,7 +3,8 @@
     <button class="hamburger-btn" (click)="toggleSidebar()">
       <fa-icon [icon]="sidebarOpen ? faXmark : faBars"></fa-icon>
     </button>
-    <span class="mobile-title">{{ accountTitle }}</span> </div>
+    <span class="mobile-title">{{ accountTitle }}</span>
+  </div>
 
   <div class="overlay" [class.active]="sidebarOpen" (click)="closeSidebar()"></div>
 
@@ -11,17 +12,16 @@
     <aside class="sidebar" [class.open]="sidebarOpen">
       <div class="sidebar-user">
         <div class="avatar">
-          <fa-icon [icon]="userAvatarIcon"></fa-icon> </div>
+          <fa-icon [icon]="userAvatarIcon"></fa-icon>
+        </div>
         <div class="user-info">
-          <span class="user-name">{{ accountTitle }}</span> </div>
+          <span class="user-name">{{ accountTitle }}</span>
+        </div>
       </div>
 
       <nav class="sidebar-nav">
-        <a *ngFor="let item of navItems"
-           [routerLink]="item.route"
-           class="nav-item"
-           routerLinkActive="active"
-           (click)="closeSidebar()">
+        <a *ngFor="let item of navItems" [routerLink]="item.route" class="nav-item" routerLinkActive="active"
+          (click)="closeSidebar()">
           <fa-icon [icon]="item.icon"></fa-icon>
           <span>{{ item.label }}</span>
         </a>

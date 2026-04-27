@@ -80,12 +80,9 @@
 
     <!-- ── Cards ──────────────────────────────────────── -->
     <div [class]="viewMode === 'list' ? 'property-list-view' : 'property-grid'">
-    <app-property-card
-  *ngFor="let p of properties"
-  [property]="p"
-  [class.list-mode]="viewMode === 'list'"
-  context="visitor">
-</app-property-card>
+      <app-property-card *ngFor="let p of properties" [property]="p" [class.list-mode]="viewMode === 'list'"
+        context="visitor">
+      </app-property-card>
     </div>
 
     <!-- ── Pagination ─────────────────────────────────── -->

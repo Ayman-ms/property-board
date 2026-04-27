@@ -24,23 +24,22 @@ export class UserPropertyComponent {
 loadUserProperties() {
   this.propertyService.getMyProperties().subscribe({
     next: (res: any[]) => {
-      this.myProperties = res; // ✅ مباشرة بدون .data
-      console.log('عقارات المستخدم:', this.myProperties);
+      this.myProperties = res;
     },
     error: (err) => console.error(err)
   });
 }
 
   onEdit(property: any) {
-    console.log('سيتم فتح صفحة التعديل للعقار:', property.title);
-    // هنا يمكنك التوجيه لصفحة التعديل:
+    console.log('open edit page for:', property.title);
+    // redirect to edit page
     // this.router.navigate(['/user/edit-property', property.propertyId]);
   }
 
   onDelete(property: any) {
-    if (confirm('هل أنت متأكد من حذف هذا العقار؟')) {
-      console.log('جاري حذف العقار رقم:', property.propertyId);
-      // هنا تستدعي خدمة الحذف من الـ API
+    if (confirm('Are you sure you want to delete this property?')) {
+      console.log('Deleting property with ID:', property.propertyId);
+      // Call the delete service from the API here
     }
   }
 }

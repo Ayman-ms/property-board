@@ -24,10 +24,8 @@ export class LoginComponent {
   onLogin() {
     this.authService.login(this.loginData).subscribe({
       next: (response: any) => {
-        // نستخدم isSuccess كما هو موجود في الـ Service
         if (response && response.isSuccess) {
           console.log('Login Successful');
-          // لا تقم بالحفظ يدوياً هنا، الـ Service قام بذلك بالفعل عبر setSession
           this.router.navigate(['/']);
         }
       },

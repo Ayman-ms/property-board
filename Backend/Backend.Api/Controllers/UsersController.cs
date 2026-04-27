@@ -111,7 +111,7 @@ namespace Backend.Api.Controllers
                     return BadRequest(ApiResponse<UserDto>.Failure("Validation failed", errors));
                 }
 
-                // التحقق من وجود البريد الإلكتروني
+                // Check if email already exists
                 var emailExists = await _userRepository.EmailExistsAsync(createUserDto.Email);
                 if (emailExists)
                 {
@@ -158,67 +158,73 @@ namespace Backend.Api.Controllers
         }
 
         [HttpPut("{id}")]
-        public async Task<ActionResult<ApiResponse<UserDto>>> UpdateUser(int id, [FromBody] UpdateUserDto updateUserDto)
+public async Task<ActionResult<ApiResponse<UserDto>>> UpdateUser(int id, [FromBody] UpdateUserDto updateUserDto)
+{
+    try
+    {
+        if (!ModelState.IsValid)
         {
-            try
-            {
-                if (!ModelState.IsValid)
-                {
-                    var errors = ModelState.Values
-                        .SelectMany(v => v.Errors)
-                        .Select(e => e.ErrorMessage)
-                        .ToList();
-                    return BadRequest(ApiResponse<UserDto>.Failure("Validation failed", errors));
-                }
-
-                var existingUser = await _userRepository.GetByIdAsync(id);
-                if (existingUser == null)
-                {
-                    return NotFound(ApiResponse<UserDto>.Failure("User not found"));
-                }
-
-                // التحقق من البريد الإلكتروني إذا تم تغييره
-                if (updateUserDto.Email != existingUser.Email)
-                {
-                    var emailExists = await _userRepository.EmailExistsAsync(updateUserDto.Email);
-                    if (emailExists)
-                    {
-                        return BadRequest(ApiResponse<UserDto>.Failure("Email already exists"));
-                    }
-                    existingUser.Email = updateUserDto.Email;
-                }
-
-                // تحديث البيانات
-                existingUser.FirstName = updateUserDto.FirstName;
-                existingUser.LastName = updateUserDto.LastName;
-                existingUser.Phone = updateUserDto.Phone;
-
-                existingUser.Language = updateUserDto.Language;
-
-                var updatedUser = await _userRepository.UpdateAsync(existingUser);
-
-                var userDto = new UserDto
-                {
-                    UserId = updatedUser.UserId,
-                    FirstName = updatedUser.FirstName,
-                    LastName = updatedUser.LastName,
-                    Email = updatedUser.Email,
-                    Phone = updatedUser.Phone,
-                    Language = updatedUser.Language,
-                    IsActive = updatedUser.IsActive,
-                    IsVerified = updatedUser.IsVerified,
-                    CreatedAt = updatedUser.CreatedAt ?? DateTime.UtcNow
-                };
-
-                return Ok(ApiResponse<UserDto>.Success(userDto, "User updated successfully"));
-            }
-            catch (Exception ex)
-            {
-                return StatusCode(500, ApiResponse<UserDto>.Failure(
-                    "Error updating user", 
-                    new List<string> { ex.Message }));
-            }
+            var errors = ModelState.Values.SelectMany(v => v.Errors).Select(e => e.ErrorMessage).ToList();
+            return BadRequest(ApiResponse<UserDto>.Failure("Validation failed", errors));
         }
+
+        var existingUser = await _userRepository.GetByIdAsync(id);
+        if (existingUser == null)
+        {
+            return NotFound(ApiResponse<UserDto>.Failure("User not found"));
+        }
+
+        // 1. تحديث النصوص (فقط إذا كانت القيمة مرسلة وليست فارغة)
+        if (!string.IsNullOrWhiteSpace(updateUserDto.FirstName)) existingUser.FirstName = updateUserDto.FirstName;
+        if (!string.IsNullOrWhiteSpace(updateUserDto.LastName)) existingUser.LastName = updateUserDto.LastName;
+        if (!string.IsNullOrWhiteSpace(updateUserDto.Phone)) existingUser.Phone = updateUserDto.Phone;
+        if (!string.IsNullOrWhiteSpace(updateUserDto.Language)) existingUser.Language = updateUserDto.Language;
+        
+        // تحديث نوع المستخدم - تأكد من إرسال القيمة من الأنجولار
+        if (!string.IsNullOrWhiteSpace(updateUserDto.UserType)) existingUser.UserType = updateUserDto.UserType;
+
+        // 2. تحديث حقول الـ Toggle (Logic)
+        // نستخدم HasValue للتأكد من أن القيمة مرسلة فعلياً في الـ JSON
+        if (updateUserDto.IsActive.HasValue) 
+            existingUser.IsActive = updateUserDto.IsActive.Value;
+
+        if (updateUserDto.IsVerified.HasValue) 
+            existingUser.IsVerified = updateUserDto.IsVerified.Value;
+
+        // 3. معالجة الإيميل (تجنب التكرار)
+        if (!string.IsNullOrWhiteSpace(updateUserDto.Email) && updateUserDto.Email != existingUser.Email)
+        {
+            var emailExists = await _userRepository.EmailExistsAsync(updateUserDto.Email);
+            if (emailExists) return BadRequest(ApiResponse<UserDto>.Failure("Email already exists"));
+            existingUser.Email = updateUserDto.Email;
+        }
+
+        // 4. حفظ التغييرات في قاعدة البيانات
+        var updatedUser = await _userRepository.UpdateAsync(existingUser);
+
+        // 5. التحويل إلى DTO للإرجاع
+        var userDto = new UserDto
+        {
+            UserId = updatedUser.UserId,
+            FirstName = updatedUser.FirstName,
+            LastName = updatedUser.LastName,
+            Email = updatedUser.Email,
+            Phone = updatedUser.Phone,
+            Language = updatedUser.Language,
+            IsActive = updatedUser.IsActive,
+            IsVerified = updatedUser.IsVerified,
+            UserType = updatedUser.UserType, // تأكد من وجود هذا الحقل في الـ UserDto
+            CreatedAt = updatedUser.CreatedAt ?? DateTime.UtcNow
+        };
+
+        return Ok(ApiResponse<UserDto>.Success(userDto, "User updated successfully"));
+    }
+    catch (Exception ex)
+    {
+        // إضافة تفاصيل الخطأ تساعدك في الـ Console
+        return StatusCode(500, ApiResponse<UserDto>.Failure("Error updating user", new List<string> { ex.Message }));
+    }
+}
 
         [HttpDelete("{id}")]
         public async Task<ActionResult<ApiResponse<object>>> DeleteUser(int id)

@@ -24,7 +24,7 @@
       </form>
 
       <i class="pi pi-bell" *ngIf="isLoggedIn"></i>
-      <i class="pi pi-user" *ngIf="isLoggedIn && currentUserId" [routerLink]="['user/profile', currentUserId]"
+      <i class="pi pi-user" *ngIf="isLoggedIn && currentUserId" [routerLink]="['user/dashboard/profile']"
         style="cursor: pointer;">
       </i>
       <p class="login-register" *ngIf="!isLoggedIn" routerLink="/auth/login">{{ 'NAV.LOGIN' | translate }}</p>

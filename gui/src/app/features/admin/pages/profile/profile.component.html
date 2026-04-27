@@ -1,0 +1,71 @@
+<div class="profile-container">
+  <div class="profile-card shadow-sm" *ngIf="user">
+    
+    <div class="profile-header">
+      <div class="avatar-wrapper">
+        <img [src]="user.photoURL || defaultAvatar" alt="Profile" class="avatar" />
+        <button class="change-photo-btn" *ngIf="isEditMode">
+          <i class="pi pi-camera"></i>
+        </button>
+      </div>
+      <h2 class="mt-3">{{ user.firstName }} {{ user.lastName }}</h2>
+      <span class="badge-role">You Are {{ user.userType }}</span> <br/>
+      <span class="badge-role">Your ID is {{ user.userId }}</span>
+
+    </div>
+
+    <hr class="my-4 border-slate-200">
+
+    <div class="info-section" *ngIf="!isEditMode">
+      <div class="info-group">
+        <label>Email</label>
+        <p>{{ user.email }}</p>
+      </div>
+      <div class="info-group">
+        <label>Phone</label>
+        <p>{{ user.phone || '---' }}</p>
+      </div>
+      
+      <div class="actions">
+        <button class="btn-edit" (click)="toggleEdit()">
+          <i class="pi pi-user-edit"></i> {{ 'PROFILE.Edit' | translate }}
+        </button>
+        <button class="btn-logout" (click)="logout()">
+          <i class="pi pi-sign-out"></i> {{ 'PROFILE.Logout' | translate }}
+        </button>
+      </div>
+    </div>
+
+    <div class="edit-section" *ngIf="isEditMode">
+      <div class="form-grid">
+        <div class="input-group">
+          <label>First Name</label>
+          <input type="text" [(ngModel)]="editForm.firstName" class="form-control">
+        </div>
+        <div class="input-group">
+          <label>Last Name</label>
+          <input type="text" [(ngModel)]="editForm.lastName" class="form-control">
+        </div>
+        <div class="input-group full-width">
+          <label>Phone Number</label>
+          <input type="text" [(ngModel)]="editForm.phone" class="form-control">
+        </div>
+      </div>
+
+      <div class="actions mt-4">
+        <button class="btn-save" (click)="saveChanges()">
+          <i class="pi pi-check"></i> {{ 'PROFILE.Save' | translate }}
+        </button>
+        <button class="btn-cancel" (click)="toggleEdit()">
+          {{ 'PROFILE.Cancel' | translate }}
+        </button>
+      </div>
+    </div>
+
+  </div>
+
+  <div *ngIf="!user" class="loading-state">
+    <i class="pi pi-spin pi-spinner"></i>
+    <p>{{ 'PROFILE.Loading' | translate }}</p>
+  </div>
+</div>

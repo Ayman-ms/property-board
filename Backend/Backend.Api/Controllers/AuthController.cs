@@ -22,6 +22,9 @@ namespace Backend.Api.Controllers
             _configuration = configuration;
         }
 
+        // ==========================================
+        // LOGIN
+        // ==========================================
         [HttpPost("login")]
         public async Task<ActionResult<ApiResponse<object>>> Login([FromBody] LoginDto loginDto)
         {
@@ -32,7 +35,6 @@ namespace Backend.Api.Controllers
                 return Unauthorized(ApiResponse<object>.Failure("Invalid email or password"));
             }
 
-            // Generate JWT token
             var token = GenerateJwtToken(user);
 
             var result = new
@@ -43,13 +45,19 @@ namespace Backend.Api.Controllers
                     user.UserId,
                     user.FirstName,
                     user.LastName,
-                    user.Email
+                    user.Email,
+                    user.Phone,
+                    user.UserType,
+                    user.ProfileImageUrl
                 }
             };
 
             return Ok(ApiResponse<object>.Success(result, "Login successful"));
         }
 
+        // ==========================================
+        // REGISTER
+        // ==========================================
         [HttpPost("register")]
         public async Task<ActionResult<ApiResponse<object>>> Register([FromForm] RegisterDto registerDto)
         {
@@ -74,19 +82,19 @@ namespace Backend.Api.Controllers
             return Ok(ApiResponse<object>.Success(null!, "Registration successful!"));
         }
 
+        // ==========================================
+        // EXTERNAL LOGIN (Google / Facebook)
+        // ==========================================
         [HttpPost("external")]
         public async Task<ActionResult<ApiResponse<object>>> ExternalLogin([FromBody] ExternalLoginDto dto)
         {
-            // 1. for Firebase Authentication, we need to verify the ID token sent by the client (which was obtained from Google Sign-In)
             var decodedToken = await FirebaseAdmin.Auth.FirebaseAuth.DefaultInstance.VerifyIdTokenAsync(dto.IdToken);
             var email = decodedToken.Claims["email"].ToString();
 
-            // 2. search for a user with this email in our database
             var user = await _userRepository.GetByEmailAsync(email!);
 
             if (user == null)
             {
-                // 3. If not found (Register process), create a new account immediately
                 user = new Models.User
                 {
                     Email = email!,
@@ -99,17 +107,74 @@ namespace Backend.Api.Controllers
                 await _userRepository.AddAsync(user);
             }
 
-            // 4. Generate JWT token for the user
             var myToken = GenerateJwtToken(user);
 
             var result = new
             {
                 token = myToken,
-                user = new { user.UserId, user.Email, user.FirstName }
+                user = new
+                {
+                    user.UserId,
+                    user.Email,
+                    user.FirstName,
+                    user.LastName,
+                    user.UserType,
+                    user.ProfileImageUrl
+                }
             };
 
             return Ok(ApiResponse<object>.Success(result, "External Authentication Successful"));
         }
+
+        // ==========================================
+        // FORGOT PASSWORD
+        // ==========================================
+        [HttpPost("forgot-password")]
+        public async Task<ActionResult<ApiResponse<object>>> ForgotPassword([FromBody] ForgotPasswordDto dto)
+        {
+            var user = await _userRepository.GetByEmailAsync(dto.Email);
+            if (user == null)
+                return Ok(ApiResponse<object>.Success(null!, "Link generated"));
+
+            var resetToken = Guid.NewGuid().ToString();
+
+            user.PasswordResetToken = resetToken;
+            user.ResetTokenExpires = DateTime.UtcNow.AddHours(1).ToString();
+            await _userRepository.UpdateAsync(user);
+
+            var resetLink = $"http://localhost:4200/auth/reset-password?token={resetToken}&email={user.Email}";
+
+            Console.WriteLine("***********************************************");
+            Console.WriteLine("RESET LINK: " + resetLink);
+            Console.WriteLine("***********************************************");
+
+            return Ok(ApiResponse<object>.Success(null!, "Reset link sent to your email."));
+        }
+
+        // ==========================================
+        // RESET PASSWORD
+        // ==========================================
+        [HttpPost("reset-password")]
+        public async Task<ActionResult<ApiResponse<object>>> ResetPassword([FromBody] ResetPasswordDto dto)
+        {
+            var user = await _userRepository.GetByEmailAsync(dto.Email);
+            if (user == null || user.PasswordResetToken != dto.Token || DateTime.Parse(user.ResetTokenExpires!) < DateTime.UtcNow)
+            {
+                return BadRequest(ApiResponse<object>.Failure("Invalid or expired token."));
+            }
+
+            user.PasswordHash = BCrypt.Net.BCrypt.HashPassword(dto.NewPassword);
+            user.PasswordResetToken = null;
+            user.ResetTokenExpires = null;
+
+            await _userRepository.UpdateAsync(user);
+
+            return Ok(ApiResponse<object>.Success(null!, "Password has been reset successfully."));
+        }
+
+        // ==========================================
+        // PRIVATE HELPERS
+        // ==========================================
         private string GenerateJwtToken(Models.User user)
         {
             var securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["Jwt:Key"]!));
@@ -120,14 +185,13 @@ namespace Backend.Api.Controllers
                 new Claim(ClaimTypes.NameIdentifier, user.UserId.ToString()),
                 new Claim(ClaimTypes.Email, user.Email),
                 new Claim("FirstName", user.FirstName)
-                // User roles can be added here in the future.
             };
 
             var token = new JwtSecurityToken(
                 issuer: _configuration["Jwt:Issuer"],
                 audience: _configuration["Jwt:Audience"],
                 claims: claims,
-                expires: DateTime.Now.AddDays(1), // Token validity period
+                expires: DateTime.Now.AddDays(1),
                 signingCredentials: credentials);
 
             return new JwtSecurityTokenHandler().WriteToken(token);
@@ -147,58 +211,8 @@ namespace Backend.Api.Controllers
             {
                 await file.CopyToAsync(stream);
             }
+
             return $"/uploads/profiles/{fileName}";
-        }
-
-        // Endpoints for forgot password and reset password
-
-        [HttpPost("forgot-password")]
-        public async Task<ActionResult<ApiResponse<object>>> ForgotPassword([FromBody] ForgotPasswordDto dto)
-        {
-            var user = await _userRepository.GetByEmailAsync(dto.Email);
-            if (user == null)
-                return Ok(ApiResponse<object>.Success(null!, "Link generated"));
-
-            // create a unique token for password reset (you can use JWT logic here or a simple Guid)
-            // Guid is simpler for this use case since we just need to verify it against the database and it doesn't need to carry any claims.
-            var resetToken = Guid.NewGuid().ToString();
-
-            // save the token and its expiration time in the database
-            user.PasswordResetToken = resetToken;
-            user.ResetTokenExpires = DateTime.UtcNow.AddHours(1).ToString(); // token valid for 1 hour
-            await _userRepository.UpdateAsync(user);
-
-            //  Send the E-Mail
-            var resetLink = $"http://localhost:4200/auth/reset-password?token={resetToken}&email={user.Email}";
-
-            // Print the link in the black screen (Terminal) so we can view and copy it.
-            Console.WriteLine("***********************************************");
-            Console.WriteLine("RESET LINK: " + resetLink);
-            Console.WriteLine("***********************************************");
-
-            // Leave the send line as a comment for now to avoid an SMTP error.
-            // await SendEmailAsync(user.Email, "Reset Your Password", $"Click here to reset: {resetLink}");
-
-            return Ok(ApiResponse<object>.Success(null!, "Reset link sent to your email."));
-        }
-
-        [HttpPost("reset-password")]
-        public async Task<ActionResult<ApiResponse<object>>> ResetPassword([FromBody] ResetPasswordDto dto)
-        {
-            var user = await _userRepository.GetByEmailAsync(dto.Email);
-            if (user == null || user.PasswordResetToken != dto.Token || DateTime.Parse(user.ResetTokenExpires!) < DateTime.UtcNow)
-            {
-                return BadRequest(ApiResponse<object>.Failure("Invalid or expired token."));
-            }
-
-            // change the password and clear the reset token
-            user.PasswordHash = BCrypt.Net.BCrypt.HashPassword(dto.NewPassword);
-            user.PasswordResetToken = null;
-            user.ResetTokenExpires = null;
-
-            await _userRepository.UpdateAsync(user);
-
-            return Ok(ApiResponse<object>.Success(null!, "Password has been reset successfully."));
         }
 
         private async Task SendEmailAsync(string email, string subject, string message)
@@ -217,4 +231,4 @@ namespace Backend.Api.Controllers
             await client.DisconnectAsync(true);
         }
     }
-}
+    }

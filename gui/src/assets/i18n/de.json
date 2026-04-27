@@ -185,5 +185,26 @@
     "BackButton": "Zurück",
     "NextButton": "Nächster Schritt",
     "SubmitButton": "Anzeige einreichen"
+  },
+
+  "USER_MANAGE": {
+    "GoBack": "Zurück",
+    "SaveChanges": "Änderungen speichern",
+    "ProfileInformation": "Profilinformationen",
+    "FirstName": "Vorname",
+    "LastName": "Nachname",
+    "EmailAddress": "E-Mail-Adresse",
+    "PhoneNumber": "Telefonnummer",
+    "PreferredLanguage": "Sprache",
+    "AdminControls": "Admin-Steuerelemente",
+    "AccountActive": "Konto aktiv",
+    "EmailVerified": "E-Mail verifiziert",
+    "ManualVerificationOverride": "Manuelle Überprüfung überschreiben",
+    "AssignedUserRole": "Zugewiesene Benutzerrolle",
+    "Admin": "Admin",
+    "User": "Benutzer",
+    "WarningAdminAccess": "WARNUNG: ADMINISTRATOREN HABEN VOLLEN ZUGRIFF AUF DIE DATENBANK",
+    "DangerZone": "Gefahrenzone",
+    "DeleteAccount": "Konto löschen"
   }
 }

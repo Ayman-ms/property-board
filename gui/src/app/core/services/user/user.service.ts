@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { map, Observable } from 'rxjs';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { ApiEndpoints } from '../../constants/api_endpoints';
 import { User } from '../../models/user';
@@ -8,10 +8,12 @@ import { User } from '../../models/user';
   providedIn: 'root'
 })
 export class UserService {
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
-  getUsers () {
-    return this.http.get(ApiEndpoints.users.base).toPromise();
+  getUsers(): Observable<any[]> {
+    return this.http.get<any>(ApiEndpoints.users.base).pipe(
+      map(res => res.data.data)
+    );
   }
 
   getUserById(user_id: string): Observable<User> {
@@ -22,7 +24,12 @@ export class UserService {
     await this.http.post(ApiEndpoints.users.base, user).toPromise();
   }
 
-  async updateUser(user_id: string, data: Partial<User>): Promise<void> {
-    await this.http.put(`${ApiEndpoints.users.base}/${user_id}`, data).toPromise();
+  updateUser(user_id: string, data: Partial<User>): Observable<any> {
+    return this.http.put(`${ApiEndpoints.users.base}/${user_id}`, data);
   }
+
+  deleteUser(user_id: string): Observable<any> {
+    return this.http.delete(`${ApiEndpoints.users.base}/${user_id}`);
+  }
+
 }

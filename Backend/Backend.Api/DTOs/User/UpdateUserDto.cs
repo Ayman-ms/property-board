@@ -20,8 +20,12 @@ namespace Backend.Api.DTOs.User
         [StringLength(500, ErrorMessage = "Profile picture URL cannot exceed 500 characters")]
         public string? ProfilePicture { get; set; }
 
-        [StringLength(1000, ErrorMessage = "Bio cannot exceed 1000 characters")]
-        public string? Bio { get; set; }
+        public bool? IsActive { get; set; }
+
+        public bool? IsVerified { get; set; }
+
+        [StringLength(1000, ErrorMessage = "UserType cannot changed")]
+        public string? UserType { get; set; }
 
         public string? Language { get; set; }
 

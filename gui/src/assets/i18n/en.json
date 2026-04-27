@@ -189,5 +189,26 @@
     "BackButton": "Back",
     "NextButton": "Next Step",
     "SubmitButton": "Submit Listing"
+  },
+
+  "USER_MANAGE": {
+    "GoBack": "Go Back",
+    "SaveChanges": "Save Changes",
+    "ProfileInformation": "Profile Information",
+    "FirstName": "First Name",
+    "LastName": "Last Name",
+    "EmailAddress": "Email Address",
+    "PhoneNumber": "Phone Number",
+    "PreferredLanguage": "Language",
+    "AdminControls": "Admin Controls",
+    "AccountActive": "Account Active",
+    "EmailVerified": "Email Verified",
+    "ManualVerificationOverride": "Manual Verification Override",
+    "AssignedUserRole": "Assigned User Role",
+    "Admin": "Admin",
+    "User": "User",
+    "WarningAdminAccess": "WARNING: ADMINS HAVE FULL DATABASE ACCESS",
+    "DangerZone": "Danger Zone",
+    "DeleteAccount": "Delete Account"
   }
 }
