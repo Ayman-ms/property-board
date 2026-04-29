@@ -1,1 +1,42 @@
-<p>admin-properties works!</p>
+<div class="admin-properties">
+
+  <button class="add-property-btn" [routerLink]="['/properties/add']">
+    <i class="bi bi-file-earmark-plus"></i>
+    {{ 'ADMIN_PROPERTIES.NewProperty' | translate }}
+  </button>
+
+  <!-- Tabs -->
+  <div class="tabs">
+    <button class="tab-btn" [class.active]="activeTab === 'mine'" (click)="activeTab = 'mine'">
+      {{ 'ADMIN_PROPERTIES.ADMINPROPERTIES' | translate }}
+      <span class="count">{{ myProperties.length }}</span>
+    </button>
+    <button class="tab-btn" [class.active]="activeTab === 'all'" (click)="activeTab = 'all'">
+      {{ 'ADMIN_PROPERTIES.AllProperties' | translate }}
+      <span class="count">{{ allProperties.length }}</span>
+    </button>
+  </div>
+
+  <!-- My Properties -->
+  <div class="properties-grid" *ngIf="activeTab === 'mine'">
+    <app-property-card
+      *ngFor="let p of myProperties"
+      [property]="p"
+      context="owner"
+      (edit)="onEdit(p)"
+      (delete)="onDelete(p)">
+    </app-property-card>
+    <p *ngIf="myProperties.length === 0" class="empty-msg">No properties yet.</p>
+  </div>
+
+  <!-- All Properties -->
+  <div class="properties-grid" *ngIf="activeTab === 'all'">
+    <app-property-card
+      *ngFor="let p of allProperties"
+      [property]="p"
+      context="admin"
+      (delete)="onDelete(p)">
+    </app-property-card>
+  </div>
+
+</div>

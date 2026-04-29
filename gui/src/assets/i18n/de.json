@@ -206,5 +206,11 @@
     "WarningAdminAccess": "WARNUNG: ADMINISTRATOREN HABEN VOLLEN ZUGRIFF AUF DIE DATENBANK",
     "DangerZone": "Gefahrenzone",
     "DeleteAccount": "Konto löschen"
+  },
+
+   "ADMIN_PROPERTIES": {
+    "NewProperty": "Neue Immobilie",
+    "ADMINPROPERTIES": "Das sind Ihre Immobilien:",
+    "AllProperties": "Alle Immobilien:"
   }
 }

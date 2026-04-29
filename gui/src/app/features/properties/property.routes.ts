@@ -6,8 +6,8 @@ import { ListComponent } from './list/list.component';
 
 
 export const propertyRoutes: Routes = [
-  { path: 'add', component: AddComponent },
   { path: 'list', component: ListComponent },
+  { path: 'add', component: AddComponent },
   { path: 'detail', component: DetailComponent },
   { path: 'edit', component: EditComponent },
 

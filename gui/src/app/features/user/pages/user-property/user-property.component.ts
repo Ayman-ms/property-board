@@ -31,15 +31,15 @@ loadUserProperties() {
 }
 
   onEdit(property: any) {
-    console.log('open edit page for:', property.title);
+    console.log('open:', property.title);
     // redirect to edit page
     // this.router.navigate(['/user/edit-property', property.propertyId]);
   }
 
   onDelete(property: any) {
-    if (confirm('Are you sure you want to delete this property?')) {
-      console.log('Deleting property with ID:', property.propertyId);
-      // Call the delete service from the API here
+    if (confirm('هل أنت متأكد من حذف هذا العقار؟')) {
+      console.log('جاري حذف العقار رقم:', property.propertyId);
+      // هنا تستدعي خدمة الحذف من الـ API
     }
   }
 }

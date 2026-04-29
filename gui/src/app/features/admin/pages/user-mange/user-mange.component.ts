@@ -23,7 +23,7 @@ export class UserMangeComponent {
   constructor(
     private route: ActivatedRoute,
     private userService: UserService,
-      private router: Router
+    private router: Router
   ) { }
 
   ngOnInit(): void {
@@ -51,28 +51,28 @@ export class UserMangeComponent {
   }
 
   deleteUser() {
-  if (!this.user || !this.user.userId) return;
+    if (!this.user || !this.user.userId) return;
 
-  if (confirm('Are you sure you want to delete this user?')) {
-    this.userService.deleteUser(this.user.userId).subscribe({
-      next: (res) => {
-        alert('User deleted successfully');
-        this.router.navigate(['/admin/dashboard/manage-users']); // تأكد من صحة المسار هنا
-      },
-      error: (err) => {
-        console.error('Delete error:', err);
-        alert('Failed to delete user: ' + (err.error?.message || 'Server error'));
-      }
-    });
+    if (confirm('Are you sure you want to delete this user?')) {
+      this.userService.deleteUser(this.user.userId).subscribe({
+        next: (res) => {
+          alert('User deleted successfully');
+          this.router.navigate(['/admin/dashboard/manage-users']); // تأكد من صحة المسار هنا
+        },
+        error: (err) => {
+          console.error('Delete error:', err);
+          alert('Failed to delete user: ' + (err.error?.message || 'Server error'));
+        }
+      });
+    }
   }
-}
 
   toggleUserStatus(event: any) {
     this.user.isActive = event.target.checked;
     this.userService.updateUser(this.user.userId, { is_active: this.user.isActive }).subscribe({
-    next: () => console.log('Status updated'),
-    error: (err) => console.error(err)
-  });
+      next: () => console.log('Status updated'),
+      error: (err) => console.error(err)
+    });
   }
 
   toggleEmailStatus(event: any) {

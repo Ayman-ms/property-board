@@ -1,0 +1,62 @@
+@import '../../../../styles/variables.scss';
+
+.tabs {
+  display: flex;
+  gap: 0.5rem;
+  margin: 1.5rem 0;
+  border-bottom: 2px solid #e2e8f0;
+
+  .tab-btn {
+    padding: 0.75rem 1.5rem;
+    border: none;
+    background: transparent;
+    font-weight: 600;
+    color: #64748b;
+    cursor: pointer;
+    border-bottom: 2px solid transparent;
+    margin-bottom: -2px;
+    transition: all 0.2s;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+
+    .count {
+      background: #e2e8f0;
+      color: #64748b;
+      padding: 2px 8px;
+      border-radius: 99px;
+      font-size: 0.75rem;
+    }
+
+    &.active {
+      color: $logo-color;
+      border-bottom-color: $logo-color;
+
+      .count {
+        background: rgba($logo-color, 0.1);
+        color: $logo-color;
+      }
+    }
+  }
+}
+
+.properties-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+
+  @media (max-width: 768px) { grid-template-columns: repeat(2, 1fr); }
+  @media (max-width: 480px) { grid-template-columns: 1fr; }
+}
+
+.empty-msg {
+  grid-column: 1 / -1;
+  text-align: center;
+  color: #94a3b8;
+  padding: 2rem;
+}
+
+.add-property-btn {
+  @include button-base($is-full: true);
+  margin-bottom: 0.5rem;
+}

@@ -210,5 +210,11 @@
     "WarningAdminAccess": "WARNING: ADMINS HAVE FULL DATABASE ACCESS",
     "DangerZone": "Danger Zone",
     "DeleteAccount": "Delete Account"
+  },
+
+  "ADMIN_PROPERTIES": {
+    "NewProperty": "New Property",
+    "ADMINPROPERTIES": "That Is Your Properties :",
+    "AllProperties": "All Properties :"
   }
 }
