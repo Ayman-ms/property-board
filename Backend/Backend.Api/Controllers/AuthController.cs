@@ -184,7 +184,8 @@ namespace Backend.Api.Controllers
             {
                 new Claim(ClaimTypes.NameIdentifier, user.UserId.ToString()),
                 new Claim(ClaimTypes.Email, user.Email),
-                new Claim("FirstName", user.FirstName)
+                new Claim("FirstName", user.FirstName),
+                new Claim(ClaimTypes.Role, user.UserType),
             };
 
             var token = new JwtSecurityToken(

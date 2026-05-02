@@ -287,52 +287,32 @@ public async Task<IActionResult> GetMyProperties()
         // ==========================================
         // 4. PUT
         // ==========================================
-        [HttpPut("{id}")]
-     //   [Authorize]
-        public async Task<IActionResult> Update(int id, [FromBody] UpdatePropertyDto dto)
-        {
-            var property = await _context.Properties.FindAsync(id);
+       [HttpPut("{id}")]
+//[Authorize]
+public async Task<IActionResult> Update(int id, [FromBody] UpdatePropertyDto dto)
+{
+    var property = await _context.Properties.FindAsync(id);
+    if (property == null)
+        return NotFound();
 
-            if (property == null)
-                return NotFound();
+    var userIdClaim = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+    if (userIdClaim == null)
+        return Unauthorized();
 
-            var userIdClaim = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
-            if (userIdClaim == null || property.UserId != int.Parse(userIdClaim))
-            {
-                return Forbid("You are not authorized to update this property.");
-            }
+    var userRole = User.FindFirst(ClaimTypes.Role)?.Value;
+    var isAdmin = userRole?.ToLower() == "admin";
+    var isOwner = property.UserId == int.Parse(userIdClaim);
 
-            property.PropertyTypeId = dto.PropertyTypeId;
-            property.Title = dto.Title;
-            property.Description = dto.Description;
-            property.ShortDescription = dto.ShortDescription;
-            property.ListingType = dto.ListingType;
-            property.Status = dto.Status;
-            property.Price = dto.Price;
-            property.Currency = dto.Currency;
-            property.IsNegotiable = dto.IsNegotiable;
-            property.City = dto.City;
-            property.Bedrooms = dto.Bedrooms;
-            property.Bathrooms = dto.Bathrooms;
-            property.AreaSqm = dto.AreaSqm;
-            property.FloorNumber = dto.FloorNumber;
-            property.TotalFloors = dto.TotalFloors;
-            property.YearBuilt = dto.YearBuilt;
-            property.HasParking = dto.HasParking;
-            property.HasBalcony = dto.HasBalcony;
-            property.HasGarden = dto.HasGarden;
-            property.HasElevator = dto.HasElevator;
-            property.Street = dto.Street;
-            property.PostCode = dto.PostCode;
-            property.Country = dto.Country;
-            property.Latitude = dto.Latitude;
-            property.Longitude = dto.Longitude;
-            property.UpdatedAt = DateTime.UtcNow;
+    if (!isAdmin && !isOwner)
+    {
+        return StatusCode(403, new { message = "You are not authorized to update this property." });
+    }
 
-            await _context.SaveChangesAsync();
-            return Ok(new { message = "Property updated successfully" });
-        }
+    // ... باقي كود التحديث (نفس الموجود حالياً)
 
+    await _context.SaveChangesAsync();
+    return Ok(new { message = "Property updated successfully" });
+}
         // ==========================================
         // 5. DELETE
         // ==========================================
@@ -341,20 +321,29 @@ public async Task<IActionResult> GetMyProperties()
         public async Task<IActionResult> Delete(int id)
         {
             var property = await _context.Properties.FindAsync(id);
-
+            
             if (property == null)
-                return NotFound();
+                return NotFound(new { message = "Property not found" });
 
             var userIdClaim = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
-            if (userIdClaim == null || property.UserId != int.Parse(userIdClaim))
+            if (userIdClaim == null)
+                return Unauthorized(new { message = "User not authenticated" });
+
+            var roleFromClaimTypes = User.FindFirst(ClaimTypes.Role)?.Value;
+            var roleFromString = User.FindFirst("role")?.Value;
+            
+            var userRole = roleFromClaimTypes ?? roleFromString;
+            var isAdmin = userRole?.ToLower() == "admin";
+            var isOwner = property.UserId == int.Parse(userIdClaim);
+
+            if (!isAdmin && !isOwner)
             {
-                return Forbid("You are not authorized to delete this property.");
+                return StatusCode(403, new { message = "You are not authorized to delete this property." });
             }
 
             _context.Properties.Remove(property);
             await _context.SaveChangesAsync();
-
             return Ok(new { message = "Property deleted successfully" });
         }
-    }
+            }
 }

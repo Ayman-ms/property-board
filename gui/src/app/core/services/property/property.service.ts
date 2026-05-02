@@ -14,16 +14,16 @@ export class PropertyService {
   getAllProperties(): Observable<any[]> {
     return this.http.get<any[]>(ApiEndpoints.properties.base);
   }
-
   
   getPropertyTypes(): Observable<any[]> {
     return this.http.get<any[]>(ApiEndpoints.properties.types);
   }
-  // 2. جلب قائمة العقارات مع دعم الفلترة والترقيم
+
+  // 2. get properties with filters
   getProperties(filters: any = {}): Observable<any> {
     let params = new HttpParams();
 
-    // إضافة بارامترات الفلترة ديناميكياً إذا وجدت
+    // Adding filter parameters dynamically if they exist
     if (filters.page) params = params.set('page', filters.page.toString());
     if (filters.pageSize) params = params.set('pageSize', filters.pageSize.toString());
     if (filters.minPrice) params = params.set('minPrice', filters.minPrice.toString());
@@ -48,13 +48,12 @@ getMyProperties(): Observable<any[]> {
   }
 
 
-
   async getPropertyImages() {
 
   }
 
-  async deleteProperty() {
-
+  deleteProperty(id: number | string): Observable<any> {
+    return this.http.delete(`${ApiEndpoints.properties.base}/${id}`);
   }
 
   async updatePropertyStatus() {

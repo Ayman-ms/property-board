@@ -24,7 +24,7 @@
       [property]="p"
       context="owner"
       (edit)="onEdit(p)"
-      (delete)="onDelete(p)">
+      (delete)="onDelete(p.id)">
     </app-property-card>
     <p *ngIf="myProperties.length === 0" class="empty-msg">No properties yet.</p>
   </div>

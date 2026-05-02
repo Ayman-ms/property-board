@@ -22,9 +22,16 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
         options.TokenValidationParameters = new TokenValidationParameters
         {
             ValidateIssuerSigningKey = true,
-            IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["Jwt:Key"] ?? "YourSuperSecretKey1234567890123456")),
-            ValidateIssuer = false,
-            ValidateAudience = false
+            IssuerSigningKey = new SymmetricSecurityKey(
+                Encoding.UTF8.GetBytes(builder.Configuration["Jwt:Key"] 
+                    ?? throw new InvalidOperationException("JWT Key is not configured"))),
+            ValidateIssuer = true,
+            ValidIssuer = builder.Configuration["Jwt:Issuer"],
+            ValidateAudience = true,           
+            ValidAudience = builder.Configuration["Jwt:Audience"],
+            ValidateLifetime = true,   
+            ClockSkew = TimeSpan.Zero,  
+            RoleClaimType = ClaimTypes.Role          
         };
     });
 
