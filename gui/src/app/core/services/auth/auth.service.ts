@@ -26,7 +26,6 @@ export class AuthService {
 
           localStorage.setItem('user', JSON.stringify(response.data.user));
         }
-        this.router.navigate(['/']);
         return response;
       })
     );
@@ -48,7 +47,7 @@ export class AuthService {
     if (id) {
       localStorage.setItem('userId', id.toString());
     }
-    localStorage.setItem('role', authResult.user.role || 'user');
+    localStorage.setItem('role', authResult.user.userType || authResult.user.role || 'user');
     localStorage.setItem('user', JSON.stringify(authResult.user));
     this.loggedIn.next(true);
   }
@@ -56,14 +55,39 @@ export class AuthService {
   logout() {
     localStorage.clear();
     this.loggedIn.next(false);
-    signOut(this.auth); // تسجيل الخروج من Firebase أيضاً
+    signOut(this.auth); // Sign out from Firebase as well
     this.router.navigate(['/auth/login']);
   }
 
   isAuthenticated(): boolean {
-    return !!localStorage.getItem('token');
+    const token = localStorage.getItem('token');
+    if (!token) return false;
+
+    // Check if token is expired
+    if (this.isTokenExpired(token)) {
+      this.logout();
+      return false;
+    }
+
+    return true;
   }
 
+  private isTokenExpired(token: string): boolean {
+    try {
+      const payload = JSON.parse(atob(token.split('.')[1]));
+      const expiry = payload.exp;
+      if (!expiry) return false;
+
+      //  expiry is in seconds, Date.now() is in milliseconds
+      return Date.now() >= expiry * 1000;
+    } catch {
+      return true; // if parsing fails, consider token invalid
+    }
+  }
+
+  isAdmin(): boolean {
+    return this.getUserRole()?.toLowerCase() === 'admin';
+  }
   getUserRole(): string | null {
     return localStorage.getItem('role');
   }
@@ -115,7 +139,7 @@ export class AuthService {
   getauthState() {
     return this.auth;
   }
-  
+
   getUserId(): string | null {
     let id = localStorage.getItem('userId');
     if (!id) {
@@ -128,7 +152,7 @@ export class AuthService {
     return id;
   }
 
-      getCurrentUserId(): string | null {
+  getCurrentUserId(): string | null {
     const token = localStorage.getItem('token');
     if (!token) return null;
 

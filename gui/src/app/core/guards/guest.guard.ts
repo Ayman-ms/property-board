@@ -8,8 +8,13 @@ export const guestGuard: CanActivateFn = () => {
 
   if (!authService.isAuthenticated()) {
     return true;
+  }
+
+  // If admin, redirect to admin dashboard, else to home
+  if (authService.isAdmin()) {
+    router.navigate(['/admin/dashboard']);
   } else {
     router.navigate(['/']);
-    return false;
   }
+  return false;
 };

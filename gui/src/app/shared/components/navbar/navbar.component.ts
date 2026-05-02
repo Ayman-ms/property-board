@@ -17,7 +17,7 @@ export class NavbarComponent {
   isDarkMode = false;
   isLoggedIn = false;
   private authSub!: Subscription;
-currentUserId: string | null = null;
+  currentUserId: string | null = null;
 
   constructor(
     public translate: TranslateService,
@@ -26,23 +26,31 @@ currentUserId: string | null = null;
   ) { }
 
   ngOnInit(): void {
-   this.authSub= this.authService.isLoggedIn$.subscribe(status => {
+    this.authSub = this.authService.isLoggedIn$.subscribe(status => {
       this.isLoggedIn = status;
       if (status) {
-      // حاول جلب الـ ID
-      this.currentUserId = this.authService.getUserId();
-      
-      // إذا كان لا يزال null، اطبع تحذيراً لنعرف السبب
-      if (!this.currentUserId) {
-        console.warn('User is logged in but ID is missing in localStorage!');
+        // retrieve user ID
+        this.currentUserId = this.authService.getUserId();
+
+        // If still null, print a warning to know the reason
+        if (!this.currentUserId) {
+          console.warn('User is logged in but ID is missing in localStorage!');
+        }
+      } else {
+        this.currentUserId = null;
       }
-    } else {
-      this.currentUserId = null;
-    }
     });
     const savedTheme = localStorage.getItem('theme');
     this.isDarkMode = savedTheme === 'dark';
     this.applyTheme();
+
+    this.authService.isLoggedIn$.subscribe(loggedIn => {
+      this.isLoggedIn = loggedIn;
+    });
+  }
+
+  get isAdmin(): boolean {
+    return this.authService.getUserRole()?.toLowerCase() === 'admin';
   }
 
   ngOnDestroy(): void {
